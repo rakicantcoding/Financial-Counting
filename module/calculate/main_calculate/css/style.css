@@ -1,0 +1,46 @@
+.display-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px;
+    background-color: rgb(30, 30, 30);
+}
+
+.display-item-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.display-item-container>div {
+    display: flex;
+    flex-direction: row;
+}
+
+.display-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.display-income:hover {
+    color: rgba(75, 192, 92, 1);
+}
+
+.display-expense:hover {
+    color: rgba(255, 99, 132, 1);
+}
+
+.display-balance:hover {
+    color: rgba(54, 162, 235, 1)
+}
+
+.div-percent>div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3px;
+}

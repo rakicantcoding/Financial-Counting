@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="./style/style.css" rel="stylesheet" />
+  <link href="./css/style.css" rel="stylesheet" />
 
-    <link href="/css/main.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
-    <title>Simulate Finance Grow</title>
+  <title>Simulate Finance Grow</title>
 </head>
 
 <body>
@@ -82,133 +82,215 @@
     <div class="cover"></div>
   </div>
 
-    <div class="main-body">
-        <div id="container">
-            <div id="main">
-                <div id="display">
-                    <h2 id="income-display">Total Income Rp. 0</h2>
-                    <h2 id="expense-display">Total Expense Rp. 0</h2>
-                    <h2 id="balance-display">Total Balance Rp. 0</h2>
-                </div>
+  <div class="main-body">
 
-                <!-- INCOME -->
-                <div class="form-section section">
-                    <h2>Income Input</h2>
-                    <input id="income-input-name" placeholder="Income Name" type="text" class="input-text">
-                    <input id="income-input-amount" placeholder="Income Amount" type="number" class="input-text">
-                    <button id="income-button" class="button">SUBMIT</button>
-                </div>
+    <div class="display-container">
 
-                <!-- OPSI -->
-                <h3>Option Expense</h3>
-                <select id="select-expense" class="input-text">
-                    <option value="expense">EXPENSE</option>
-                    <option value="invest">INVEST</option>
-                    <option value="interest">INTEREST</option>
-                    <option value="saving">SAVING</option>
-                </select>
-
-                <div id="form-wrapper">
-                    <h3 id="label-expense">CATEGORY EXPENSE: INVEST</h3>
-
-                    <!-- EXPENSE -->
-                    <div id="expense-container" class="form-section">
-                        <input id="expense-name" placeholder="Expense Name" class="input-text">
-
-                        <!-- OPTION -->
-                        <select id="expense-input-select" class="input-text">
-                            <option value="nominal">Nominal</option>
-                            <option value="percent">Percent [%]</option>
-                        </select>
-
-                        <!-- INPUT AMOUNT -->
-                        <input id="expense-amount" placeholder="Expense Amount Nominal" class="input-text">
-                        <button id="expense-button" class="button">SUBMIT</button>
-                    </div>
-
-                    <!-- INVEST -->
-                    <div id="invest-container" class="form-section hide">
-                        <input id="invest-input-name" placeholder="Invest Name" type="text" class="input-text">
-                        <input id="invest-input-amount" placeholder="Invest Amount [%]" type="number"
-                            class="input-text">
-                        <input id="invest-take-profit" placeholder="Profit Amount [%]" type="number" class="input-text">
-                        <input id="invest-portofolio-amount" placeholder="Portofolio sekarang (opsional)" type="number"
-                            class="input-text">
-                        <button id="invest-button" class="button">SUBMIT</button>
-                    </div>
-
-                    <!-- INTEREST -->
-                    <div id="interest-container" class="form-section hide">
-                        <input id="interest-input-name" placeholder="Interest Name" type="text" class="input-text">
-                        <input id="interest-input-amount" placeholder="Interest Amount [%]" type="number"
-                            class="input-text">
-
-                        <select id="interest-select" class="input-text">
-                            <option value="month">TP/M</option>
-                            <option value="year">TP/Y</option>
-                        </select>
-
-                        <input id="interest-profit" placeholder="Interest profit y/m[%]" type="number"
-                            class="input-text">
-                        <input id="interest-portofolio-amount" placeholder="Portofolio sekarang (opsional)"
-                            type="number" class="input-text">
-
-                        <button id="interest-button" class="button">SUBMIT</button>
-                    </div>
-
-                    <!-- TABUNGAN -->
-                    <div id="saving-container" class="form-section hide">
-                        <input id="saving-input-name" placeholder="Saving Name" type="text" class="input-text">
-                        <select id="saving-select" class="input-text">
-                            <option value="nominal">Nominal</option>
-                            <option value="percent">Percent</option>
-                        </select>
-                        <input id="saving-input-amount" placeholder="Saving Amount" type="number" class="input-text">
-                        <input id="saving-portofolio-amount" placeholder="Portofolio sekarang (opsional)" type="number"
-                            class="input-text">
-                        <button id="saving-button" class="button">SUBMIT</button>
-                    </div>
-                </div>
-
-                <!-- SIMULATION -->
-                <div class="form-section">
-                    <h2>Simulation Month Input</h2>
-                    <select id="simulation-select" class="input-text">
-                        <option value="month">Month</option>
-                        <option value="year">Year</option>
-                    </select>
-                    <input id="simulation-input" placeholder="Duration month" type="number" class="input-text">
-                    <button id="simulation-button" class="button">SUBMIT</button>
-                </div>
-
-                <div id="list">
-                    <div id="penghasilan">
-                        <button class="button-list">LIST INCOME:</button>
-                        <ul id="list-income-ul"></ul>
-                    </div>
-
-                    <div id="pengeluaran">
-                        <button class="button-list">LIST EXPENSE:</button>
-                        <ul id="list-expense-ul"></ul>
-                    </div>
-                </div>
-
-                <div id="container-simulation">
-                    <h2>SIMULATION RESULT:</h2>
-                    <ul id="simulation-ul"></ul>
-                </div>
-
-                <div class="form-section">
-                    <h4>Save Menu</h4>
-                    <button id="save" class="button">save</button>
-                    <button id="clear" class="button">clear</button>
-                </div>
-            </div>
+      <div class="display-item-container">
+        <div class="display-item display-income">
+          <p>Income</p>
+          <p id="display-p_income" class="p-income">Rp. 0</p>
         </div>
+
+        <div class="display-item display-expense">
+          <p>Expense</p>
+          <p id="display-p_expense" class="p-expense">Rp. 0</p>
+          <p id="display-p_expense_percent" class="hide">0%</p>
+        </div>
+
+        <div class="display-item display-balance">
+          <p>Balance</p>
+          <p id="display-p_balance" class="p-balance">Rp. 0</p>
+          <p id="display-p_balance_percent" class="hide">0%</p>
+        </div>
+      </div>
+
+      <div class="div-percent">
+        <div>
+          <input type="checkbox" id="display-checkbox" class="checkbox"> Percent
+        </div>
+      </div>
+
     </div>
 
-    <script src="./js/app.js" type="module"></script>
-    <script src="/js/main.js"></script>
+    <div class="input-container">
+
+      <div>
+        <div class="input-income">
+          <div class="title">
+            <p>Income</p>
+          </div>
+
+          <div>
+
+            <div>
+              <input id="income-name" class="input" type="text" placeholder="Name">
+              <input id="income-amount" class="input" type="number" placeholder="Amount">
+            </div>
+
+            <div>
+              <button id="income-btn" class="button">Submit</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="input-expense">
+          <div class="title">
+            <p>Expense</p>
+          </div>
+
+          <div>
+            <div>
+              <div>
+                <div>
+                  <p>Category</p>
+                </div>
+
+                <div>
+                  <select id="expense-select" class="select">
+                    <option value="expense">Expense</option>
+                    <option value="invest">Invest</option>
+                    <option value="interest">Interest</option>
+                    <option value="saving">Saving</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <input id="expense-name" class="input" type="text" placeholder="Name">
+                <input id="expense-amount" class="input" type="number" placeholder="Amount">
+                <input id="expense-deposit" class="input" type="number" placeholder="Deposit">
+                <input id="expense-takeProfit" class="input" type="number" placeholder="Take Profit [%]">
+                <div>
+                  <p>(optional)</p>
+                  <input id="expense-portofolio" class="input" type="number" placeholder="Portofolio">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <button id="expense-btn" class="button">Submit</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="title">
+          <p>Month</p>
+        </div>
+
+        <div>
+          <div class="div-month_select">
+            <select id="month-select" class="select">
+              <option>Month</option>
+              <option>Year</option>
+            </select>
+          </div>
+
+          <div class="div-month_input">
+            <div>
+              <input id="month-input" class="input" type="number" placeholder="Honth">
+            </div>
+
+            <div>
+              <button id="month-btn" class="btn">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="list-container">
+      <div>
+        <div class="title">
+          <p>Income List</p>
+        </div>
+
+        <div id="income-list">
+
+        </div>
+      </div>
+
+      <div>
+        <div class="title">
+          <p>Expense List</p>
+        </div>
+
+        <div id="expense-list">
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="result-container">
+
+      <div>
+        <div class="title">
+          <p>Month</p>
+          <p id="month-amount">number</p>
+        </div>
+      </div>
+
+
+      <div>
+        <div class="title">
+          <p>Income Result</p>
+        </div>
+
+        <div id="income-result">
+
+        </div>
+      </div>
+
+      <div>
+        <div class="expense-display">
+          <div class="title">
+            <p>Expense Result</p>
+          </div>
+
+          <div>
+            <div class="note">
+              <p id="result-note"></p>
+            </div>
+
+            <div>
+              <select id="result-select" class="select">
+                <option>Expense</option>
+                <option>Invest</option>
+                <option>Interest</option>
+                <option>Saving</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="expense-result">
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="save-container">
+      <div>
+        <button class="btn">Save</button>
+      </div>
+
+      <div>
+        <button class="btn">Reset</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./js/script.js" type="module"></script>
+  <script src="/js/main.js"></script>
 </body>
 
 </html>
