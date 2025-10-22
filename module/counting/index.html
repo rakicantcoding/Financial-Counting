@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="./style/style.css" rel="stylesheet" />
+
+  <link href="/css/main.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+
+  <title>Counting statistic</title>
+</head>
+
+<body>
+
+  <div class="main-nav">
+    <div class="nav-container">
+      <div class="nav-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="nav-title">
+        <p>Counting</p>
+      </div>
+    </div>
+
+    <div class="sidebar">
+
+      <div class="sidebar-header">
+
+        <div>
+          <a href="/index.html">
+            <div class="item">
+              <p>Home</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="sidebar-item">
+        <a href="/module/counting/index.html">
+          <div class="item on">
+            <p>Counting</p>
+          </div>
+        </a>
+
+        <a href="/module/calculate/main_calculate/index.html">
+          <div class="item">
+            <p>calculate</p>
+          </div>
+        </a>
+
+        <a href="/module/calculate/list/list.html">
+          <div class="item">
+            <p>List</p>
+          </div>
+        </a>
+
+        <a href="/module/calculate/chart/chart.html">
+          <div class="item">
+            <p>Chart</p>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="/contact/contact.html">
+          <div class="item">
+            <p>Contact Me</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="cover"></div>
+  </div>
+
+  <div class="main-body">
+
+    <div class="main-container">
+
+      <div class="display">
+
+        <div class="display-title">
+          <div class="div-income display-item">
+            <p>Income</p>
+            <p class="p-display" id="income-display">Rp. 0</p>
+          </div>
+
+          <div class="div-expense display-item">
+            <p>Expense</p>
+            <p class="p-display" id="expense-display">Rp. 0</p>
+            <p id="display-percent_expense" class="display-percent_item hide">0%</p>
+          </div>
+
+          <div class="div-balance display-item">
+            <p>Balance</p>
+            <p class="p-display" id="balance-display">Rp. 0</p>
+            <p id="display-percent_balance" class="display-percent_item hide">0%</p>
+          </div>
+        </div>
+
+        <div class="display-percent">
+          <input type="checkbox" class="checkbox" id="checkbox-display_percent"> percent
+        </div>
+
+      </div>
+
+      <div class="input-container">
+
+        <div>
+
+          <div class="title">
+            <p>INCOME</p>
+          </div>
+
+          <div class="div-input">
+            <input type="text" id="income-name" class="input" placeholder="Name" required />
+            <input type="number" id="income-amount" class="input" placeholder="Amount" required />
+          </div>
+
+          <div class="div-btn">
+            <button id="income-btn" class="btn">SUBMIT</button>
+          </div>
+
+        </div>
+
+        <div>
+          <div class="title">
+            <p>EXPENSE</p>
+            <div class="div-select">
+              <select id="expense-type">
+                <option value="nominal">Nominal</option>
+                <option value="percent">Percent</option>
+              </select>
+
+              <div class="alert">
+                <p id="select-note">Note</p>
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <div class="div-input">
+            <input type="text" id="expense-name" class="input" placeholder="Name" required />
+            <input type="number" id="expense-amount" class="input" placeholder="Amount" required />
+          </div>
+
+          <div class="div-btn">
+            <button id="expense-btn" class="btn">SUBMIT</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="list-container">
+
+        <div>
+
+          <div class="alert">
+            <p>* Income List</p>
+          </div>
+
+          <div class="list-item on" id="income-item">
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="alert">
+            <p>* Expense List</p>
+          </div>
+
+          <div class="list-item on" id="expense-item">
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script type="module" src="./js/main.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

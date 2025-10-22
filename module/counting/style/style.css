@@ -1,0 +1,244 @@
+.main-container {
+    margin: auto;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* DISPLAY */
+.display {
+    background-color: rgb(30, 30, 30);
+    padding: 20px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.display-title {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.display-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.div-income:hover {
+    color: rgba(75, 192, 92, 1);
+}
+
+.div-expense:hover {
+    color: rgba(255, 99, 132, 1);
+}
+
+.div-balance:hover {
+    color: rgba(54, 162, 235, 1)
+}
+
+.display-percent {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3px;
+}
+
+/* DISPLAY END */
+
+
+/* INPUT */
+.input-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.input-container>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgb(35, 35, 35);
+    padding: 15px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.div-select {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.div-select select {
+    padding: 4px 0px;
+    width: 20vh;
+    text-align: center;
+    background-color: rgb(39, 189, 39);
+    color: rgb(241, 241, 241);
+    transition: 0.3s ease;
+}
+
+.div-select select:hover {
+    background-color: green;
+}
+
+.div-input {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.div-input>input {
+    width: 100%;
+    padding: 3px 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.div-btn>button,
+.btn {
+    color: rgb(241, 241, 241);
+    background-color: rgb(39, 189, 39);
+    width: 100%;
+    padding: 9  px 0px;
+    transition: 0.3s ease;
+}
+
+.div-btn>button:hover,
+.btn:hover {
+    background-color: green;
+}
+
+.btn-del {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* INPUT END */
+
+
+
+/* LIST CONTAINER */
+.list-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.list-container>div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(30, 30, 30);
+    padding: 10px;
+    gap: 15px;
+}
+
+.list-item {
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.item-list>.div-data {
+    background-color: rgba(128, 128, 128, 0.15);
+    display: flex;
+    padding: 7px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+
+
+
+/* LIST CONTAINER END */
+
+
+
+.alert {
+    color: rgba(255, 255, 255, 0.2);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.519);
+}
+
+.checkbox {
+    accent-color: rgb(0, 128, 0);
+}
+
+
+@media (max-width: 768px) {
+    .main-container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .display {
+        flex-direction: column;
+        gap: 10px;
+        padding: 8px;
+        width: 100%;
+    }
+
+    .display>div {
+        justify-content: space-between;
+    }
+
+
+    .input-container {
+        flex-direction: column;
+        padding: 0px;
+        gap: 20px;
+    }
+
+    .input-container>div {
+        padding: 20px 5px;
+        gap: 0px;
+    }
+
+    .input-container>div>.title {
+        margin-bottom: 10px;
+    }
+
+    .div-select {
+        gap: 4px;
+    }
+
+    .div-select>select {
+        width: 13vh;
+    }
+
+    .div-input {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .list-container {
+        flex-direction: column;
+        gap: 3px;
+    }
+}

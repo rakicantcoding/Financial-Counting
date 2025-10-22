@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" />
+
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+    <title>Chart View</title>
+</head>
+
+<body>
+
+  <div class="main-nav">
+    <div class="nav-container">
+      <div class="nav-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="nav-title">
+        <p>Counting</p>
+      </div>
+    </div>
+
+    <div class="sidebar">
+
+      <div class="sidebar-header">
+
+        <div>
+          <a href="/index.html">
+            <div class="item">
+              <p>Home</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="sidebar-item">
+        <a href="/module/counting/index.html">
+          <div class="item on">
+            <p>Penghitung</p>
+          </div>
+        </a>
+
+        <a href="/module/calculate/main_calculate/index.html">
+          <div class="item">
+            <p>Simulation</p>
+          </div>
+        </a>
+
+        <a href="/module/calculate/list/list.html">
+          <div class="item">
+            <p>List</p>
+          </div>
+        </a>
+
+        <a href="/module/calculate/chart/chart.html">
+          <div class="item">
+            <p>Chart</p>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="/contact/contact.html">
+          <div class="item">
+            <p>Contact Me</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="cover"></div>
+  </div>
+
+    <div class="main-body">
+
+        <div id="main-container">
+
+            <!-- CASH FLOW -->
+            <div class="chart-container">
+
+                <div class="canvas">
+                    <canvas id="cashFlowCanvas"></canvas>
+                </div>
+
+                <div class="chart-visual-container">
+
+                    <div class="chart-select">
+                        <select id="cashflow-type" class="select">
+                            <option value="line">Line</option>
+                            <option value="bar">Bar</option>
+                        </select>
+                    </div>
+
+                    <div class="chart-view-type">
+                        <select id="view-type_cashflow" class="select view-type">
+                            <option value="month">Month</option>
+                            <option value="year">Year</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+
+                <div class="chart-controls">
+
+                    <div class="chart-check-box">
+
+                        <div>
+                            <label>
+                                <input type="checkbox" class="checkbox show_cashFlow" value="income" checked> Show
+                                Income
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="checkbox show_cashFlow" value="expense" checked> Show
+                                Expense
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="checkbox show_cashFlow" value="balance" checked> Show
+                                Balance
+                            </label>
+                        </div>
+
+                        <div id="cashflow-fill-control">
+
+                            <label>
+                                <input type="checkbox" class="checkbox fill_cashFlow" value="income"> Fill Income
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="checkbox fill_cashFlow" value="expense"> Fill Expense
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="checkbox fill_cashFlow" value="balance"> Fill Balance
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="summary-container">
+
+                    <div class="summary-select">
+                        <select id="summary-cashflow_select" class="select">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                            <option value="balance">Balance</option>
+                        </select>
+                    </div>
+
+                    <div id="summary-cashflow_item" class="summary-main-item-container">
+
+                        <div class="summary-item-wrapper">
+
+                            <div class="summary_label">
+                                <p id="cashflow-summary-p_label" class="p_label">-</p>
+                            </div>
+
+                            <div id="cashflow-summary_percent" class="summary_percent">
+                                <p id="summary-cashflow_percent" class="percent"></p>
+                            </div>
+
+                            <div class="summary-flow-container">
+                                <div class="summary-before">
+                                    <p id="summary-cashFlow-before_item"></p>
+                                    <p id="summary-cashFlow-before_item-month" class="summary-item-month">-</p>
+                                </div>
+
+                                <div class="summary-after">
+                                    <p id="summary-cashFlow-after_item"></p>
+                                    <p id="summary-cashFlow-after_item-month" class="summary-item-month"></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LIST -->
+            <div class="chart-container">
+
+                <div class="canvas">
+                    <canvas id="listCanvas"></canvas>
+                </div>
+
+                <div>
+
+                    <div class="chart-visual-container">
+
+                        <div class="chart-select">
+
+                            <select id="list-type" class="select">
+                                <option value="line">Line</option>
+                                <option value="bar">Bar</option>
+                            </select>
+
+                            <div class="list-select-container">
+                                <select id="listCanvas-select_category" class="select">
+                                    -
+                                </select>
+
+                                <select id="listCanvas-select_name" class="select">
+                                    -
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-view-type">
+                            <select id="view-type_list" class="select view-type">
+                                <option value="month">Month</option>
+                                <option value="year">Year</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="chart-controls">
+
+                    <div class="chart-check-box">
+
+                        <div>
+
+                            <label id="label-show_amount" class="label_amount">
+                                <input type="checkbox" class="checkbox show_list" value="amount" checked> Show Amount
+                            </label>
+
+                            <label id="label-show_deposit" class="label_deposit">
+                                <input type="checkbox" class="checkbox show_list" value="deposit" checked> Show Deposit
+                            </label>
+
+                            <label id="label-show_portofolio" class="label_portofolio">
+                                <input type="checkbox" class="checkbox show_list" value="portofolio" checked> Show
+                                Portofolio
+                            </label>
+
+                            <label id="label-show_tp" class="label_tp">
+                                <input type="checkbox" class="checkbox show_list" value="tp" checked> Show TP
+                            </label>
+
+                        </div>
+
+                        <div id="list-fill-control">
+
+                            <label id="label-fill_amount" class="label_amount">
+                                <input type="checkbox" class="checkbox fill_list" value="amount"> Fill Amount
+                            </label>
+
+                            <label id="label-fill_deposit" class="label_deposit">
+                                <input type="checkbox" class="checkbox fill_list" value="deposit"> Fill Deposit
+                            </label>
+
+                            <label id="label-fill_portofolio" class="label_portofolio">
+                                <input type="checkbox" class="checkbox fill_list" value="portofolio"> Fill Portofolio
+                            </label>
+
+                            <label id="label-fill_tp" class="label_tp">
+                                <input type="checkbox" class="checkbox fill_list" value="tp"> Fill TP
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="summary-container">
+
+                    <div class="summary-select">
+
+                        <select id="summary-list-control_select" class="select">
+                            -
+                        </select>
+
+                        <div id="summary-list_checkbox">
+                            -
+                        </div>
+
+                    </div>
+
+                    <div id="summary-list_item" class="summary-main-item-container">
+                        -
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./js/app.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
