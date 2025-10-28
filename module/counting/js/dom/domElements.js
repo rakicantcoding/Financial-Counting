@@ -6,7 +6,6 @@ export const element = {
     income_btn: document.getElementById("income-btn"),
 
     expense_type: document.getElementById("expense-type"),
-    select_note: document.getElementById("select-note"),
 
     expense_name: document.getElementById("expense-name"),
     expense_amount: document.getElementById("expense-amount"),

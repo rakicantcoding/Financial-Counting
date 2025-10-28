@@ -89,18 +89,18 @@
       <div class="display">
 
         <div class="display-title">
-          <div class="div-income display-item">
+          <div class="display-income display-item">
             <p>Income</p>
             <p class="p-display" id="income-display">Rp. 0</p>
           </div>
 
-          <div class="div-expense display-item">
+          <div class="display-expense display-item">
             <p>Expense</p>
             <p class="p-display" id="expense-display">Rp. 0</p>
             <p id="display-percent_expense" class="display-percent_item hide">0%</p>
           </div>
 
-          <div class="div-balance display-item">
+          <div class="display-balance display-item">
             <p>Balance</p>
             <p class="p-display" id="balance-display">Rp. 0</p>
             <p id="display-percent_balance" class="display-percent_item hide">0%</p>
@@ -108,7 +108,8 @@
         </div>
 
         <div class="display-percent">
-          <input type="checkbox" class="checkbox" id="checkbox-display_percent"> percent
+          <input type="checkbox" class="checkbox" id="checkbox-display_percent">
+          <p> Percent </p>
         </div>
 
       </div>
@@ -136,15 +137,10 @@
           <div class="title">
             <p>EXPENSE</p>
             <div class="div-select">
-              <select id="expense-type">
+              <select id="expense-type" class="select">
                 <option value="nominal">Nominal</option>
                 <option value="percent">Percent</option>
               </select>
-
-              <div class="alert">
-                <p id="select-note">Note</p>
-              </div>
-
             </div>
           </div>
 

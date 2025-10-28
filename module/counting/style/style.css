@@ -1,13 +1,3 @@
-.main-container {
-    margin: auto;
-    width: 99%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-
 /* DISPLAY */
 .display {
     background-color: rgb(30, 30, 30);
@@ -17,7 +7,7 @@
     flex-direction: column;
 }
 
-.display > div {
+.display>div {
     display: flex;
     flex-direction: row;
 }
@@ -33,18 +23,18 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
-    transition: 0.3s ease;
+    font-size: large;
 }
 
-.div-income:hover {
+.display-income:hover {
     color: rgba(75, 192, 92, 1);
 }
 
-.div-expense:hover {
+.display-expense:hover {
     color: rgba(255, 99, 132, 1);
 }
 
-.div-balance:hover {
+.display-balance:hover {
     color: rgba(54, 162, 235, 1)
 }
 
@@ -68,7 +58,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
     background-color: rgb(35, 35, 35);
     padding: 15px;
 }
@@ -82,20 +71,12 @@
 .div-select {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 5px;
 }
 
-.div-select select {
-    padding: 4px 0px;
-    width: 20vh;
+.select {
+    padding: 2px;
     text-align: center;
-    background-color: rgb(39, 189, 39);
-    color: rgb(241, 241, 241);
-    transition: 0.3s ease;
-}
-
-.div-select select:hover {
-    background-color: green;
 }
 
 .div-input {
@@ -104,24 +85,14 @@
     gap: 10px;
 }
 
-.div-input>input {
+.input {
     width: 100%;
     padding: 3px 10px;
-    background-color: rgb(255, 255, 255);
 }
 
-.div-btn>button,
 .btn {
-    color: rgb(241, 241, 241);
-    background-color: rgb(39, 189, 39);
     width: 100%;
-    padding: 9px 0px;
-    transition: 0.3s ease;
-}
-
-.div-btn>button:hover,
-.btn:hover {
-    background-color: green;
+    padding: 5px 0px;
 }
 
 .btn-del {
@@ -151,7 +122,6 @@
 }
 
 .list-item {
-
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -186,15 +156,11 @@
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.519);
 }
 
-.checkbox {
-    accent-color: rgb(0, 128, 0);
-}
-
 
 @media (max-width: 768px) {
     .main-container {
         width: 100%;
-        padding: 5px;
+        margin: 5px auto;
     }
 
     .display {
@@ -205,14 +171,29 @@
     }
 
     .display>div {
-        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
     }
 
+    .display-title {
+        flex-direction: column !important;
+        gap: 15px;
+    }
+
+    .display-item {
+        font-size: medium;
+    }
+
+    .display-percent {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
 
     .input-container {
         flex-direction: column;
         padding: 0px;
-        gap: 20px;
+        gap: 10px;
     }
 
     .input-container>div {
@@ -228,10 +209,6 @@
         gap: 4px;
     }
 
-    .div-select>select {
-        width: 13vh;
-    }
-
     .div-input {
         flex-direction: column;
         gap: 0px;
@@ -239,6 +216,14 @@
 
     .list-container {
         flex-direction: column;
-        gap: 3px;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 3px 5px;
+    }
+
+    .select {
+        padding: 2px 0px;
     }
 }

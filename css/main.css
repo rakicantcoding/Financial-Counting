@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     border-radius: 3px;
+    transition: 0.3s ease;
 }
 
 body {
@@ -11,7 +12,16 @@ body {
 }
 
 .main-body {
-    margin-top: 60px;
+    width: 99%;
+    margin: 60px auto;
+}
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 /* CONTAINER BG = background-color: rgb(30, 30, 30); */
@@ -214,10 +224,39 @@ body {
     background-color: rgba(0, 128, 0, 0.125);
 }
 
+.checkbox {
+    accent-color: rgb(0, 128, 0);
+}
+
+.input {
+    background-color: rgb(255, 255, 255);
+}
+
+.btn {
+    color: rgb(241, 241, 241);
+    background-color: rgb(39, 189, 39);
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: green;
+}
+
+.select {
+    background-color: rgb(39, 189, 39);
+    color: rgb(241, 241, 241);
+    transition: 0.3s ease;
+}
+
+.select:hover {
+    background-color: green;
+}
+
 @media (max-width: 768px) {
     .nav-title p {
         font-size: medium;
     }
+
     .sidebar {
         max-width: 200px;
         padding: 20px 12px;

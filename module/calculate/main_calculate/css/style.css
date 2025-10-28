@@ -1,30 +1,29 @@
-.display-container {
+/* DISPLAY CONTAINER */
+.display {
+    background-color: rgb(30, 30, 30);
+    padding: 20px;
+    gap: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 20px;
-    background-color: rgb(30, 30, 30);
 }
 
-.display-item-container {
+.display>div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+}
+
+.display-title {
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    align-items: center;
-}
-
-.display-item-container>div {
-    display: flex;
-    flex-direction: row;
+    justify-content: space-between;
 }
 
 .display-item {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    transition: 0.3s ease;
+    font-size: large;
 }
 
 .display-income:hover {
@@ -39,8 +38,324 @@
     color: rgba(54, 162, 235, 1)
 }
 
-.div-percent>div {
+.display-percent {
     display: flex;
     justify-content: flex-end;
     gap: 3px;
+}
+
+
+/* DISPLAY CONTAINER END */
+
+
+
+/* INPUT CONTAINER */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-container>div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.div-input {
+    background-color: rgb(30, 30, 30);
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.div-input>.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.div-input>.title>div {
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.input-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-item>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.expense-input-div_selet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+.expense-input-div_selet>input {
+    width: 100%;
+}
+
+.select-input {
+    padding: 2px;
+}
+
+.select-input:hover {
+    opacity: 0.8;
+}
+
+.input {
+    width: 100%;
+    padding: 4px 8px;
+}
+
+.btn {
+    width: 100%;
+    padding: 6px 0px;
+}
+
+.btn-del {
+    padding: 3px 8px;
+    color: rgb(241, 241, 241);
+    background-color: rgb(213, 18, 18);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    transition: 0.3s ease;
+}
+
+.btn-del:hover {
+    background-color: rgb(159, 11, 11);
+}
+
+.select {
+    padding: 2px;
+    text-align: center;
+}
+
+
+.div-list {
+    width: 100%;
+    padding: 15px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(30, 30, 30);
+}
+
+.div-list>.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-item>div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-item > div > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+/* INPUT CONTAINER END */
+
+
+
+/* SIMULATE CONTAINER */
+.simulate-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.simulate-container>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-month {
+    background-color: rgb(30, 30, 30);
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
+.input-month>.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.div-month_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.result-container {
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+
+.result-container>.title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0px 15px;
+    margin-top: 15px;
+}
+
+.result-div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.result-div>div {
+    background-color: rgba(18, 18, 18, 0.5);
+    padding: 10px;
+    margin: 0px 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.result-div>div>.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.result-div>div>.result-bowl {
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px;
+}
+
+/* SIMULATE CONTAINER END */
+
+
+
+/* SAVE CONTAINER */
+.save-container {
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+/* SAVE CONTAINER END */
+
+@media (max-width: 768px) {
+    .main-container {
+        width: 100%;
+        margin: 5px auto;
+        gap: 15px !important;
+    }
+
+    /* DISPLAY */
+    .display {
+        flex-direction: column;
+        gap: 10px;
+        padding: 8px;
+        width: 100%;
+    }
+
+    .display>div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .display-title {
+        flex-direction: column !important;
+        gap: 15px;
+    }
+
+    .display-item {
+        font-size: medium;
+        width: fit-content;
+    }
+
+    .display-percent {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    /* DISPLAY END */
+
+
+
+    /* INPUT CONTAINER */
+    .input-container {
+        gap: 15px;
+    }
+
+    .input-container>div {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .div-list {
+        border-radius: 0;
+    }
+
+    /* INPUT CONTAINER END */
+
+
+
+    /* SIMULATE CONTAINER */
+    .simulate-container {
+        gap: 15px;
+    }
+
+    .input-month {
+        width: auto;
+    }
+
+    .result-div {
+        flex-direction: column;
+    }
+
+    /* SIMULATE CONTAINER END */
+
+
+    /* UTILITY */
+    .btn {
+        padding: 3px 5px;
+    }
+
+    .select {
+        padding: 2px 0px;
+    }
+
+    /* UTILITY */
 }

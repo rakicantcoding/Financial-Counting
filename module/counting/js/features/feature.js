@@ -8,8 +8,6 @@ let data = {
     }
 }
 
-element.select_note.textContent = `Type: ${element.expense_type.value}`
-
 
 function loadData() {
     if (data.expense.percent.length == 0) return;
@@ -59,8 +57,6 @@ function load() {
         btn_del.value = name;
         btn_del.dataset.category = category;
         if (type) btn_del.dataset.type = type;
-
-        btn_del.classList.add("btn", "btn-del")
 
         div_btn.appendChild(btn_del)
 
@@ -215,4 +211,3 @@ function checkbox_display(element_percent, nominal_awal, nominal_akhir) {
     const percent = (((nominal_akhir - nominal_awal) / nominal_awal) * 100)
     element_percent.textContent = `${Math.abs(percent).toFixed(1)}%`
 }
-

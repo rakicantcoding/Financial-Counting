@@ -84,208 +84,217 @@
 
   <div class="main-body">
 
-    <div class="display-container">
+    <div class="main-container">
+      <div class="display">
 
-      <div class="display-item-container">
-        <div class="display-item display-income">
-          <p>Income</p>
-          <p id="display-p_income" class="p-income">Rp. 0</p>
-        </div>
-
-        <div class="display-item display-expense">
-          <p>Expense</p>
-          <p id="display-p_expense" class="p-expense">Rp. 0</p>
-          <p id="display-p_expense_percent" class="hide">0%</p>
-        </div>
-
-        <div class="display-item display-balance">
-          <p>Balance</p>
-          <p id="display-p_balance" class="p-balance">Rp. 0</p>
-          <p id="display-p_balance_percent" class="hide">0%</p>
-        </div>
-      </div>
-
-      <div class="div-percent">
-        <div>
-          <input type="checkbox" id="display-checkbox" class="checkbox"> Percent
-        </div>
-      </div>
-
-    </div>
-
-    <div class="input-container">
-
-      <div>
-        <div class="input-income">
-          <div class="title">
+        <div class="display-title">
+          <div class="display-income display-item">
             <p>Income</p>
+            <p class="p-display" id="income-display">Rp. 0</p>
           </div>
 
-          <div>
+          <div class="display-expense display-item">
+            <p>Expense</p>
+            <p class="p-display" id="expense-display">Rp. 0</p>
+            <p id="display-percent_expense" class="display-percent_item hide">0%</p>
+          </div>
 
-            <div>
-              <input id="income-name" class="input" type="text" placeholder="Name">
-              <input id="income-amount" class="input" type="number" placeholder="Amount">
+          <div class="display-balance display-item">
+            <p>Balance</p>
+            <p class="p-display" id="balance-display">Rp. 0</p>
+            <p id="display-percent_balance" class="display-percent_item hide">0%</p>
+          </div>
+        </div>
+
+        <div class="display-percent">
+          <input type="checkbox" class="checkbox" id="checkbox-display_percent">
+          <p> Percent </p>
+        </div>
+
+      </div>
+
+      <div class="input-container">
+        <div class="input-income">
+          <div class="div-input">
+            <div class="title">
+              <p>INCOME</p>
             </div>
 
-            <div>
-              <button id="income-btn" class="button">Submit</button>
+            <div class="input-item">
+              <div>
+                <input id="income-name" class="input" type="text" placeholder="Name">
+                <input id="income-amount" class="input" type="number" placeholder="Amount">
+              </div>
+
+              <div>
+                <button id="income-btn" class="btn">Submit</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="div-list">
+            <div class="title">
+              <p>Income List</p>
             </div>
 
+            <div id="income-list" class="list-item">
+
+            </div>
           </div>
         </div>
 
         <div class="input-expense">
-          <div class="title">
-            <p>Expense</p>
-          </div>
-
-          <div>
-            <div>
+          <div class="div-input">
+            <div class="title">
+              <p>EXPENSE</p>
               <div>
-                <div>
-                  <p>Category</p>
-                </div>
-
-                <div>
-                  <select id="expense-select" class="select">
-                    <option value="expense">Expense</option>
-                    <option value="invest">Invest</option>
-                    <option value="interest">Interest</option>
-                    <option value="saving">Saving</option>
-                  </select>
-                </div>
+                <p>Category:</p>
+                <select id="input-select" class="select">
+                  <option value="expense">Expense</option>
+                  <option value="invest">Invest</option>
+                  <option value="interest">Interest</option>
+                  <option value="saving">Saving</option>
+                </select>
               </div>
 
+            </div>
+
+            <div class="input-item">
               <div>
                 <input id="expense-name" class="input" type="text" placeholder="Name">
-                <input id="expense-amount" class="input" type="number" placeholder="Amount">
-                <input id="expense-deposit" class="input" type="number" placeholder="Deposit">
-                <input id="expense-takeProfit" class="input" type="number" placeholder="Take Profit [%]">
-                <div>
-                  <p>(optional)</p>
-                  <input id="expense-portofolio" class="input" type="number" placeholder="Portofolio">
+                
+                <div id="expense-div_select" class="expense-input-div_selet item_input">
+                  <input id="expense-amount" class="input" type="number" placeholder="Amount">
+                  <select id="expense-select_amount" class="select-input">
+                    <option value="nominal">Nominal</option>
+                    <option value="percent">Percent</option>
+                  </select>
                 </div>
+
+                <div id="interest-div_select" class="expense-input-div_selet item_input">
+                  <input id="expense-interest" class="input" type="number" placeholder="Take Profit/Month [%]">
+                  <select id="expense-select_interest" class="select-input">
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                  </select>
+                </div>
+
+                <input id="expense-takeProfit" class="input item_input" type="number" placeholder="Take Profit [%]">
+                <input id="expense-portofolio" class="input item_input" type="number" placeholder="Portofolio (optional)">
               </div>
+
+              <div>
+                <button id="expense-btn" class="btn">Submit</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="div-list">
+            <div class="title">
+              <p>Expense List</p>
+              <select id="list-select" class="select">
+                <option value="all">All</option>
+                <option value="expense">Expense</option>
+                <option value="invest">Invest</option>
+                <option value="interest">Interest</option>
+                <option value="saving">Saving</option>
+              </select>
             </div>
 
-            <div>
-              <button id="expense-btn" class="button">Submit</button>
-            </div>
+            <div id="expense-list" class="list-item">
 
+            </div>
           </div>
         </div>
+
       </div>
 
-      <div>
-        <div class="title">
-          <p>Month</p>
-        </div>
 
-        <div>
-          <div class="div-month_select">
+      <div class="simulate-container">
+
+        <div class="input-month">
+          <div class="title">
+            <p>Month</p>
             <select id="month-select" class="select">
-              <option>Month</option>
-              <option>Year</option>
+              <option value="month">Month</option>
+              <option value="year">Year</option>
             </select>
           </div>
 
+
           <div class="div-month_input">
             <div>
-              <input id="month-input" class="input" type="number" placeholder="Honth">
+              <input id="month-input" class="input" type="number" placeholder="Month">
             </div>
 
             <div>
               <button id="month-btn" class="btn">Submit</button>
             </div>
           </div>
-        </div>
-      </div>
 
-    </div>
 
-    <div class="list-container">
-      <div>
-        <div class="title">
-          <p>Income List</p>
         </div>
 
-        <div id="income-list">
+        <div class="result-container">
 
-        </div>
-      </div>
-
-      <div>
-        <div class="title">
-          <p>Expense List</p>
-        </div>
-
-        <div id="expense-list">
-
-        </div>
-      </div>
-
-
-    </div>
-
-    <div class="result-container">
-
-      <div>
-        <div class="title">
-          <p>Month</p>
-          <p id="month-amount">number</p>
-        </div>
-      </div>
-
-
-      <div>
-        <div class="title">
-          <p>Income Result</p>
-        </div>
-
-        <div id="income-result">
-
-        </div>
-      </div>
-
-      <div>
-        <div class="expense-display">
           <div class="title">
-            <p>Expense Result</p>
+            <p>Year</p>
+            <p>Month</p>
           </div>
 
-          <div>
-            <div class="note">
-              <p id="result-note"></p>
+          <div class="result-div">
+
+            <div>
+              <div class="title">
+                <p>Income Result</p>
+              </div>
+
+              <div id="income-result" class="result-bowl hide">
+
+              </div>
             </div>
 
             <div>
-              <select id="result-select" class="select">
-                <option>Expense</option>
-                <option>Invest</option>
-                <option>Interest</option>
-                <option>Saving</option>
-              </select>
+
+              <div class="title">
+                <p>Expense Result</p>
+                <select id="result-select" class="select">
+                  <option value="all">All</option>
+                  <option value="expense">Expense</option>
+                  <option value="invest">Invest</option>
+                  <option value="interest">Interest</option>
+                  <option value="saving">Saving</option>
+                </select>
+              </div>
+
+
+              <div id="expense-result" class="result-bowl hide">
+
+              </div>
             </div>
           </div>
+
+
         </div>
 
-        <div id="expense-result">
 
+      </div>
+
+      <div class="save-container">
+        <div>
+          <button id="save-btn" class="btn">Save</button>
+        </div>
+
+        <div>
+          <button id="reset-btn" class="btn">Reset</button>
         </div>
       </div>
 
     </div>
 
-    <div class="save-container">
-      <div>
-        <button class="btn">Save</button>
-      </div>
 
-      <div>
-        <button class="btn">Reset</button>
-      </div>
-    </div>
 
   </div>
 
