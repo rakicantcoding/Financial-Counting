@@ -8,7 +8,7 @@ export function hideExpenseInput() {
     const mapping = {
         expense: [element.expense_div_select],
         invest: [element.expense_div_select, element.expense_takeProfit, element.expense_portofolio],
-        interest: [element.interest_div_select, element.expense_takeProfit, element.expense_portofolio],
+        interest: [element.expense_div_select,element.interest_div_select, element.expense_portofolio],
         saving: [element.expense_div_select, element.expense_portofolio]
     }
 
@@ -19,11 +19,11 @@ export function hideExpenseInput() {
 
         expense: [element.expense_name, element.expense_amount],
 
-        invest: [element.expense_name, element.expense_amount, element.expense_takeProfit],
+        invest: [element.expense_name, element.expense_amount, element.expense_takeProfit, element.expense_portofolio],
 
-        interest: [element.expense_name, element.expense_amount, element.expense_interest],
+        interest: [element.expense_name, element.expense_amount, element.expense_interest, element.expense_portofolio],
 
-        saving: [element.expense_name, element.expense_amount]
+        saving: [element.expense_name, element.expense_amount, element.expense_portofolio]
     }
     for (const key in mapping_input) {
         mapping_input[key].forEach(e => e.value = "")

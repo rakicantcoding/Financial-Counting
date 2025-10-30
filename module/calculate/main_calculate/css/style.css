@@ -125,7 +125,7 @@
 }
 
 .btn-del {
-    padding: 3px 8px;
+    padding: 0px 7px;
     color: rgb(241, 241, 241);
     background-color: rgb(213, 18, 18);
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
@@ -160,22 +160,40 @@
 .list-item {
     display: flex;
     flex-direction: column;
+    gap: 30px;
+}
+
+.key-container {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-.list-item>div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.key-container>p {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px;
+    width: fit-content;
 }
 
-.list-item > div > div {
+.key-list {
+    border: 1px solid rgba(0, 128, 0, 0.5);
+    background-color: rgba(18, 18, 18, 0.5);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.key-title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-
+.key-item {
+    display: flex;
+    flex-direction: column;
+}
 
 /* INPUT CONTAINER END */
 

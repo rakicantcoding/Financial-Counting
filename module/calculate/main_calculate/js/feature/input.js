@@ -4,22 +4,25 @@ import { element } from "../dom/domElement.js";
 import { load } from "./load.js";
 
 export function add(category) {
-    if (category === "income") data.income.push({name: element.income_name.value, amount: Number(element.income_amount.value)});
+    if (category === "income") data.income.push({ name: element.income_name.value, amount: Number(element.income_amount.value) });
 
     else if (category === "expense") {
         const category_input = element.input_select.value;
         const totalIncome = data.income.reduce((sum, item) => sum + item.amount, 0);
+
+
+
 
         // EXPENSE
         if (category_input === "expense") {
             let def = {
                 name: element.expense_name.value,
                 amount: Number(element.expense_amount.value),
-                type: element.expense_select_amount.value,
-                category: category_input
+                type_amount: element.expense_select_amount.value,
+                category: category_input,
             }
 
-            if (def.type !== "nominal") {
+            if (def.type_amount !== "nominal") {
                 let percentResult = (def.amount / 100) * totalIncome;
                 def.percent = def.amount
                 def.amount = percentResult
@@ -35,11 +38,11 @@ export function add(category) {
                 amount: Number(element.expense_amount.value),
                 takeProfit: Number(element.expense_takeProfit.value),
                 portofolio: element.expense_portofolio ? Number(element.expense_portofolio.value) : 0,
-                type: element.expense_select_amount.value,
+                type_amount: element.expense_select_amount.value,
                 category: category_input
             }
 
-            if (def.type !== "nominal") {
+            if (def.type_amount !== "nominal") {
                 let percentResult = (def.amount / 100) * totalIncome;
                 def.percent = def.amount
                 def.amount = percentResult
@@ -53,13 +56,14 @@ export function add(category) {
             let def = {
                 name: element.expense_name.value,
                 amount: Number(element.expense_amount.value),
-                takeProfit: Number(element.expense_interest.value),
+                interest: Number(element.expense_interest.value),
                 portofolio: element.expense_portofolio ? Number(element.expense_portofolio.value) : 0,
-                type: element.expense_select_interest.value,
+                type_amount: element.expense_select_amount.value,
+                type_interest: element.expense_select_interest.value,
                 category: category_input
             }
 
-            if (def.type !== "nominal") {
+            if (def.type_amount !== "nominal") {
                 let percentResult = (def.amount / 100) * totalIncome;
                 def.percent = def.amount
                 def.amount = percentResult
@@ -74,11 +78,11 @@ export function add(category) {
                 name: element.expense_name.value,
                 amount: Number(element.expense_amount.value),
                 portofolio: element.expense_portofolio ? Number(element.expense_portofolio.value) : 0,
-                type: element.expense_select_amount.value,
+                type_amount: element.expense_select_amount.value,
                 category: category_input
             }
 
-            if (def.type !== "nominal") {
+            if (def.type_amount !== "nominal") {
                 let percentResult = (def.amount / 100) * totalIncome;
                 def.percent = def.amount
                 def.amount = percentResult
@@ -86,6 +90,7 @@ export function add(category) {
 
             data.expense.saving.push(def)
         }
+
 
     }
     load()
