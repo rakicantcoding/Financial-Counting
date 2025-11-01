@@ -17,8 +17,18 @@ element.input_select.addEventListener("change", () => hideExpenseInput())
 
 // EXPENSE
 element.expense_btn.addEventListener("click", () => {
+    if (data.income.length === 0) return alert("Need input data income first");
     if (!alertInput(element.input_select.value)) return;
     add("expense");
 })
 
 // INPUT END
+
+
+// RESULT
+element.month_btn.addEventListener("click", () => {
+    if (data.income.length === 0 || Object.values(data.expense).flat().length === 0) return alert("Need input data income and expense first");
+    if (!element.month_input.value) return alert("Need input month");
+})
+
+// RESULT END

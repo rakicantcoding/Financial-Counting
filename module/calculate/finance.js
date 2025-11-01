@@ -5,5 +5,6 @@ export let data = {
         invest: [],
         interest: [],
         saving: [],
-    }
+    },
+    globalId: 1
 }

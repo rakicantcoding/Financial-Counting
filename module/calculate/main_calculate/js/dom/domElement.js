@@ -19,6 +19,7 @@ export const element = {
     income_btn: document.getElementById("income-btn"),
 
     income_list: document.getElementById("income-list"),
+    income_list_note: document.getElementById("income-list-note"),
 
     input_select: document.getElementById("input-select"),
 
@@ -38,6 +39,7 @@ export const element = {
     list_select: document.getElementById("list-select"),
 
     expense_list: document.getElementById("expense-list"),
+    expense_list_note: document.getElementById("expense-list-note"),
     // INPUT CONTAINER END
 
 
@@ -49,6 +51,8 @@ export const element = {
 
     income_result: document.getElementById("income-result"),
     expense_result: document.getElementById("expense-result"),
+
+    result_select: document.getElementById("result-select"),
     // SIMULATE CONTAINER END
 
 

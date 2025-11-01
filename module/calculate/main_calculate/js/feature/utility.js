@@ -1,5 +1,6 @@
 import { data } from "../../../finance.js";
 import { element } from "../dom/domElement.js";
+import { load } from "./load.js";
 
 // HIDE INPUT EXPENSE
 export function hideExpenseInput() {
@@ -8,7 +9,7 @@ export function hideExpenseInput() {
     const mapping = {
         expense: [element.expense_div_select],
         invest: [element.expense_div_select, element.expense_takeProfit, element.expense_portofolio],
-        interest: [element.expense_div_select,element.interest_div_select, element.expense_portofolio],
+        interest: [element.expense_div_select, element.interest_div_select, element.expense_portofolio],
         saving: [element.expense_div_select, element.expense_portofolio]
     }
 
@@ -60,12 +61,11 @@ export function alertInput(category) {
 // ALERT EXPENSE END
 
 
-// DELETE BTN
-document.querySelectorAll(".btn-del").forEach(e => {
-    e.addEventListener("click", () => {
-
-    })
-})
-
-// DELETE BTN END
+// CHECK ID
+export function checkid() {
+    const newId = data.globalId
+    data.globalId++;
+    return newId
+}
+// CHECK ID END
 
