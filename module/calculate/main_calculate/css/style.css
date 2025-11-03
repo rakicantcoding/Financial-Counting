@@ -201,6 +201,20 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    max-height: 140px;
+    overflow-y: auto;
+}
+
+.key-list::-webkit-scrollbar,
+.div-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.key-list::-webkit-scrollbar-thumb,
+.div-list::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
 }
 
 .div-title {

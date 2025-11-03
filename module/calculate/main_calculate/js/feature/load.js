@@ -320,13 +320,59 @@ export function result() {
     element.income_result.innerHTML = "";
     element.expense_result.innerHTML = "";
 
-    const mapping = {
-        expense: ["amount"],
-        invest: ["amount", "takeProfit", "portofolio"],
-        interest: ["amount", "interest", "portofolio"],
-        saving: ["amount", "portofolio"]
+    const totalIncome = data.income.reduce((sum, item) => sum + item.amount, 0)
+    let TPLastMonth = 0;
+
+
+
+    const expenseFiltered = {};
+    for (const key in data.expense) {
+        if (data.expense[key].length > 0) {
+            if (key === "expense") expenseFiltered.expense = data.expense.expense.filter(e => e.type_amount !== "nominal");
+            else { expenseFiltered.key = data.expense[key] }
+        }
     }
 
+    let keyMapping = {
+        expense: document.createElement("div"),
+        invest: document.createElement("div"),
+        interest: document.createElement("div"),
+        saving: document.createElement("div")
+    }
+
+    Object.values(keyMapping).flat().forEach(e => element.expense_result.append(e));
+
+    for (let i = 1; i <= month; i++) {
+        let incomeThisMonth = totalIncome + TPLastMonth;
+        TPLastMonth = 0;
+
+        for (const key in expenseFiltered) {
+            let key_title = document.createElement("p");
+            key_title = `Category: ${key}`;
+            let key_list = document.createElement("div");
+
+            keyMapping[key].append(key_title, key_list);
+
+            expenseFiltered[key].forEach(item => {
+                let p_title = document.createElement("p");
+                p_title.textContent = `Name: ${item.name}`;
+
+                let div_item = document.createElement("div"); // APPEND ITEM KESINI;
+                key_list.append(p_title, div_item);
+
+                let totalAmount = (item.percent / 100) * incomeThisMonth;
+
+                // EXPENSE
+                if (key === "expense") {
+                    let p_amount = document.createElement("p");
+                    p_amount.textContent = `Amount: Rp. ${totalAmount.toLocaleString("id-ID")} (${item.percent}%)`
+                    div_item.append(p_amount);
+                }
+
+                // INVEST
+            })
+        }
+    }
 }
 
 // RESULT END
