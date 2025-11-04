@@ -329,7 +329,7 @@ export function result() {
     for (const key in data.expense) {
         if (data.expense[key].length > 0) {
             if (key === "expense") expenseFiltered.expense = data.expense.expense.filter(e => e.type_amount !== "nominal");
-            else { expenseFiltered.key = data.expense[key] }
+            else { expenseFiltered[key] = data.expense[key] }
         }
     }
 
@@ -348,28 +348,98 @@ export function result() {
 
         for (const key in expenseFiltered) {
             let key_title = document.createElement("p");
+            let p_month = document.createElement("p");
+            p_month.textContent = `${i} Month`
             key_title = `Category: ${key}`;
             let key_list = document.createElement("div");
 
-            keyMapping[key].append(key_title, key_list);
+            keyMapping[key].append(key_title, p_month, key_list);
 
             expenseFiltered[key].forEach(item => {
+
+                let def = {
+                    month: i,
+                    name: item.name,
+                    category: item.category,
+                    type_amount: item.type_amount,
+                    id: item.id
+                }
+
+                let portofolio;
+
+                if (key !== "expense") {
+                    portofolio = data.result.expense[key].findLast(e => e.id === item.id)?.portofolio ?? item.portofolio;
+                }
+
                 let p_title = document.createElement("p");
                 p_title.textContent = `Name: ${item.name}`;
 
                 let div_item = document.createElement("div"); // APPEND ITEM KESINI;
                 key_list.append(p_title, div_item);
 
-                let totalAmount = (item.percent / 100) * incomeThisMonth;
+                let totalAmount = item.percent ? (item.percent / 100) * incomeThisMonth : item.amount;
+
+                let p_amount = document.createElement("p");
+                p_amount.textContent = item.type_amount !== "amount" ? `Amount: Rp. ${totalAmount.toLocaleString("id-ID")} (${item.percent}%)` : `Amount: Rp. ${totalAmount.toLocaleString("id-ID")}`;
 
                 // EXPENSE
                 if (key === "expense") {
-                    let p_amount = document.createElement("p");
-                    p_amount.textContent = `Amount: Rp. ${totalAmount.toLocaleString("id-ID")} (${item.percent}%)`
                     div_item.append(p_amount);
+
+                    data.result.expense[key].push({ ...def, amount: totalAmount, percent: item.percent })
                 }
 
                 // INVEST
+                if (key === "invest") {
+                    portofolio += totalAmount;
+                    let takeProfit = (item.percent / 100) * portofolio;
+                    TPLastMonth += takeProfit;
+
+                    let p_portofolio = document.createElement("p");
+                    p_portofolio.textContent = `Portofolio: Rp. ${portofolio.toLocaleString("id-ID")}`;
+
+                    let p_takeProfit = document.createElement("p");
+                    p_takeProfit.textContent = `Take Profit: Rp. ${takeProfit} (${item.takeProfit})`
+
+                    if (item.type_amount !== "nominal") {
+                        data.result.expense[key].push({ ...def, amount: totalAmount, percent: item.percent, portofolio, takeProfit })
+                    } else { data.result.expense[key].push({ ...def, amount: totalAmount, portofolio, takeProfit }) }
+                    div_item.append(p_amount, p_portofolio, p_takeProfit);
+                }
+
+                // INTEREST
+                if (key === "interest") {
+                    portofolio += totalAmount;
+                    let interest = item.type_interest !== "month" ? (item.interest / 12) : item.interest;
+                    let profit = (interest / 100) * portofolio;
+                    TPLastMonth += profit;
+
+                    let p_portofolio = document.createElement("p");
+                    p_portofolio.textContent = `Portofolio: Rp. ${portofolio.toLocaleString("id-ID")}`;
+
+                    let p_interest = document.createElement("p");
+                    p_interest.textContent = item.type_interest !== "monthly" ? `Interest: Rp. ${profit.toLocaleString("id-ID")} (${interest.toFixed(2)}% /month - ${item.interest.toFixed(2)}% /year)` : `Interest: Rp. ${profit.toLocaleString("id-ID")} (${interest.toFixed(2)}% /month)`;
+
+                    if (item.type_amount !== "nominal") {
+                        data.result.expense[key].push({ ...def, amount: totalAmount, percent: item.percent, portofolio, interest: profit })
+                    } else { data.result.expense[key].push({ ...def, amount: totalAmount, portofolio, interest: profit }) }
+
+                    div_item.append(p_amount, p_portofolio, p_interest);
+                }
+
+                // SAVING
+                if (key === "saving") {
+                    portofolio += totalAmount;
+
+                    let p_portofolio = document.createElement("p");
+                    p_portofolio.textContent = `Portofolio: Rp. ${portofolio.toLocaleString("id-ID")}`;
+
+                    if (item.type_amount !== "nominal") {
+                        data.result.expense[key].push({ ...def, amount: totalAmount, percent: item.percent, portofolio })
+                    } else { data.result.expense[key].push({ ...def, amount: totalAmount, portofolio }) }
+
+                    div_item.append(p_amount, p_portofolio)
+                }
             })
         }
     }
