@@ -323,15 +323,7 @@ export function result() {
     const totalIncome = data.income.reduce((sum, item) => sum + item.amount, 0)
     let TPLastMonth = 0;
 
-
-
-    const expenseFiltered = {};
-    for (const key in data.expense) {
-        if (data.expense[key].length > 0) {
-            if (key === "expense") expenseFiltered.expense = data.expense.expense.filter(e => e.type_amount !== "nominal");
-            else { expenseFiltered[key] = data.expense[key] }
-        }
-    }
+    
 
     let keyMapping = {
         expense: document.createElement("div"),
