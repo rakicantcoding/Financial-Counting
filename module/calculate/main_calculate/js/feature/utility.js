@@ -1,6 +1,11 @@
 import { data } from "../../../finance.js";
 import { element } from "../dom/domElement.js";
-import { load } from "./load.js";
+
+
+export function saveData() {
+    localStorage.setItem("data", JSON.stringify(data))
+}
+
 
 // HIDE INPUT EXPENSE
 export function hideExpenseInput() {
@@ -69,3 +74,17 @@ export function checkid() {
 }
 // CHECK ID END
 
+
+
+// INCOME RESULT
+export function incomeResult() {
+    let key_container = document.createElement("div");
+    key_container.classList.add("key-container");
+    let p_title = document.createElement("p");
+    p_title.textContent = `Category: income`;
+    key_container.append(p_title);
+    element.income_result.append(key_container);
+    return key_container
+}
+
+// INCOME RESULT END

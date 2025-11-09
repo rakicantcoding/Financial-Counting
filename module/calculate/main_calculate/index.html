@@ -140,7 +140,7 @@
 
             <div class="list-container">
               <div id="income-list-note" class="list-note">Empty</div>
-              <div id="income-list" class="list-item"></div>
+              <div id="income-list" class="list-item list-item_income"></div>
             </div>
           </div>
         </div>
@@ -208,7 +208,7 @@
 
             <div class="list-container">
               <div id="expense-list-note" class="list-note">Empty</div>
-              <div id="expense-list" class="list-item"></div>
+              <div id="expense-list" class="list-item list-item_expense"></div>
             </div>
           </div>
         </div>
@@ -241,11 +241,10 @@
 
         </div>
 
-        <div class="result-container">
+        <div class="result">
 
-          <div class="title">
-            <p>Year</p>
-            <p>Month</p>
+          <div id="month-title" class="title">
+            - Month
           </div>
 
           <div class="result-div">
@@ -255,8 +254,9 @@
                 <p>Income Result</p>
               </div>
 
-              <div id="income-result" class="result-bowl">
-
+              <div class="list-container">
+                <div id="income-result-note" class="list-note">Empty</div>
+                <div id="income-result" class="list-item list-item_result"></div>
               </div>
             </div>
 
@@ -274,8 +274,9 @@
               </div>
 
 
-              <div id="expense-result" class="result-bowl">
-
+              <div class="list-container">
+                <div id="expense-result-note" class="list-note">Empty</div>
+                <div id="expense-result" class="list-item list-item_result"></div>
               </div>
             </div>
           </div>
@@ -296,38 +297,6 @@
         </div>
       </div>
 
-    </div>
-
-    <div class="dom">
-      <div>
-      </div>
-
-    </div>
-
-
-    <div class="dom">
-      <div>income</div>
-
-      <div class="expense">
-        <div> <!-- key_container -->
-
-          <div> <!-- key_item -->
-            <p>Makan</p>
-            <div>
-              <p>Rp. 3.000.000 (30%)</p>
-            </div>
-          </div>
-
-          <div> <!-- key_item -->
-            <p>Transport</p>
-            <div>
-              <p>Rp. 1.000.000 (10%)</p>
-            </div>
-          </div>
-          
-        </div>
-
-      </div>
     </div>
 
     <script src="./js/script.js" type="module"></script>

@@ -56,6 +56,11 @@
     gap: 8px;
 }
 
+.input-income,
+.input-expense {
+    max-height: 207.4px;
+}
+
 .input-container>div {
     width: 100%;
     display: flex;
@@ -162,9 +167,31 @@
     flex-direction: column;
     gap: 30px;
     height: 100%;
+
+    overflow-y: auto;
+}
+
+.list-item_income {
+    max-height: 85.6px;
+}
+
+.list-item_expense {
+    max-height: 140px;
+}
+
+.list-item::-webkit-scrollbar,
+.key-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.list-item::-webkit-scrollbar-thumb,
+.key-container::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
 }
 
 .list-container {
+    min-height: 85.6px;
     position: relative;
     height: 100%;
 }
@@ -201,21 +228,9 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-
-    max-height: 140px;
-    overflow-y: auto;
 }
 
-.key-list::-webkit-scrollbar,
-.div-list::-webkit-scrollbar {
-    width: 8px;
-}
 
-.key-list::-webkit-scrollbar-thumb,
-.div-list::-webkit-scrollbar-thumb {
-    background-color: #bbb;
-    border-radius: 4px;
-}
 
 .div-title {
     display: flex;
@@ -264,15 +279,15 @@
     flex-direction: column;
 }
 
-.result-container {
-    background-color: rgb(30, 30, 30);
+.result {
+    background-color: rgba(30, 30, 30);
     display: flex;
     flex-direction: column;
     gap: 15px;
     padding-bottom: 15px;
 }
 
-.result-container>.title {
+.result>.title {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -303,13 +318,32 @@
     justify-content: space-between;
 }
 
-.result-div>div>.result-bowl {
-    background-color: rgb(30, 30, 30);
+.key-result {
+    border: 1px solid rgba(0, 128, 0, 0.5);
+    background-color: rgba(18, 18, 18, 0.5);
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 5px;
 }
+
+.list-item_result {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+.list-item_result::-webkit-scrollbar,
+.key-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.list-item_result::-webkit-scrollbar-thumb,
+.key-container::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
 
 /* SIMULATE CONTAINER END */
 

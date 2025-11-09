@@ -49,8 +49,13 @@ export const element = {
     month_input: document.getElementById("month-input"),
     month_btn: document.getElementById("month-btn"),
 
+    month_title: document.getElementById("month-title"),
+
     income_result: document.getElementById("income-result"),
+    income_result_note: document.getElementById("income-result-note"),
+
     expense_result: document.getElementById("expense-result"),
+    expense_result_note: document.getElementById("expense-result-note"),
 
     result_select: document.getElementById("result-select"),
     // SIMULATE CONTAINER END
