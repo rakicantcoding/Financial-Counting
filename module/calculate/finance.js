@@ -6,14 +6,5 @@ export let data = {
         interest: [],
         saving: [],
     },
-    result: {
-        income: [],
-        expense: {
-            expense: [],
-            invest: [],
-            interest: [],
-            saving: [],
-        },
-    },
     globalId: 1
 }

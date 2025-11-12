@@ -319,6 +319,21 @@ element.list_select.addEventListener("change", () => list())
 
 // RESULT
 export function result() {
+
+    const expenseFiltered = {};
+    for (const key in data.expense) {
+        if (data.expense[key].length > 0) {
+            if (key === "expense" && data.expense.expense.find(e => e.type_amount !== "nominal")) {
+                expenseFiltered.expense = data.expense.expense.filter(e => e.type_amount !== "nominal");
+            }
+            if (key !== "expense") { expenseFiltered[key] = data.expense[key] }
+        }
+    }
+
+    // CEK APAKAH CATEGORY SELAIN EXPENSE ADA ISINYA ATAU TIDAK
+    if (Object.values(expenseFiltered).flat().filter(e => e.category !== "expense").length === 0) return alert("Need input with non-expense category")
+
+
     const month = element.month_select.value !== "month" ? (Number(element.month_input.value) * 12) : Number(element.month_input.value);
     element.month_title.innerHTML = "";
     let month_title = document.createElement("p");
@@ -336,6 +351,11 @@ export function result() {
     element.expense_result.innerHTML = "";
 
     let result = {
+        summary: {
+            income: [],
+            expense: [],
+            balance: []
+        },
         income: [],
         expense: {
             expense: [],
@@ -345,16 +365,20 @@ export function result() {
         },
     }
 
+    // TAMBAHKAN EXPENSE AMOUNT TYPE NOMINAL
+    let totalExpense = 0
+    if (data.expense.expense.find(e => e.type_amount === "nominal")) {
+        data.expense.expense.forEach(e => {
+            if (e.type_amount === "nominal") {
+                totalExpense += e.amount
+            }
+        })
+    }
+
     const totalIncome = data.income.reduce((sum, item) => sum + item.amount, 0)
     let TPLastMonth = 0;
 
-    const expenseFiltered = {};
-    for (const key in data.expense) {
-        if (data.expense[key].length > 0) {
-            if (key === "expense") expenseFiltered.expense = data.expense.expense.filter(e => e.type_amount !== "nominal");
-            else { expenseFiltered[key] = data.expense[key] }
-        }
-    }
+
 
     let keyMapping = {}
 
@@ -374,6 +398,7 @@ export function result() {
     for (let i = 1; i <= month; i++) {
         let incomeThisMonth = totalIncome + TPLastMonth;
         TPLastMonth = 0;
+        let totalExpenseThisMonth = totalExpense;
 
         // INCOME
         (() => {
@@ -417,7 +442,7 @@ export function result() {
             } else {
                 p_month.textContent = `${i} Month`;
             }
-            
+
             let key_list = document.createElement("div");
             key_list.classList.add("key-result");
             key_list.append(p_month)
@@ -454,6 +479,7 @@ export function result() {
                 key_item.append(p_title, div_item)
 
                 let totalAmount = item.percent ? (item.percent / 100) * incomeThisMonth : item.amount;
+                totalExpenseThisMonth += totalAmount;
 
                 let p_amount = document.createElement("p");
                 p_amount.textContent = item.type_amount !== "nominal" ? `Amount: Rp. ${parseInt(totalAmount).toLocaleString("id-ID")} (${item.percent}%)` : `Amount: Rp. ${totalAmount.toLocaleString("id-ID")}`;
@@ -516,9 +542,18 @@ export function result() {
 
                     div_item.append(p_amount, p_portofolio)
                 }
+
+                totalExpense += totalAmount;
             })
+
         }
+        let totalBalance = incomeThisMonth - totalExpense;
+        result.summary.income.push({ month: i, amount: incomeThisMonth });
+        result.summary.expense.push({ month: i, amount: totalExpense });
+        result.summary.balance.push({ month: i, amount: totalBalance });
     }
+
+
 
     // HIDE NOTE
     for (const key in result) {
@@ -526,8 +561,10 @@ export function result() {
             income: element.income_result_note,
             expense: element.expense_result_note
         }
-        mapping[key].classList.add("hide")
+        if (key !== "summary") mapping[key].classList.add("hide");
     }
+
+    data.result = result;
 }
 
 // RESULT END

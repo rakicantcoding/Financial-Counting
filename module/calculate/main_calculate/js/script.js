@@ -1,7 +1,7 @@
 import { element } from "./dom/domElement.js";
 import { data } from "../../finance.js";
 import { add } from "./feature/input.js";
-import { hideExpenseInput, alertInput } from "./feature/utility.js";
+import { hideExpenseInput, alertInput, saveData } from "./feature/utility.js";
 import { result } from "./feature/load.js";
 
 // INPUT
@@ -34,3 +34,11 @@ element.month_btn.addEventListener("click", () => {
 })
 
 // RESULT END
+
+
+// SAVE
+element.save_btn.addEventListener("click", ()=> {
+    saveData(data.result)
+    console.log(Object.values(data.expense).flat())
+})
+// SAVE END

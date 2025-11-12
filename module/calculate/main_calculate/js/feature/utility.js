@@ -1,12 +1,6 @@
 import { data } from "../../../finance.js";
 import { element } from "../dom/domElement.js";
 
-
-export function saveData() {
-    localStorage.setItem("data", JSON.stringify(data))
-}
-
-
 // HIDE INPUT EXPENSE
 export function hideExpenseInput() {
     document.querySelectorAll(".item_input").forEach(e => e.classList.add("hide"))
@@ -86,5 +80,14 @@ export function incomeResult() {
     element.income_result.append(key_container);
     return key_container
 }
-
 // INCOME RESULT END
+
+
+// SAVE DATA
+export function saveData(result) {
+    if (data.income.length === 0 || Object.values(data.expense).flat().length === 0) return alert(`Need input income and expense`);
+    if (!data.expense.expense.find(e=> e.type_amount === "percent") && data.expense) return alert("Cant")
+    if (!result) return alert(`Need input month`);
+    else {localStorage.setItem("result", JSON.stringify(result))}
+}
+// SAVE DATA END
