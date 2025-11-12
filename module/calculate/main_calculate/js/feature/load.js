@@ -1,6 +1,6 @@
 import { element } from "../dom/domElement.js";
 import { data } from "../../../finance.js";
-import { incomeResult } from "./utility.js";
+import { incomeResult, resultSelect } from "./utility.js";
 
 // DISPLAY
 function display() {
@@ -318,8 +318,11 @@ element.list_select.addEventListener("change", () => list())
 
 
 // RESULT
+let keyMapping = {}
+element.result_select.addEventListener("change", ()=> resultSelect(keyMapping))
 export function result() {
 
+    // MELAKUKAN FILTER SELAIN EXPENSE TYPE NOMINAL MAKA AKAN MASUK
     const expenseFiltered = {};
     for (const key in data.expense) {
         if (data.expense[key].length > 0) {
@@ -331,7 +334,7 @@ export function result() {
     }
 
     // CEK APAKAH CATEGORY SELAIN EXPENSE ADA ISINYA ATAU TIDAK
-    if (Object.values(expenseFiltered).flat().filter(e => e.category !== "expense").length === 0) return alert("Need input with non-expense category")
+    if (Object.values(expenseFiltered).flat().filter(e => e.category !== "expense").length === 0) return alert("Need input with non-expense category");
 
 
     const month = element.month_select.value !== "month" ? (Number(element.month_input.value) * 12) : Number(element.month_input.value);
@@ -346,6 +349,7 @@ export function result() {
     } else {
         month_title.textContent = `${month} Month`
     }
+
 
     element.income_result.innerHTML = "";
     element.expense_result.innerHTML = "";
@@ -378,10 +382,8 @@ export function result() {
     const totalIncome = data.income.reduce((sum, item) => sum + item.amount, 0)
     let TPLastMonth = 0;
 
-
-
-    let keyMapping = {}
-
+    // BUAT KEY CONTAINER UNTUK SETIAP CATEGORY YANG ADA ISINYA
+    keyMapping = {}
     for (const key in expenseFiltered) {
         keyMapping[key] = document.createElement("div");
         keyMapping[key].classList.add("key-container");
@@ -391,10 +393,14 @@ export function result() {
         element.expense_result.append(keyMapping[key]);
     }
 
+    resultSelect(keyMapping);
+
+
+
     let income_key_container = incomeResult();
 
 
-
+    // MELAKUKAN SIMULASI
     for (let i = 1; i <= month; i++) {
         let incomeThisMonth = totalIncome + TPLastMonth;
         TPLastMonth = 0;

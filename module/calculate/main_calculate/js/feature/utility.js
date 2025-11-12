@@ -70,6 +70,35 @@ export function checkid() {
 
 
 
+// HIDE SHOW RESULT
+export function resultSelect(keyMapping) {
+
+    if (element.result_select.value === "all") {
+
+        element.expense_result_note.classList.add("hide");
+        Object.values(keyMapping).flat().forEach(e => e.classList.remove("hide"));
+        
+    }
+
+    else {
+
+        if (!keyMapping[element.result_select.value]) {
+            element.expense_result_note.classList.remove("hide");
+            Object.values(keyMapping).flat().forEach(e => e.classList.add("hide"));
+        }
+
+        else {
+            element.expense_result_note.classList.add("hide");
+            for (const key in keyMapping) {
+                keyMapping[key].classList.add("hide");
+                keyMapping[element.result_select.value].classList.remove("hide");
+            }
+        }
+
+    }
+}
+
+
 // INCOME RESULT
 export function incomeResult() {
     let key_container = document.createElement("div");
@@ -86,8 +115,8 @@ export function incomeResult() {
 // SAVE DATA
 export function saveData(result) {
     if (data.income.length === 0 || Object.values(data.expense).flat().length === 0) return alert(`Need input income and expense`);
-    if (!data.expense.expense.find(e=> e.type_amount === "percent") && data.expense) return alert("Cant")
+    if (!data.expense.expense.find(e => e.type_amount === "percent") && data.expense) return alert("Cant")
     if (!result) return alert(`Need input month`);
-    else {localStorage.setItem("result", JSON.stringify(result))}
+    else { localStorage.setItem("result", JSON.stringify(result)) }
 }
 // SAVE DATA END
