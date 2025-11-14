@@ -84,219 +84,105 @@ function list() {
     element.expense_list.innerHTML = "";
 
 
-    if (element.list_select.value === "all") {
 
-        Object.values(data.expense).flat().length > 0 ? element.expense_list_note.classList.add("hide") : element.expense_list_note.classList.remove("hide");
+    let keyMapping = {}
 
-        if (Object.values(data.expense).flat().length > 0) {
-            for (const key in data.expense) {
-                if (data.expense[key].length > 0) {
-
-                    let key_container = document.createElement("div")
-                    key_container.classList.add("key-container");
-                    let p_key = document.createElement("p")
-                    p_key.textContent = `Category: ${key}`;
-
-                    let key_list = document.createElement("div")
-                    key_list.classList.add("key-list")
-
-                    key_container.append(p_key, key_list);
-
-                    data.expense[key].forEach(e => {
-
-                        let key_item = document.createElement("div");
-                        key_item.classList.add("key-item")
-
-                        let div_title = document.createElement("div");
-                        div_title.classList.add("div-title")
-
-                        let p_title = document.createElement("p");
-                        p_title.textContent = `Name: ${e.name}`;
-
-                        let btn_del = document.createElement("button");
-                        btn_del.textContent = `X`;
-                        btn_del.dataset.id = e.id;
-                        btn_del.dataset.category = e.category;
-                        btn_del.classList.add("btn-del");
-
-                        div_title.append(p_title, btn_del);
-
-                        let div_item = document.createElement("div");
-                        div_item.classList.add("div-item");
-
-                        if (key === "expense") {
-                            let p_amount = document.createElement("p");
-
-                            if (e.type_amount !== "nominal") {
-                                p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                            } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
-                            div_item.append(p_amount);
-                        }
-
-                        if (key === "invest") {
-                            let p_amount = document.createElement("p");
-
-                            let p_takeProfit = document.createElement("p");
-                            p_takeProfit.textContent = `Take Profit: ${e.takeProfit.toFixed(2)} %`;
-
-                            let p_portofolio = document.createElement("p");
-                            p_portofolio.textContent = `Portofolio: ${e.portofolio.toLocaleString("id-ID")}`;
-
-                            if (e.type_amount !== "nominal") {
-                                p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                            } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
-                            div_item.append(p_amount, p_takeProfit, p_portofolio);
-                        }
-
-                        if (key === "interest") {
-                            let p_amount = document.createElement("p");
-
-                            let p_interest = document.createElement("p");
-
-                            let p_portofolio = document.createElement("p");
-                            p_portofolio.textContent = `Portofolio: ${e.portofolio.toLocaleString("id-ID")}`;
-
-                            if (e.type_amount !== "nominal") {
-                                p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                            } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
-                            if (e.type_interest === "monthly") {
-                                p_interest.textContent = `Interest: (${e.interest.toFixed(2)}%/m)`
-                            } else {
-                                p_interest.textContent = `Interest: (${(e.interest / 12).toFixed(2)}%/m - ${e.interest.toFixed(2)}%/y)`
-                            }
-                            div_item.append(p_amount, p_interest, p_portofolio);
-                        }
-
-                        if (key === "saving") {
-                            let p_amount = document.createElement("p");
-
-                            let p_portofolio = document.createElement("p");
-                            p_portofolio.textContent = `Portofolio: Rp. ${e.portofolio.toLocaleString("id-ID")}`
-
-                            if (e.type_amount !== "nominal") {
-                                p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                            } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
-                            div_item.append(p_amount, p_portofolio);
-                        }
-
-                        key_item.append(div_title, div_item)
-
-                        key_list.append(key_item)
-                    })
-                    element.expense_list.append(key_container)
-                }
-
-            }
-        }
-    }
-
-    else if (element.list_select.value !== "all") {
-        data.expense[element.list_select.value].length === 0 ? element.expense_list_note.classList.remove("hide") : element.expense_list_note.classList.add("hide");
-
-        const key = element.list_select.value;
-
-        if (data.expense[element.list_select.value].length > 0) {
-            let key_container = document.createElement("div")
+    for (const key in data.expense) {
+        // BIKIN CONTAINER DAN ISINYA
+        if (data.expense[key].length > 0) {
+            let key_container = document.createElement("div");
+            keyMapping[key] = key_container;
             key_container.classList.add("key-container");
-            let p_key = document.createElement("p")
-            p_key.textContent = `Category: ${element.list_select.value}`;
+            element.expense_list.append(key_container);
 
-            let key_list = document.createElement("div")
-            key_list.classList.add("key-list")
+            let p_key = document.createElement("p");
+            p_key.textContent = `Category: ${key}`;
 
+            let key_list = document.createElement("div");
+            key_list.classList.add("key-list");
             key_container.append(p_key, key_list);
 
-            let key_item = document.createElement("div");
-            key_item.classList.add("key-item");
-
-            data.expense[element.list_select.value].forEach(e => {
-
+            data.expense[key].forEach(e => {
                 let div_title = document.createElement("div");
-                div_title.classList.add("div-title")
-
-                let p_title = document.createElement("p");
-                p_title.textContent = `Name: ${e.name}`;
-
-                let btn_del = document.createElement("button");
-                btn_del.textContent = `X`;
-                btn_del.dataset.id = e.id;
-                btn_del.dataset.category = e.category;
-                btn_del.classList.add("btn-del");
-
-                div_title.append(p_title, btn_del);
-
+                div_title.classList.add("div-title");
                 let div_item = document.createElement("div");
                 div_item.classList.add("div-item");
 
+                key_list.append(div_title, div_item);
 
+                // DIV TITLE
+                let p_name = document.createElement("p");
+                p_name.textContent = `Name: ${e.name}`;
+                let btn_del = document.createElement("button");
+                btn_del.textContent = `X`
+                btn_del.dataset.id = e.id;
+                btn_del.dataset.category = e.category;
+                btn_del.classList.add("btn-del");
+                div_title.append(p_name, btn_del);
+
+                // DIV ITEM
+                let p_amount = document.createElement("p");
+                p_amount.textContent = e.type_amount === "nominal" ? `Amount: Rp. ${parseInt(e.amount).toLocaleString("id-ID")}` : `Amount: Rp. ${parseInt(e.amount).toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
+
+                // EXPENSE
                 if (key === "expense") {
-                    let p_amount = document.createElement("p");
-
-                    if (e.type_amount !== "nominal") {
-                        p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                    } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
-                    div_item.append(p_amount);
+                    div_item.append(p_amount)
                 }
+                // ====
 
+                let p_portofolio = ("portofolio" in e) ? document.createElement("p") : undefined;
+                p_portofolio ? p_portofolio.textContent = `Portofolio: Rp. ${parseInt(e.portofolio).toLocaleString("id-ID")}` : undefined;
+
+                // INVEST
                 if (key === "invest") {
-                    let p_amount = document.createElement("p");
-
                     let p_takeProfit = document.createElement("p");
-                    p_takeProfit.textContent = `Take Profit: ${e.takeProfit.toFixed(2)}%`;
+                    p_takeProfit.textContent = `Take Profit: (${e.takeProfit.toFixed(2)}%)`;
 
-                    let p_portofolio = document.createElement("p");
-                    p_portofolio.textContent = `Portofolio: ${e.portofolio.toLocaleString("id-ID")}`;
-
-                    if (e.type_amount !== "nominal") {
-                        p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                    } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
-                    div_item.append(p_amount, p_takeProfit, p_portofolio);
+                    div_item.append(p_amount, p_portofolio, p_takeProfit)
                 }
 
+                // INTEREST
                 if (key === "interest") {
-                    let p_amount = document.createElement("p");
-
                     let p_interest = document.createElement("p");
+                    p_interest.textContent = e.type_interest === "monthly" ? `Interest: (${e.interest.toFixed(2)}%/m)` : `Interest: (${(e.interest / 12).toFixed(2)}%/m ${e.interest.toFixed(2)}%/y)`
 
-                    let p_portofolio = document.createElement("p");
-                    p_portofolio.textContent = `Portofolio: ${e.portofolio.toLocaleString("id-ID")}`;
-
-                    if (e.type_amount !== "nominal") {
-                        p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                    } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
-                    if (e.type_interest === "monthly") {
-                        p_interest.textContent = `Interest: (${e.interest.toFixed(2)}%/m)`
-                    } else {
-                        p_interest.textContent = `Interest: (${(e.interest / 12).toFixed(2)}%/m ${e.interest.toFixed(2)}%/y)`
-                    }
-                    div_item.append(p_amount, p_interest, p_portofolio);
+                    div_item.append(p_amount, p_portofolio, p_interest)
                 }
 
+                // SAVING
                 if (key === "saving") {
-                    let p_amount = document.createElement("p");
-
-                    let p_portofolio = document.createElement("p");
-                    p_portofolio.textContent = `Portofolio: Rp. ${e.portofolio.toLocaleString("id-ID")}`
-
-                    if (e.type_amount !== "nominal") {
-                        p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")} (${e.percent.toFixed(2)}%)`;
-                    } else { p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}` };
-
                     div_item.append(p_amount, p_portofolio);
                 }
-
-                key_item.append(div_title, div_item)
             })
 
-            key_list.append(key_item)
-            element.expense_list.append(key_container)
+
+        }
+
+
+
+
+    }
+
+    if (element.list_select.value === "all") {
+        if (Object.values(data.expense).flat().length > 0) {
+            element.expense_list_note.classList.add("hide");
+            Object.values(keyMapping).forEach(e => e.classList.remove("hide"));
+        }
+
+        else {
+            element.expense_list_note.classList.remove("hide");
+            Object.values(keyMapping).forEach(e => e.classList.add("hide"));
+        }
+    }
+
+    else {
+        if (data.expense[element.list_select.value].length > 0) {
+            element.expense_list_note.classList.add("hide");
+            Object.values(keyMapping).forEach(e => e.classList.add("hide"));
+            keyMapping[element.list_select.value].classList.remove("hide");
+        } else {
+            element.expense_list_note.classList.remove("hide");
+            Object.values(keyMapping).forEach(e => e.classList.add("hide"));
         }
     }
 
@@ -411,7 +297,7 @@ export function result() {
         TPLastMonth = 0;
 
         let expenseThisMonth = totalExpenseNominal;
-        
+
 
         // INCOME
         (() => {
@@ -565,7 +451,7 @@ export function result() {
 
         result.summary.income.push({ month: i, amount: incomeThisMonth });
         result.summary.expense.push({ month: i, amount: expenseThisMonth });
-        result.summary.balance.push({ month: i, amount: incomeThisMonth - expenseThisMonth})
+        result.summary.balance.push({ month: i, amount: incomeThisMonth - expenseThisMonth })
     }
 
 
