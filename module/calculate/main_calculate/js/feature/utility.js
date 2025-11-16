@@ -77,7 +77,7 @@ export function resultSelect(keyMapping) {
 
         element.expense_result_note.classList.add("hide");
         Object.values(keyMapping).flat().forEach(e => e.classList.remove("hide"));
-        
+
     }
 
     else {
@@ -113,10 +113,20 @@ export function incomeResult() {
 
 
 // SAVE DATA
-export function saveData(result) {
+export function saveData() {
     if (data.income.length === 0 || Object.values(data.expense).flat().length === 0) return alert(`Need input income and expense`);
-    if (!data.expense.expense.find(e => e.type_amount === "percent") && data.expense) return alert("Cant")
-    if (!result) return alert(`Need input month`);
-    else { localStorage.setItem("result", JSON.stringify(result)) }
+    if (Object.values(data.expense).flat().length === 0) return alert("Need input expense");
+    if (Object.values(data.expense).flat().filter(e => e.category !== "expense").length === 0) return alert(`Need to input a category other than expense.`);
+    if (!data.result) return alert(`Need input month`);
+
+    localStorage.setItem("result", JSON.stringify(data.result));
 }
 // SAVE DATA END
+
+
+// RESET
+export function resetData() {
+    localStorage.clear();
+}
+
+// RESET END

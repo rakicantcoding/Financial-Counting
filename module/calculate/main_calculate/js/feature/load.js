@@ -3,6 +3,9 @@ import { data } from "../../../finance.js";
 import { incomeResult, resultSelect } from "./utility.js";
 
 // DISPLAY
+
+element.checkbox_display_percent.addEventListener("change", () => display())
+
 function display() {
     const totalIncome = data.income.reduce((sum, item) => sum + item.amount, 0);
     const totalExpense = Object.values(data.expense).flat().map(e => e.amount).reduce((sum, item) => sum + item, 0);
@@ -11,11 +14,35 @@ function display() {
     element.income_display.textContent = `Rp. ${totalIncome.toLocaleString("id-ID")}`;
     element.expense_display.textContent = `Rp. ${totalExpense.toLocaleString("id-ID")}`;
     element.balance_display.textContent = `Rp. ${totalBalance.toLocaleString("id-ID")}`;
+
+    // PERCENT
+    let key = [element.display_percent_expense, element.display_percent_balance];
+
+    if (element.checkbox_display_percent.checked) {
+        key.forEach(e => e.classList.remove("hide"));
+
+        const percent = ((nominal_awal, nominal_akhir) => ((nominal_akhir - nominal_awal) / nominal_awal) * 100)
+
+        if (totalIncome === 0) {
+            key.forEach(e => {
+                e.textContent = ``;
+                e.classList.add("hide");
+            })
+        } else {
+            element.display_percent_expense.textContent = `${percent(totalIncome, totalBalance).toFixed(2)}%`;
+            element.display_percent_balance.textContent = `${percent(totalIncome, totalExpense).toFixed(2)}%`;
+        }
+    } else {
+        key.forEach(e=> {
+            e.textContent = "";
+            e.classList.add("hide")
+        })
+    }
 }
 // DISPLAY END
 
 
-// LOAD DATA PERCENT
+// RE-UPDATE DATA TYPE PERCENT
 function loadExpensePercent() {
     const totalIncome = data.income.reduce((sum, item) => sum + item.amount, 0)
 
