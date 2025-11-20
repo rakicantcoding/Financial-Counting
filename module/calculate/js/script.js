@@ -1,5 +1,5 @@
 import { element } from "./dom/domElement.js";
-import { data } from "../../finance.js";
+import { data } from "../../../finance/finance.js";
 import { add } from "./feature/input.js";
 import { hideExpenseInput, alertInput, saveData, resetData } from "./feature/utility.js";
 import { result } from "./feature/load.js";

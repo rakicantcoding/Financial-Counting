@@ -1,5 +1,5 @@
 // ADD INPUT INCOME & EXPENSE
-import { data } from "../../../finance.js";
+import { data } from "../../../../finance/finance.js";
 import { element } from "../dom/domElement.js";
 import { load } from "./load.js";
 import { checkid } from "./utility.js";

@@ -1,5 +1,5 @@
 import { element } from "../dom/domElement.js";
-import { data } from "../../../finance.js";
+import { data } from "../../../../finance/finance.js";
 import { incomeResult, resultSelect } from "./utility.js";
 
 // DISPLAY
@@ -135,7 +135,12 @@ function list() {
                 let div_item = document.createElement("div");
                 div_item.classList.add("div-item");
 
-                key_list.append(div_title, div_item);
+                let key_item = document.createElement("div");
+                key_item.classList.add("key-item");
+
+                key_item.append(div_title, div_item)
+
+                key_list.append(key_item);
 
                 // DIV TITLE
                 let p_name = document.createElement("p");

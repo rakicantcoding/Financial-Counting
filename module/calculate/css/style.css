@@ -222,14 +222,16 @@
 }
 
 .key-list {
-    border: 1px solid rgba(0, 128, 0, 0.5);
     background-color: rgba(18, 18, 18, 0.5);
-    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
+.key-item {
+    padding: 10px;
+    border: 1px solid rgba(0, 128, 0, 0.5);
+}
 
 
 .div-title {
@@ -406,12 +408,40 @@
 
     .input-container>div {
         flex-direction: column;
-        gap: 0px;
     }
 
-    .div-list {
-        border-radius: 0;
+    /* biarkan container bisa mengembang */
+    .input-income,
+    .input-expense {
+        max-height: none;
     }
+
+    /* agar note tidak absolute dan tidak menutupi list */
+    .list-container {
+        min-height: 0;
+        height: auto;
+    }
+
+    .list-note {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 0;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .list-item,
+    .list-item_income,
+    .list-item_expense {
+        max-height: 200px;
+        overflow: auto;
+    }
+
+
 
     /* INPUT CONTAINER END */
 
