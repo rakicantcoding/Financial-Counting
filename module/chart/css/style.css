@@ -1,0 +1,179 @@
+/* CASH FLOW */
+
+/* background-color: rgb(30, 30, 30); */
+
+.cash-flow {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(30, 30, 30);
+    min-height: 150px;
+    padding: 5px;
+    gap: 40px;
+}
+
+.cash-flow_canvas {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    gap: 10px;
+    height: 166.8px;
+}
+
+.cash-flow_canvas>.canvas {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.cash-flow_canvas>.list {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.cash-flow_canvas>.list>.div-checkbox {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.cash-flow_canvas>.list>.div-checkbox>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkbox {
+    transform: scale(1.4);
+}
+
+.checkbox_green {
+    accent-color: rgba(26, 139, 87, 1);
+}
+
+.checkbox_red {
+    accent-color: rgba(172, 57, 43, 1);
+}
+
+.checkbox_blue {
+    accent-color: rgba(27, 111, 214, 1);
+}
+
+.p-green:hover {
+    color: rgba(26, 139, 87, 0.8);
+}
+
+.p-red:hover {
+    color: rgba(172, 57, 43, 0.8);
+}
+
+.p-blue:hover {
+    color: rgba(27, 111, 214, 0.8);
+}
+
+.cash-flow_canvas>.list>.div-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.cash-flow_canvas>.list>.div-list>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+.cash-flow_list {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cash-flow_list>.div-title {
+    display: flex;
+    justify-content: center;
+}
+
+.cash-flow_content {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.cash-flow_content>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cash-flow_content>div>div {
+    display: flex;
+    flex-direction: row;
+}
+
+.cash-flow_content>div>div>.div-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+}
+
+.cash-flow_content>div>div>.div-select {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.cash-flow_content>div .div-content {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 4px;
+}
+
+.div-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.div-content::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+.key-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.key-container>p {
+    border: 1px solid rgba(0, 128, 0, 0.5);
+    padding: 5px;
+    width: fit-content;
+}
+
+.key-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.key-item {
+    padding: 10px;
+    background-color: rgba(18, 18, 18, 0.5);
+}
+
+.p_title {
+    font-size: large;
+}
+
+/* CASH FLOW END */

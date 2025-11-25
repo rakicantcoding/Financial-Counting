@@ -247,6 +247,7 @@ body {
     background-color: rgb(39, 189, 39);
     color: rgb(241, 241, 241);
     transition: 0.3s ease;
+    text-align: center;
 }
 
 .select:hover {

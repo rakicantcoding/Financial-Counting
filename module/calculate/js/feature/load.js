@@ -399,7 +399,7 @@ export function result() {
                 }
 
                 let key_item = document.createElement("div");
-                key_item.classList.add("key-item");
+
 
                 key_list.append(key_item);
 

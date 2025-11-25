@@ -76,10 +76,171 @@
 
     <div class="main-body">
 
+        <!-- CASH FLOW -->
+        <div class="cash-flow">
+            <!-- CHART PIE -->
+            <div class="cash-flow_canvas">
+                <div class="canvas">
+                    <canvas id="cashFlow-canvas"></canvas>
+                </div>
+
+                <div class="list">
+                    <div class="div-checkbox">
+                        <div>
+                            <label>
+                                <input type="checkbox" id="cashFlow_checkBox_income" class="checkbox checkbox_green"
+                                    value="income" checked>
+                            </label>
+                            <p class="p-green">Income</p>
+                        </div>
+
+                        <div>
+                            <label>
+                                <input type="checkbox" id="cashFlow_checkBox_expense" class="checkbox checkbox_red"
+                                    value="expense" checked>
+                            </label>
+                            <p class="p-red">Expense</p>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="cashFlow_checkBox_balance" class="checkbox checkbox_blue"
+                                    value="balance" checked>
+                            </label>
+                            <p class="p-blue">Balance</p>
+                        </div>
+                    </div>
+
+                    <div class="div-list">
+                        <div>
+                            <p>Income:</p>
+                            <p id="cashFlow_income_percent">0%</p>
+                        </div>
+                        <div>
+                            <p>Expense:</p>
+                            <p id="cashFlow_expense_percent">0%</p>
+                        </div>
+                        <div>
+                            <p>Balance:</p>
+                            <p id="cashFlow_balance_percent">0%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- CHART PIE END -->
+
+            <!-- LIST -->
+            <div class="cash-flow_list">
+
+                <!-- TITLE -->
+                <div class="div-title">
+                    <p class="p_title">LIST</p>
+                </div>
+
+                <!-- CONTENT -->
+                <div class="cash-flow_content">
+                    <!-- INCOME -->
+                    <div>
+                        <div>
+                            <div class="div-title">
+                                <p class="p_title">Income</p>
+                            </div>
+                        </div>
+
+                        <div class="div-content" id="cashFlow_list_income">
+                            <div class="key-container">
+                                <p>Category: Income</p>
+                                <div class="key-list">
+                                    <div class="key-item">
+                                        <p>Name: Gaji</p>
+                                        <p>Amount: Rp. 1.000.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EXPENSE -->
+                    <div>
+                        <div>
+                            <div class="div-title">
+                                <p class="p_title">Expense</p>
+                            </div>
+
+                            <div class="div-select">
+                                <select class="select" id="cashFlow_list_select">
+                                    <option value="all">All</option>
+                                    <option value="expense">Expense</option>
+                                    <option value="invest">Invest</option>
+                                    <option value="interest">Interest</option>
+                                    <option value="saving">Saving</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="div-content" id="cashFlow_list_expense">
+
+                            <div class="key-container">
+                                <p>Category: Expense</p>
+                                <div class="key-list">
+                                    <div class="key-item">
+                                        <p>Name: Jajan</p>
+                                        <p>Amount: Rp. 1.000.000</p>
+                                    </div>
+
+                                    <div class="key-item">
+                                        <p>Name: Makan</p>
+                                        <p>Amount: Rp. 2.000.000</p>
+                                        <p>tp: Rp. 300.000</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="key-container">
+                                <p>Category: Invest</p>
+                                <div class="key-list">
+                                    <div class="key-item">
+                                        <p>Name: Crypto</p>
+                                        <p>Amount: Rp. 2.500.000</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="key-container">
+                                <p>Category: Interest</p>
+                                <div class="key-list">
+                                    <div class="key-item">
+                                        <p>Name: Bunga</p>
+                                        <p>Amount: Rp. 500.000</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="key-container">
+                                <p>Category: Saving</p>
+                                <div class="key-list">
+                                    <div class="key-item">
+                                        <p>Name: Nabung</p>
+                                        <p>Amount: Rp. 300.000</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- CASH FLOW END -->
+
     </div>
 
+
+
     <script src="/js/main.js"></script>
-    <script src="./js/scrippt.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/scrippt.js" type="module"></script>
 </body>
 
 </html>
