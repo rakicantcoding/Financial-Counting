@@ -283,6 +283,10 @@ export function result() {
             interest: [],
             saving: [],
         },
+        list: {
+            income: data.income,
+            expense: data.expense
+        }
     }
 
     // TAMBAHKAN EXPENSE AMOUNT TYPE NOMINAL
@@ -494,11 +498,10 @@ export function result() {
             income: element.income_result_note,
             expense: element.expense_result_note
         }
-        if (key !== "summary") mapping[key].classList.add("hide");
+        if (key !== "summary" && key !== "list") mapping[key].classList.add("hide");
     }
 
     data.result = result;
-    console.log(result.summary)
 }
 
 // RESULT END

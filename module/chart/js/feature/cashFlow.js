@@ -86,30 +86,150 @@ dom.forEach((e, i) => {
 
 
 // LIST
-function loadList(data, motherElement) {
+function domListing(category, motherElement) {
+    let key_container = document.createElement("div");
+    key_container.classList.add("key-container");
+    motherElement.append(key_container);
 
-    function mapping(i) {
-        return {
-            income: { name: i.name, amount: i.amount },
-            expense: {name: i.name, amount: i.amount, type_amount: i.type_amount},
-            invest: {name: i.name, amount: i.amount, type_amount: i.type_amount, portofolio: i.portofolio, tp}
+    let key_p = document.createElement("p");
+    key_p.textContent = `Category: ${category}`;
+
+    let key_list = document.createElement("div");
+    key_list.classList.add("key-list");
+    key_container.append(key_p, key_list);
+    return key_list
+}
+
+// --- INCOME ---
+(() => {
+    let list = data.list.income;
+    if (list.length > 0) {
+        element.cashFlow_list_income.innerHTML = "";
+
+        list.forEach((e) => {
+            let key_list = domListing("income", element.cashFlow_list_income);
+            let p_name = document.createElement("p");
+            p_name.textContent = `Name: ${e.name}`;
+            let p_amount = document.createElement("p");
+            p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}`;
+
+            let key_item = document.createElement("div");
+            key_item.classList.add("key-item");
+            key_list.append(key_item)
+
+            key_item.append(p_name, p_amount);
+        })
+    } else {
+        element.cashFlow_list_income.innerHTML = "";
+        let div_alert = document.createElement("div");
+        div_alert.textContent = `Empty`;
+        div_alert.classList.add("list-note");
+        element.cashFlow_list_income.append(div_alert);
+    }
+
+})()
+
+// --- EXPENSE ---
+function loadExpense(option) {
+    if (option !== "all") {
+        let list = data.list.expense[option];
+
+        if (list.length > 0) {
+            element.cashFlow_list_expense.innerHTML = "";
+            let key_list = domListing(option, element.cashFlow_list_expense);
+
+            list.forEach((e) => {
+                let p_name = document.createElement("p");
+                p_name.textContent = `Name: ${e.name}`;
+
+                let p_amount = document.createElement("p");
+                p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}${e.percent ? ` (${e.percent.toFixed(2)}%)` : ""}`
+
+                let key_item = document.createElement("div");
+                key_item.classList.add("key-item");
+                key_list.append(key_item)
+
+                key_item.append(p_name, p_amount);
+
+                if (option !== "expense") {
+                    let p_portofolio = document.createElement("p");
+                    p_portofolio.textContent = `Portofolio: Rp. ${e.portofolio.toLocaleString("id-ID")}`;
+                    key_item.append(p_portofolio);
+
+                    // INVEST
+                    if (option === "invest") {
+                        let p_takeProfit = document.createElement("p");
+                        p_takeProfit.textContent = `Take Profit: (${e.takeProfit.toFixed(2)}%)`;
+                        key_item.append(p_takeProfit);
+                    };
+
+                    // INTEREST
+                    if (option === "interest") {
+                        let p_interest = document.createElement("p");
+                        p_interest.textContent = `Interest: (${e.type_interest === "month" ? `${e.interest.toFixed(2)}%/m` : `${(e.interest / 12).toFixed(2)}%/m ${e.interest.toFixed(2)}%/y`})`;
+                        key_item.append(p_interest);
+                    };
+                };
+            })
+        } else {
+            element.cashFlow_list_expense.innerHTML = "";
+            let p_alert = document.createElement("p");
+            p_alert.textContent = `Empty`;
+            p_alert.classList.add("list-note");
+            element.cashFlow_list_expense.append(p_alert);
+        }
+    } else {
+        if (Object.values(data.list.expense).flat().length > 1) {
+            element.cashFlow_list_expense.innerHTML = "";
+            for (const option in data.list.expense) {
+                if (data.list.expense[option].length > 0) {
+                    let list = data.list.expense[option];
+                    let key_list = domListing(option, element.cashFlow_list_expense);
+
+                    list.forEach((e) => {
+                        let p_name = document.createElement("p");
+                        p_name.textContent = `Name: ${e.name}`;
+
+                        let p_amount = document.createElement("p");
+                        p_amount.textContent = `Amount: Rp. ${e.amount.toLocaleString("id-ID")}${e.percent ? ` (${e.percent.toFixed(2)}%)` : ""}`
+
+                        let key_item = document.createElement("div");
+                        key_item.classList.add("key-item");
+                        key_list.append(key_item)
+
+                        key_item.append(p_name, p_amount);
+
+                        if (option !== "expense") {
+                            let p_portofolio = document.createElement("p");
+                            p_portofolio.textContent = `Portofolio: Rp. ${e.portofolio.toLocaleString("id-ID")}`;
+                            key_item.append(p_portofolio);
+
+                            // INVEST
+                            if (option === "invest") {
+                                let p_takeProfit = document.createElement("p");
+                                p_takeProfit.textContent = `Take Profit: (${e.takeProfit.toFixed(2)}%)`;
+                                key_item.append(p_takeProfit);
+                            };
+
+                            // INTEREST
+                            if (option === "interest") {
+                                let p_interest = document.createElement("p");
+                                p_interest.textContent = `Interest: (${e.type_interest === "month" ? `${e.interest.toFixed(2)}%/m` : `${(e.interest / 12).toFixed(2)}%/m ${e.interest.toFixed(2)}%/y`})`;
+                                key_item.append(p_interest);
+                            };
+                        };
+                    })
+                }
+            }
+        } else {
+            element.cashFlow_list_expense.innerHTML = "";
+            let p_alert = document.createElement("p");
+            p_alert.classList.add("list-note");
+            p_alert.textContent = "Empty";
+            element.cashFlow_list_expense.append(p_alert)
         }
     }
-
-    for (const key in data) {
-        let key_container = document.createElement("div");
-        key_container.classList.add("key-container");
-        motherElement.append(key_container);
-
-        let key_p = document.createElement("p");
-        key_p.textContent = key;
-
-        let key_list = document.createElement("div");
-        key_list.classList.add("key-list");
-        key_container.append(key_p, key_list);
-
-        data[key].forEach(e => {
-
-        })
-    }
 }
+
+loadExpense(element.cashFlow_list_select.value)
+element.cashFlow_list_select.addEventListener("change", () => loadExpense(element.cashFlow_list_select.value))
