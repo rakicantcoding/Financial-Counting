@@ -78,106 +78,191 @@
 
         <!-- CASH FLOW -->
         <div class="cash-flow">
-            <!-- CHART PIE -->
-            <div class="cash-flow_canvas">
-                <div class="canvas">
-                    <canvas id="cashFlow-canvas"></canvas>
+
+            <div class="cash-flow-head">
+                <!-- CHART PIE -->
+                <div class="cash-flow_canvas">
+                    <div class="canvas">
+                        <canvas id="cashFlow-canvas-donut"></canvas>
+                    </div>
+
+                    <div class="list">
+                        <div class="div-checkbox">
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="cashFlow_checkBox_income" class="checkbox checkbox_green"
+                                        value="income" checked>
+                                </label>
+                                <p class="p-green">Income</p>
+                            </div>
+
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="cashFlow_checkBox_expense" class="checkbox checkbox_red"
+                                        value="expense" checked>
+                                </label>
+                                <p class="p-red">Expense</p>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="checkbox" id="cashFlow_checkBox_balance" class="checkbox checkbox_blue"
+                                        value="balance" checked>
+                                </label>
+                                <p class="p-blue">Balance</p>
+                            </div>
+                        </div>
+
+                        <div class="div-list">
+                            <div>
+                                <p>Income:</p>
+                                <p id="cashFlow_income_percent">0%</p>
+                            </div>
+                            <div>
+                                <p>Expense:</p>
+                                <p id="cashFlow_expense_percent">0%</p>
+                            </div>
+                            <div>
+                                <p>Balance:</p>
+                                <p id="cashFlow_balance_percent">0%</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- CHART PIE END -->
 
-                <div class="list">
-                    <div class="div-checkbox">
+                <!-- LIST -->
+                <div class="cash-flow_list">
+
+                    <!-- CONTENT -->
+                    <div class="cash-flow_content">
+                        <!-- INCOME -->
                         <div>
-                            <label>
-                                <input type="checkbox" id="cashFlow_checkBox_income" class="checkbox checkbox_green"
-                                    value="income" checked>
-                            </label>
-                            <p class="p-green">Income</p>
+                            <div>
+                                <div class="div-title">
+                                    <p class="p_title">Income</p>
+                                </div>
+                            </div>
+
+                            <div class="div-content" id="cashFlow_list_income">
+                                <!-- ISI LIST INCOME -->
+                            </div>
                         </div>
 
+                        <!-- EXPENSE -->
                         <div>
-                            <label>
-                                <input type="checkbox" id="cashFlow_checkBox_expense" class="checkbox checkbox_red"
-                                    value="expense" checked>
-                            </label>
-                            <p class="p-red">Expense</p>
-                        </div>
-                        <div>
-                            <label>
-                                <input type="checkbox" id="cashFlow_checkBox_balance" class="checkbox checkbox_blue"
-                                    value="balance" checked>
-                            </label>
-                            <p class="p-blue">Balance</p>
+                            <div>
+                                <div class="div-title">
+                                    <p class="p_title">Expense</p>
+                                </div>
+
+                                <div class="div-select">
+                                    <select class="select" id="cashFlow_list_select">
+                                        <option value="all">All</option>
+                                        <option value="expense">Expense</option>
+                                        <option value="invest">Invest</option>
+                                        <option value="interest">Interest</option>
+                                        <option value="saving">Saving</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="div-content" id="cashFlow_list_expense">
+
+                            </div>
+
                         </div>
                     </div>
 
-                    <div class="div-list">
+                </div>
+            </div>
+
+            <div class="cash-flow-body">
+                <!-- FILTER -->
+                <div class="filter-menu">
+                    <select id="cashFlow-filter">
+                        <option value="month">Month</option>
+                        <option value="year">Year</option>
+                        <option value="else">Else</option>
+                    </select>
+
+                    <!-- OPSI ELSE -->
+                    <div class="div_option-else">
+                        <select id="cashFlow-else">
+                            <option value="month">Month</option>
+                            <option value="year">Year</option>
+                        </select>
                         <div>
-                            <p>Income:</p>
-                            <p id="cashFlow_income_percent">0%</p>
+                            <input id="cashFlow-input-start" type="number" placeholder="Month start">
+                            <input id="cashFlow-input-end" placeholder="Month end">
+                            <button id="cashFlow-input-btn">Submit</button>
                         </div>
-                        <div>
-                            <p>Expense:</p>
-                            <p id="cashFlow_expense_percent">0%</p>
+                    </div>
+                </div>
+
+                <!-- CANVAS -->
+                <div class="canvas-line-bar">
+                    <canvas id="cashFlow-canvas-line"></canvas>
+                </div>
+
+                <!-- CONTROL -->
+                <div>
+                    <!-- CHECKBOX -->
+                    <div>
+                        <div> <!-- HIDE -->
+                            <p class="half-opacity">Show</p>
+                            <div>
+                                <label>
+                                    <input data-control="cashFlow" data-category="income" data-type="hidden"
+                                        class="checkbox_green" type="checkbox" checked> Income
+                                </label>
+
+                                <label>
+                                    <input data-control="cashFlow" data-category="expense" data-type="hidden"
+                                        class="checkbox_red" type="checkbox" checked> Expense
+                                </label>
+
+                                <label>
+                                    <input data-control="cashFlow" data-category="balance" data-type="hidden"
+                                        class="checkbox_blue" type="checkbox" checked> Balance
+                                </label>
+                            </div>
                         </div>
-                        <div>
-                            <p>Balance:</p>
-                            <p id="cashFlow_balance_percent">0%</p>
+
+                        <div> <!-- FILL -->
+                            <p class="half-opacity">Fill</p>
+                            <div>
+                                <label>
+                                    <input data-control="cashFlow" data-category="income" data-type="fill"
+                                        class="checkbox_green" type="checkbox"> Income
+                                </label>
+
+                                <label>
+                                    <input data-control="cashFlow" data-category="expense" data-type="fill"
+                                        class="checkbox_red" type="checkbox"> Expense
+                                </label>
+
+                                <label>
+                                    <input data-control="cashFlow" data-category="balance" data-type="fill"
+                                        class="checkbox_blue" type="checkbox"> Balance
+                                </label>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- TYPE -->
+                    <div>
+                        <select id="cashFlow-select-type">
+                            <option value="line">Line</option>
+                            <option value="bar">Bar</option>
+                        </select>
                     </div>
                 </div>
             </div>
-            <!-- CHART PIE END -->
 
-            <!-- LIST -->
-            <div class="cash-flow_list">
-
-                <!-- CONTENT -->
-                <div class="cash-flow_content">
-                    <!-- INCOME -->
-                    <div>
-                        <div>
-                            <div class="div-title">
-                                <p class="p_title">Income</p>
-                            </div>
-                        </div>
-
-                        <div class="div-content" id="cashFlow_list_income">
-                            <!-- ISI LIST INCOME -->
-                        </div>
-                    </div>
-
-                    <!-- EXPENSE -->
-                    <div>
-                        <div>
-                            <div class="div-title">
-                                <p class="p_title">Expense</p>
-                            </div>
-
-                            <div class="div-select">
-                                <select class="select" id="cashFlow_list_select">
-                                    <option value="all">All</option>
-                                    <option value="expense">Expense</option>
-                                    <option value="invest">Invest</option>
-                                    <option value="interest">Interest</option>
-                                    <option value="saving">Saving</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="div-content" id="cashFlow_list_expense">
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
         </div>
         <!-- CASH FLOW END -->
 
     </div>
-
-
 
     <script src="/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

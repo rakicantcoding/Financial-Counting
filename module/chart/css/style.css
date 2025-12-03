@@ -2,7 +2,7 @@
 
 /* background-color: rgb(30, 30, 30); */
 
-.cash-flow {
+.cash-flow-head {
     display: flex;
     flex-direction: row;
     background-color: rgb(30, 30, 30);
@@ -186,12 +186,17 @@
     font-style: italic;
 }
 
+
+.canvas-line-bar {
+    width: 100%;
+}
+
 /* CASH FLOW END */
 
 @media (max-width: 768px) {
 
     /* CASH FLOW */
-    .cash-flow {
+    .cash-flow-head {
         flex-direction: column;
         gap: 25px;
     }
