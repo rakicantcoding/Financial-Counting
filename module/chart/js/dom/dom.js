@@ -2,7 +2,7 @@ export const element = {
     // CASH FLOW
 
     // = DONUT CHART
-    cashFlowCanvasDonut: document.getElementById("cashFlow-canvas-donut"), //Canvas donut
+    cashFlow_canvas_donut: document.getElementById("cashFlow-canvas-donut"), //Canvas donut
 
     cashFlow_checkBox_income: document.getElementById("cashFlow_checkBox_income"), //Checkbox
     cashFlow_checkBox_expense: document.getElementById("cashFlow_checkBox_expense"), //Checkbox
@@ -29,10 +29,10 @@ export const element = {
     cashFlow_input_btn: document.getElementById("cashFlow-input-btn"), //Input btn else
 
     // == CANVAS LINE-BAR
-    cashFlowCanvasLine: document.getElementById("cashFlow-canvas-line"), //Canvas line, bar
+    cashFlow_canvas_line: document.getElementById("cashFlow-canvas-line"), //Canvas line, bar
 
     // == CONTROL
-    cashFlowSelectType: document.getElementById("cashFlow-select-type"), //Select type Line, Bar
+    cashFlow_select_type: document.getElementById("cashFlow-select-type"), //Select type Line, Bar
 
     // CASH FLOW END
 }

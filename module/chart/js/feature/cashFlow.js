@@ -1,12 +1,12 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
 import { getChart } from "../utility/chart.js";
-import { chartControl } from "./toolsControl.js";
+import { chartControl } from "../utility/toolsControl.js";
 
 const summary = data.summary;
 
 function donut() {
-    let ctx = element.cashFlowCanvasDonut;
+    let ctx = element.cashFlow_canvas_donut;
 
     let chart = getChart(ctx, "doughnut")
 
@@ -238,9 +238,9 @@ function donut() {
 }
 
 function line() {
-    let ctx = element.cashFlowCanvasLine;
+    let ctx = element.cashFlow_canvas_line;
 
-    let chart = getChart(ctx, element.cashFlowSelectType.value);
+    let chart = getChart(ctx, element.cashFlow_select_type.value);
 
     chart.data = {
         labels: [],
@@ -282,20 +282,6 @@ function line() {
         })
     }
 
-    chart.options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                display: false
-            },
-        },
-        scales: {
-                x: {
-                    beginAtZero: true
-                }
-            }
-    }
-
     chart.update()
 
 
@@ -305,6 +291,46 @@ function line() {
             chartControl(e.dataset.category, chart, e, e.dataset.type)
             console.log(chart.data)
         })
+    })
+
+    element.cashFlow_select_type.addEventListener("change", () => {
+        let data = chart.data
+
+        const mappingColor = {
+            line: {
+                income: {
+                    backgroundColor: `rgba(26, 139, 87, 0.2)`
+                },
+                expense: {
+                    backgroundColor: ` rgba(172, 57, 43, 0.2)`
+                },
+                balance: {
+                    backgroundColor: `rgba(27, 111, 214, 0.2)`
+                }
+            },
+            bar: {
+                income: {
+                    backgroundColor: `rgba(26, 139, 87, 0.5)`
+                },
+                expense: {
+                    backgroundColor: ` rgba(172, 57, 43, 0.5)`
+                },
+                balance: {
+                    backgroundColor: `rgba(27, 111, 214, 0.5)`
+                }
+            }
+        }
+
+        data.datasets.forEach(e => {
+            e.backgroundColor = mappingColor[element.cashFlow_select_type.value][e.label].backgroundColor
+        })
+
+        chart.destroy()
+
+        chart = getChart(ctx, element.cashFlow_select_type.value)
+        chart.data = data
+        
+        chart.update()
     })
 }
 
