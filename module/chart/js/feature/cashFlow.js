@@ -286,10 +286,9 @@ function line() {
 
 
 
-    document.querySelectorAll(`[data-control="cashFlow"]`).forEach(e => {
+    document.querySelectorAll(`input[data-control="cashFlow"]`).forEach(e => {
         e.addEventListener("change", () => {
             chartControl(e.dataset.category, chart, e, e.dataset.type)
-            console.log(chart.data)
         })
     })
 
@@ -329,8 +328,23 @@ function line() {
 
         chart = getChart(ctx, element.cashFlow_select_type.value)
         chart.data = data
-        
+
         chart.update()
+
+
+
+        // TAMBAH CLASS OPACITY KALAU BAR
+        if (element.cashFlow_select_type.value === "bar") {
+            document.querySelectorAll('label[data-control="cashFlow"][data-type="fill"]').forEach(e => {
+                e.classList.add("checkBox-off")
+            })
+
+        } else {
+            document.querySelectorAll('label[data-control="cashFlow"][data-type="fill"]').forEach(e => {
+                e.classList.remove("checkBox-off")
+            })
+        }
+
     })
 }
 

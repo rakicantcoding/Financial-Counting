@@ -2,35 +2,40 @@
 
 /* background-color: rgb(30, 30, 30); */
 
+.cash-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .cash-flow-head {
     display: flex;
     flex-direction: row;
     background-color: rgb(30, 30, 30);
     min-height: 150px;
-    padding: 5px;
-    gap: 40px;
+    padding: 10px 15px;
+    gap: 15px;
 }
 
 .cash-flow_canvas {
     display: flex;
     flex-direction: row;
     width: 30%;
-    gap: 10px;
+    gap: 15px;
     height: 166.8px;
+    align-items: center;
 }
 
 .cash-flow_canvas>.canvas {
     width: 30%;
     display: flex;
-    justify-content: center;
 }
 
 .cash-flow_canvas>.list {
     width: 70%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 10px;
+    gap: 30px;
 }
 
 .cash-flow_canvas>.list>.div-checkbox {
@@ -76,8 +81,8 @@
 .cash-flow_canvas>.list>.div-list {
     display: flex;
     flex-direction: column;
-    height: 100%;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .cash-flow_canvas>.list>.div-list>div {
@@ -85,7 +90,6 @@
     flex-direction: row;
     justify-content: space-between;
 }
-
 
 
 .cash-flow_list {
@@ -187,8 +191,64 @@
 }
 
 
+
+.cash-flow-body {
+    background-color: rgb(30, 30, 30);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-menu>div {
+    width: 100%;
+}
+
+.filter-menu>.filter {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.filter-menu>.filter>.div_option-else {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+}
+
+.filter-menu>.filter>.div_option-else>.div-select {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter-menu>.filter>.div_option-else>.div-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-menu>.filter>.div_option-else>.div-input>div {
+    display: flex;
+    flex-direction: row;
+}
+
+.padding-wide {
+    padding: 3px 8px;
+}
+
 .canvas-line-bar {
     width: 100%;
+}
+
+.checkBox-off {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 /* CASH FLOW END */

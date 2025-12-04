@@ -231,12 +231,16 @@ body {
 
 .input {
     background-color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 4px 8px;
 }
 
 .btn {
     color: rgb(241, 241, 241);
     background-color: rgb(39, 189, 39);
     transition: 0.3s ease;
+    width: 100%;
+    padding: 6px 0px;
 }
 
 .btn:hover {
