@@ -181,6 +181,7 @@
                 <div class="filter-menu">
                     <!-- TYPE -->
                     <div>
+                        <p>Type Chart</p>
                         <select id="cashFlow-select-type" class="select padding-wide">
                             <option value="line">Line</option>
                             <option value="bar">Bar</option>
@@ -189,17 +190,19 @@
 
                     <div class="filter">
                         <div>
+                            <p>Time Period</p>
                             <select id="cashFlow-filter" class="select padding-wide">
-                                <option value="month">Month</option>
-                                <option value="year">Year</option>
-                                <option value="else">Else</option>
+                                <option value="month">Monthly</option>
+                                <option value="year">Yearly</option>
+                                <option value="custom">Custom</option>
                             </select>
                         </div>
 
                         <!-- OPSI ELSE -->
                         <div class="div_option-else">
                             <div class="div-select">
-                                <select id="cashFlow-else" class="select padding-wide">
+                                <p>Range Type</p>
+                                <select id="cashFlow-else_type" class="select padding-wide">
                                     <option value="month">Month</option>
                                     <option value="year">Year</option>
                                 </select>
@@ -207,9 +210,10 @@
 
                             <div class="div-input">
                                 <div>
-                                    <input id="cashFlow-input-start" class="input" type="number"
-                                        placeholder="Month start">
-                                    <input id="cashFlow-input-end" class="input" placeholder="Month end">
+                                    <input id="cashFlow-input-start" class="input" type="text" inputmode="numeric"
+                                        placeholder="Period Start">
+                                    <input id="cashFlow-input-end" class="input" type="text" inputmode="numeric"
+                                        placeholder="Period End (Empty: Last Period)">
                                 </div>
 
                                 <button id="cashFlow-input-btn" class="btn">Submit</button>
@@ -224,9 +228,9 @@
                 </div>
 
                 <!-- CHECKBOX -->
-                <div>
+                <div class="checkbox-menu">
                     <div> <!-- HIDE -->
-                        <p class="half-opacity">Show</p>
+                        <p>Show</p>
                         <div>
                             <label>
                                 <input data-control="cashFlow" data-category="income" data-type="hidden"
@@ -246,7 +250,7 @@
                     </div>
 
                     <div> <!-- FILL -->
-                        <p class="half-opacity">Fill</p>
+                        <p>Fill</p>
                         <div>
                             <label data-control="cashFlow" data-type="fill">
                                 <input data-control="cashFlow" data-category="income" data-type="fill"

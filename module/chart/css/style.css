@@ -235,7 +235,32 @@
 
 .filter-menu>.filter>.div_option-else>.div-input>div {
     display: flex;
+    flex-direction: column;
+}
+
+.checkbox-menu {
+    display: flex;
     flex-direction: row;
+    gap: 5%;
+}
+
+.checkbox-menu > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.checkbox-menu > div > div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.checkbox-menu > div > div > label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .padding-wide {

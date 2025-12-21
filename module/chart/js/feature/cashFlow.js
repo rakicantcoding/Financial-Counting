@@ -1,7 +1,8 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
-import { getChart } from "../utility/chart.js";
+import { getChart, getData, getLabels } from "../utility/chart.js";
 import { chartControl } from "../utility/toolsControl.js";
+import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
 
 const summary = data.summary;
 
@@ -248,86 +249,81 @@ function line() {
     }
 
     const mappingColor = {
-        income: {
-            borderColor: `rgba(26, 139, 87, 1)`,
-            backgroundColor: `rgba(26, 139, 87, 0.2)`
+        line: {
+            income: {
+                borderColor: `rgba(26, 139, 87, 1)`,
+                backgroundColor: `rgba(26, 139, 87, 0.2)`
+            },
+            expense: {
+                borderColor: `rgba(172, 57, 43, 1)`,
+                backgroundColor: `rgba(172, 57, 43, 0.2)`
+            },
+            balance: {
+                borderColor: `rgba(27, 111, 214, 1)`,
+                backgroundColor: `rgba(27, 111, 214, 0.2)`
+            }
         },
-        expense: {
-            borderColor: `rgba(172, 57, 43, 1)`,
-            backgroundColor: ` rgba(172, 57, 43, 0.2)`
-        },
-        balance: {
-            borderColor: `rgba(27, 111, 214, 1)`,
-            backgroundColor: `rgba(27, 111, 214, 0.2)`
+        bar: {
+            income: {
+                backgroundColor: `rgba(26, 139, 87, 0.5)`
+            },
+            expense: {
+                backgroundColor: ` rgba(172, 57, 43, 0.5)`
+            },
+            balance: {
+                backgroundColor: `rgba(27, 111, 214, 0.5)`
+            }
         }
     }
 
-    // CHART.DATA
-    for (let month = 1; month <= data.summary.income.length; month++) {
-        let tahun = month > 12 ? parseInt(month / 12) : 0;
-        let bulan = month > 12 ? parseFloat(month % 12) : month;
-        let result = tahun ? `${tahun}Y ${bulan}M` : `${bulan}M`;
-        chart.data.labels.push(result)
-    }
+    // CHART.DATA.LABELS
+    chart.data.labels = getLabels(data.summary.income, element.cashFlow_filter.value)
 
+    // CHART.DATA.DATASETS
     for (const key in data.summary) {
-
-        chart.data.datasets.push({
+        let arrayData = getData(data.summary[key], "amount", element.cashFlow_filter.value)
+        let defData = {
             label: key,
-            data: data.summary[key].map(e => e.amount),
             tention: 2,
-            fill: false,
-            backgroundColor: mappingColor[key].backgroundColor,
-            borderColor: mappingColor[key].borderColor
-        })
+            data: arrayData,
+            backgroundColor: mappingColor[element.cashFlow_select_type.value][key].backgroundColor,
+            borderColor: mappingColor[element.cashFlow_select_type.value][key].borderColor
+        }
+        chart.data.datasets.push(defData)
     }
 
     chart.update()
 
+    console.log(chart.data)
 
 
+
+    // CHECKBOX
     document.querySelectorAll(`input[data-control="cashFlow"]`).forEach(e => {
         e.addEventListener("change", () => {
             chartControl(e.dataset.category, chart, e, e.dataset.type)
         })
     })
 
+
+
+    // TYPE
     element.cashFlow_select_type.addEventListener("change", () => {
         let data = chart.data
 
-        const mappingColor = {
-            line: {
-                income: {
-                    backgroundColor: `rgba(26, 139, 87, 0.2)`
-                },
-                expense: {
-                    backgroundColor: ` rgba(172, 57, 43, 0.2)`
-                },
-                balance: {
-                    backgroundColor: `rgba(27, 111, 214, 0.2)`
-                }
-            },
-            bar: {
-                income: {
-                    backgroundColor: `rgba(26, 139, 87, 0.5)`
-                },
-                expense: {
-                    backgroundColor: ` rgba(172, 57, 43, 0.5)`
-                },
-                balance: {
-                    backgroundColor: `rgba(27, 111, 214, 0.5)`
-                }
-            }
-        }
+
 
         data.datasets.forEach(e => {
             e.backgroundColor = mappingColor[element.cashFlow_select_type.value][e.label].backgroundColor
+            e.borderColor = mappingColor[element.cashFlow_select_type.value][e.label].borderColor
         })
 
         chart.destroy()
 
         chart = getChart(ctx, element.cashFlow_select_type.value)
         chart.data = data
+
+        console.log(data)
 
         chart.update()
 
@@ -345,10 +341,88 @@ function line() {
             })
         }
 
+
+
+    })
+
+
+
+    // FILTER
+    element.cashFlow_filter.addEventListener("change", () => {
+        // MONTH / YEAR
+        if (element.cashFlow_filter.value !== "custom") {
+            chart.data.labels = getLabels(data.summary.income, element.cashFlow_filter.value)
+
+            let domFill = document.querySelectorAll('input[data-control="cashFlow"][data-type="fill"]')
+            let domHidden = document.querySelectorAll('input[data-control="cashFlow"][data-type="hidden"]')
+
+            chart.data.datasets = []
+
+            for (const key in data.summary) {
+                let arrayData = getData(data.summary[key], "amount", element.cashFlow_filter.value)
+                let defData = {
+                    label: key,
+                    tention: 2,
+                    data: arrayData,
+                    fill: [...domFill].find(el => el.dataset.category === key).checked,
+                    hidden: ![...domHidden].find(el => el.dataset.category === key).checked,
+                    backgroundColor: mappingColor[element.cashFlow_select_type.value][key].backgroundColor,
+                    borderColor: mappingColor[element.cashFlow_select_type.value][key].borderColor
+                }
+                chart.data.datasets.push(defData)
+            }
+            console.log(chart.data)
+            chart.update()
+        }
+    })
+
+
+    // = FILTER ELSE =
+
+    // INPUT START
+    element.cashFlow_input_start.addEventListener("input", () => inputElseFilter(data.summary.income, "start", element.cashFlow_input_start))
+
+    // INPUT END
+    element.cashFlow_input_end.addEventListener("input", () => inputElseFilter(data.summary.income, "end", element.cashFlow_input_end))
+
+    // RANGE TYPE
+    element.cashFlow_else_type.addEventListener("change", () => {
+        inputElseFilter(data.summary.income, "start", element.cashFlow_input_start)
+        inputElseFilter(data.summary.income, "end", element.cashFlow_input_end)
+    })
+
+    // FILTER ELSE BTN
+    element.cashFlow_input_btn.addEventListener("click", () => {
+        let error = alertingElse(element.cashFlow_input_start, element.cashFlow_input_end, element.cashFlow_filter)
+        if (error) {
+            return alert(error);
+        }
+
+        chart.destroy()
+        chart = getChart(ctx, element.cashFlow_select_type.value)
+
+        let input_start = Number(element.cashFlow_input_start.value);
+        let input_end = Number(element.cashFlow_input_end.value) || " ";
+
+        chart.data.labels = getLabels(data.summary.income, element.cashFlow_else_type.value, input_start, input_end)
+
+        chart.data.dataset = [];
+
+        for (const key in data.summary) {
+            let arrayData = getData(data.summary[key], "amount", element.cashFlow_else_type.value, input_start, input_end)
+            let defData = {
+                label: key,
+                tention: 2,
+                data: arrayData,
+                backgroundColor: mappingColor[element.cashFlow_select_type.value][key].backgroundColor,
+                borderColor: mappingColor[element.cashFlow_select_type.value][key].borderColor
+            }
+            chart.data.datasets.push(defData)
+        }
+
+        chart.update()
     })
 }
 
 donut()
 line()
-
-

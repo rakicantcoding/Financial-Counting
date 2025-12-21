@@ -258,6 +258,10 @@ body {
     background-color: green;
 }
 
+.opacity-half {
+    opacity: 0.5;
+}
+
 @media (max-width: 768px) {
     .nav-title p {
         font-size: medium;
