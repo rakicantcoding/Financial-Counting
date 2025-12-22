@@ -177,29 +177,33 @@
             </div>
 
             <div class="cash-flow-body">
-                <!-- FILTER -->
-                <div class="filter-menu">
-                    <!-- TYPE -->
+                <div class="header">
+                    <!-- HEAD -->
                     <div>
-                        <p>Type Chart</p>
-                        <select id="cashFlow-select-type" class="select padding-wide">
-                            <option value="line">Line</option>
-                            <option value="bar">Bar</option>
-                        </select>
-                    </div>
-
-                    <div class="filter">
-                        <div>
-                            <p>Time Period</p>
-                            <select id="cashFlow-filter" class="select padding-wide">
-                                <option value="month">Monthly</option>
-                                <option value="year">Yearly</option>
-                                <option value="custom">Custom</option>
+                        <!-- TYPE -->
+                        <div class="type">
+                            <p>Type Chart</p>
+                            <select id="cashFlow-select-type" class="select padding-wide">
+                                <option value="line">Line</option>
+                                <option value="bar">Bar</option>
                             </select>
                         </div>
+                        <!-- FILTER -->
+                        <div class="filter">
+                            <div class="time-period">
+                                <p>Time Period</p>
+                                <select id="cashFlow-filter" class="select padding-wide">
+                                    <option value="month">Monthly</option>
+                                    <option value="year">Yearly</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-                        <!-- OPSI ELSE -->
-                        <div class="div_option-else">
+                    <!-- FILTER DIV -->
+                    <div class="filter-div">
+                        <div id="cashFlow-div_option-else" class="div_option-else hide">
                             <div class="div-select">
                                 <p>Range Type</p>
                                 <select id="cashFlow-else_type" class="select padding-wide">
@@ -220,6 +224,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- CANVAS -->

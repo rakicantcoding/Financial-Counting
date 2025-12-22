@@ -200,68 +200,67 @@
     gap: 15px;
 }
 
-.filter-menu {
+/* HEADER CANVAS */
+
+.cash-flow-body>.header {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cash-flow-body>.header>div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     justify-content: space-between;
 }
 
-.filter-menu>div {
-    width: 100%;
-}
-
-.filter-menu>.filter {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    justify-content: flex-end;
-}
-
-.filter-menu>.filter>.div_option-else {
+.cash-flow-body>.header>div>div {
+    gap: 5px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 50%;
 }
 
-.filter-menu>.filter>.div_option-else>.div-select {
+.cash-flow-body>.header>.filter-div {
     display: flex;
     justify-content: flex-end;
+    width: fit-content;
 }
 
-.filter-menu>.filter>.div_option-else>.div-input {
+.cash-flow-body>.header>.filter-div>.div_option-else>.div-select {
+    gap: 5px;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
-.filter-menu>.filter>.div_option-else>.div-input>div {
-    display: flex;
-    flex-direction: column;
+/* HEADER CANVAS END*/
+
+/* CANVAS */
+
+.canvas-line-bar {
+    height: 420px;
 }
+
+/* CANVAS END */
+
+/* CHECKBOX */
 
 .checkbox-menu {
     display: flex;
     flex-direction: row;
-    gap: 5%;
+    gap: 50px;
 }
 
-.checkbox-menu > div {
+.checkbox-menu>div {
+    align-items: center;
+    gap: 5px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 5px;
 }
 
-.checkbox-menu > div > div {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
-
-.checkbox-menu > div > div > label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+/* CHECKBOX END */
 
 .padding-wide {
     padding: 3px 8px;
@@ -281,6 +280,8 @@
 @media (max-width: 768px) {
 
     /* CASH FLOW */
+
+    /* = DONUT */
     .cash-flow-head {
         flex-direction: column;
         gap: 25px;
@@ -337,6 +338,47 @@
         padding: 0px;
     }
 
+    /* = DONUT END */
+
+    /* = LINE BAR */
+
+    /* == FILTER */
+
+    .cash-flow-body>.header {
+        flex-direction: column;
+    }
+
+    .cash-flow-body>.header>.filter-div {
+        display: flex;
+        justify-content: initial;
+        width: 100%;
+    }
+
+    /* == FILTER END */
+
+    /* == CANVAS */
+
+    .canvas-line-bar {
+        height: 260px;
+        padding: 3px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* == CANVAS END */
+
+    /* == CHECKBOX */
+    .checkbox-menu {
+        justify-content: space-between;
+    }
+
+    .checkbox-menu>div>div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* == CHECKBOX END */
+
+    /* - LINE BAR END */
 
     /* CASH FLOW END */
 }

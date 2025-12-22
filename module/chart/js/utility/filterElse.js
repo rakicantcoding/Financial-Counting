@@ -25,7 +25,7 @@ export function alertingElse(input_min, input_max, typePeriod) {
     if (typePeriod.value !== "custom") return "Need Choose 'Custom' on Time Period";
     if (!input_min.value) return "Need Input the Period Start";
     if (input_max.value === "") return null;
-    if (input_min.value >= input_max.value) return "Period Start Cant Higher or Same Than Period End";
+    if (Number(input_min.value) >= Number(input_max.value)) return "Period Start Cant Higher or Same Than Period End";
 
     return null
 }

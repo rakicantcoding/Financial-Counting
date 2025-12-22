@@ -23,6 +23,8 @@ export const element = {
     // == FILTER
     cashFlow_filter: document.getElementById("cashFlow-filter"), //Select filter
 
+    cashFlow_div_option_else: document.getElementById("cashFlow-div_option-else"), //Div else input
+
     cashFlow_else_type: document.getElementById("cashFlow-else_type"), //Select else option filter
     cashFlow_input_start: document.getElementById("cashFlow-input-start"), //Input start else
     cashFlow_input_end: document.getElementById("cashFlow-input-end"), //Input end else

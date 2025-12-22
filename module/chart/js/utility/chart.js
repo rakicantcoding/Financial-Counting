@@ -1,25 +1,43 @@
 export function getChart(ctx, type) {
+    const isMobile = window.innerWidth <= 768;
+
     return new Chart(ctx, {
-        type: type,
+        type,
         data: {
             labels: [],
             datasets: []
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
+
             plugins: {
                 legend: {
                     display: false
                 },
+                tooltip: {
+                    enabled: true // mobile masih bisa tap
+                }
             },
+
             scales: {
                 x: {
-                    beginAtZero: true
+                    display: !isMobile, // label bawah
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    display: !isMobile, // nominal kiri
+                    grid: {
+                        drawBorder: false
+                    }
                 }
             }
         }
-    })
+    });
 }
+
 
 function monthToLabel(month) {
     if (month <= 12) return `${month}M`;
@@ -110,12 +128,11 @@ export function getData(array, key, period, filter_start, filter_end) {
             let sisa = array.length % 12;
 
             for (let y = 1; y <= year; y++) {
-                result.push(array.find(e=> e.month === y * 12)[key])
+                result.push(array.find(e => e.month === y * 12)[key])
             }
 
             if (sisa) result.push(array.at(-1)[key])
         }
-        console.log(result)
     }
 
     // FILTERING

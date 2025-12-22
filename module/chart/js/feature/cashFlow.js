@@ -351,6 +351,7 @@ function line() {
     element.cashFlow_filter.addEventListener("change", () => {
         // MONTH / YEAR
         if (element.cashFlow_filter.value !== "custom") {
+            element.cashFlow_div_option_else.classList.add("hide")
             chart.data.labels = getLabels(data.summary.income, element.cashFlow_filter.value)
 
             let domFill = document.querySelectorAll('input[data-control="cashFlow"][data-type="fill"]')
@@ -371,8 +372,12 @@ function line() {
                 }
                 chart.data.datasets.push(defData)
             }
-            console.log(chart.data)
             chart.update()
+        }
+
+        if (element.cashFlow_filter.value === "custom") {
+            [element.cashFlow_input_start, element.cashFlow_input_end].forEach(e=> e.value = "")
+            element.cashFlow_div_option_else.classList.remove("hide")
         }
     })
 
