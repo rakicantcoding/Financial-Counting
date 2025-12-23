@@ -286,6 +286,216 @@
         </div>
         <!-- CASH FLOW END -->
 
+        <!-- EXPENSE OVERVIEW -->
+        <div class="expense-overview">
+
+            <div class="div-title">
+                <p>Expense Overview</p>
+            </div>
+
+            <div>
+                <div class="cash-flow-head">
+                    <!-- CHART PIE -->
+                    <div class="cash-flow_canvas">
+                        <div class="canvas">
+                            <canvas id="cashFlow-canvas-donut"></canvas>
+                        </div>
+
+                        <div class="list">
+                            <div class="div-checkbox">
+                                <div>
+                                    <label>
+                                        <input type="checkbox" id="cashFlow_checkBox_income"
+                                            class="checkbox checkbox_green" value="income" checked>
+                                    </label>
+                                    <p class="p-green">Income</p>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        <input type="checkbox" id="cashFlow_checkBox_expense"
+                                            class="checkbox checkbox_red" value="expense" checked>
+                                    </label>
+                                    <p class="p-red">Expense</p>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" id="cashFlow_checkBox_balance"
+                                            class="checkbox checkbox_blue" value="balance" checked>
+                                    </label>
+                                    <p class="p-blue">Balance</p>
+                                </div>
+                            </div>
+
+                            <div class="div-list">
+                                <div>
+                                    <p>Income:</p>
+                                    <p id="cashFlow_income_percent">0%</p>
+                                </div>
+                                <div>
+                                    <p>Expense:</p>
+                                    <p id="cashFlow_expense_percent">0%</p>
+                                </div>
+                                <div>
+                                    <p>Balance:</p>
+                                    <p id="cashFlow_balance_percent">0%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CHART PIE END -->
+
+                    <!-- LIST -->
+                    <div class="cash-flow_list">
+
+                        <!-- CONTENT -->
+                        <div class="cash-flow_content">
+                            <!-- INCOME -->
+                            <div>
+                                <div>
+                                    <div class="div-title">
+                                        <p class="p_title">Income</p>
+                                    </div>
+                                </div>
+
+                                <div class="div-content" id="cashFlow_list_income">
+                                    <!-- ISI LIST INCOME -->
+                                </div>
+                            </div>
+
+                            <!-- EXPENSE -->
+                            <div>
+                                <div>
+                                    <div class="div-title">
+                                        <p class="p_title">Expense</p>
+                                    </div>
+
+                                    <div class="div-select">
+                                        <select class="select padding-wide" id="cashFlow_list_select">
+                                            <option value="all">All</option>
+                                            <option value="expense">Expense</option>
+                                            <option value="invest">Invest</option>
+                                            <option value="interest">Interest</option>
+                                            <option value="saving">Saving</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="div-content" id="cashFlow_list_expense">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="cash-flow-body">
+                    <div class="header">
+                        <!-- HEAD -->
+                        <div>
+                            <!-- TYPE -->
+                            <div class="type">
+                                <p>Type Chart</p>
+                                <select id="cashFlow-select-type" class="select padding-wide">
+                                    <option value="line">Line</option>
+                                    <option value="bar">Bar</option>
+                                </select>
+                            </div>
+                            <!-- FILTER -->
+                            <div class="filter">
+                                <div class="time-period">
+                                    <p>Time Period</p>
+                                    <select id="cashFlow-filter" class="select padding-wide">
+                                        <option value="month">Monthly</option>
+                                        <option value="year">Yearly</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FILTER DIV -->
+                        <div class="filter-div">
+                            <div id="cashFlow-div_option-else" class="div_option-else hide">
+                                <div class="div-select">
+                                    <p>Range Type</p>
+                                    <select id="cashFlow-else_type" class="select padding-wide">
+                                        <option value="month">Month</option>
+                                        <option value="year">Year</option>
+                                    </select>
+                                </div>
+
+                                <div class="div-input">
+                                    <div>
+                                        <input id="cashFlow-input-start" class="input" type="text" inputmode="numeric"
+                                            placeholder="Period Start">
+                                        <input id="cashFlow-input-end" class="input" type="text" inputmode="numeric"
+                                            placeholder="Period End (Empty: Last Period)">
+                                    </div>
+
+                                    <button id="cashFlow-input-btn" class="btn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CANVAS -->
+                    <div class="canvas-line-bar">
+                        <canvas id="cashFlow-canvas-line"></canvas>
+                    </div>
+
+                    <!-- CHECKBOX -->
+                    <div class="checkbox-menu">
+                        <div> <!-- HIDE -->
+                            <p>Show</p>
+                            <div>
+                                <label>
+                                    <input data-control="cashFlow" data-category="income" data-type="hidden"
+                                        class="checkbox_green" type="checkbox" checked> Income
+                                </label>
+
+                                <label>
+                                    <input data-control="cashFlow" data-category="expense" data-type="hidden"
+                                        class="checkbox_red" type="checkbox" checked> Expense
+                                </label>
+
+                                <label>
+                                    <input data-control="cashFlow" data-category="balance" data-type="hidden"
+                                        class="checkbox_blue" type="checkbox" checked> Balance
+                                </label>
+                            </div>
+                        </div>
+
+                        <div> <!-- FILL -->
+                            <p>Fill</p>
+                            <div>
+                                <label data-control="cashFlow" data-type="fill">
+                                    <input data-control="cashFlow" data-category="income" data-type="fill"
+                                        class="checkbox_green" type="checkbox"> Income
+                                </label>
+
+                                <label data-control="cashFlow" data-type="fill">
+                                    <input data-control="cashFlow" data-category="expense" data-type="fill"
+                                        class="checkbox_red" type="checkbox"> Expense
+                                </label>
+
+                                <label data-control="cashFlow" data-type="fill">
+                                    <input data-control="cashFlow" data-category="balance" data-type="fill"
+                                        class="checkbox_blue" type="checkbox"> Balance
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- EXPENSE OVERVIEW END -->
+
     </div>
 
     <script src="/js/main.js"></script>

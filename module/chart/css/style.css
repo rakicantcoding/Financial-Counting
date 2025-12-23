@@ -1,3 +1,9 @@
+.main-body {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
 .main-body>div {
     display: flex;
     flex-direction: column;
@@ -7,13 +13,15 @@
     display: flex;
     background-color: rgb(30, 30, 30);
     align-items: center;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 .main-body>div>.div-title>p {
     width: fit-content;
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
     padding: 3px 7px;
+    font-weight: 600;
+    font-size: larger;
 }
 
 
@@ -24,13 +32,13 @@
 .cash-flow>div {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    background-color: rgb(30, 30, 30);
 }
 
 .cash-flow-head {
     display: flex;
     flex-direction: row;
-    background-color: rgb(30, 30, 30);
+
     min-height: 150px;
     padding: 10px 15px;
     gap: 15px;
@@ -212,7 +220,6 @@
 
 
 .cash-flow-body {
-    background-color: rgb(30, 30, 30);
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -297,6 +304,10 @@
 /* CASH FLOW END */
 
 @media (max-width: 768px) {
+
+    .main-body>div>.div-title>p {
+        font-size: large;
+    }
 
     .main-body>div>.div-title {
         padding-bottom: 10px;
