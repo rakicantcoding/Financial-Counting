@@ -1,8 +1,27 @@
+.main-body>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-body>div>.div-title {
+    display: flex;
+    background-color: rgb(30, 30, 30);
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.main-body>div>.div-title>p {
+    width: fit-content;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 3px 7px;
+}
+
+
 /* CASH FLOW */
 
 /* background-color: rgb(30, 30, 30); */
 
-.cash-flow {
+.cash-flow>div {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -279,12 +298,17 @@
 
 @media (max-width: 768px) {
 
+    .main-body>div>.div-title {
+        padding-bottom: 10px;
+    }
+
     /* CASH FLOW */
 
     /* = DONUT */
     .cash-flow-head {
         flex-direction: column;
         gap: 25px;
+        padding: 0px;
     }
 
     .cash-flow_canvas {
@@ -344,6 +368,10 @@
 
     /* == FILTER */
 
+    .cash-flow-body {
+        padding: 10px;
+    }
+
     .cash-flow-body>.header {
         flex-direction: column;
     }
@@ -362,6 +390,7 @@
         height: 260px;
         padding: 3px;
         background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     /* == CANVAS END */
