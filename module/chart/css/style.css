@@ -1,22 +1,38 @@
+/* MAIN BODY END */
 .main-body {
     display: flex;
     flex-direction: column;
     gap: 60px;
 }
 
-.main-body>div {
+/* MAIN BODY END */
+
+
+/* BODY CONTENT */
+.body-content {
     display: flex;
     flex-direction: column;
-}
-
-.main-body>div>.div-title {
-    display: flex;
     background-color: rgb(30, 30, 30);
-    align-items: center;
-    padding-bottom: 20px;
 }
 
-.main-body>div>.div-title>p {
+.body-content>div {
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* BODY CONTENT END */
+
+
+/* = CONTENT-TITLE = */
+.content-title {
+    display: flex;
+
+    align-items: center;
+    padding: 5px 0px;
+}
+
+.content-title>p {
     width: fit-content;
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
     padding: 3px 7px;
@@ -24,139 +40,111 @@
     font-size: larger;
 }
 
+/* = CONTENT TITLE END = */
 
-/* CASH FLOW */
 
-/* background-color: rgb(30, 30, 30); */
 
-.cash-flow>div {
+/* = CONTENT CONTAINER = */
+.content-container {
     display: flex;
     flex-direction: column;
-    background-color: rgb(30, 30, 30);
 }
 
-.cash-flow-head {
+
+
+/* == CONTENT HEAD == */
+.content-container>.content-head {
     display: flex;
     flex-direction: row;
-
-    min-height: 150px;
-    padding: 10px 15px;
     gap: 15px;
+    padding: 10px 15px;
 }
 
-.cash-flow_canvas {
+
+/* DIV DONUT */
+.content-head>.div-donut {
     display: flex;
     flex-direction: row;
     width: 30%;
     gap: 15px;
-    height: 166.8px;
+    height: auto;
     align-items: center;
 }
 
-.cash-flow_canvas>.canvas {
+.div-donut>.div-canvasD {
     width: 30%;
     display: flex;
 }
 
-.cash-flow_canvas>.list {
+.div-donut>.donut-overview {
     width: 70%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
-.cash-flow_canvas>.list>.div-checkbox {
+.donut-overview>.donut-checkbox {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 }
 
-.cash-flow_canvas>.list>.div-checkbox>div {
+.donut-checkbox>div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 5px;
 }
 
-.checkbox {
-    transform: scale(1.4);
-}
-
-.checkbox_green {
-    accent-color: rgba(26, 139, 87, 1);
-}
-
-.checkbox_red {
-    accent-color: rgba(172, 57, 43, 1);
-}
-
-.checkbox_blue {
-    accent-color: rgba(27, 111, 214, 1);
-}
-
-.p-green:hover {
-    color: rgba(26, 139, 87, 0.8);
-}
-
-.p-red:hover {
-    color: rgba(172, 57, 43, 0.8);
-}
-
-.p-blue:hover {
-    color: rgba(27, 111, 214, 0.8);
-}
-
-.cash-flow_canvas>.list>.div-list {
+.donut-overview>.donut-percent {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
 }
 
-.cash-flow_canvas>.list>.div-list>div {
+.donut-percent>div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-
-.cash-flow_list {
+/* OVERVIEW LIST */
+.content-head>.overview-list {
     width: 70%;
-    display: flex;
-    flex-direction: column;
-}
-
-.cash-flow_content {
-    height: 100%;
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
 
-.cash-flow_content>div {
+.overview-list>div {
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-.cash-flow_content>div>div {
+.overview-list>div>.overview-head {
     display: flex;
     flex-direction: row;
-}
-
-.cash-flow_content>div>div>.div-title {
-    width: 100%;
-    display: flex;
     justify-content: center;
-    padding: 3px;
 }
 
-.cash-flow_content>div>div>.div-select {
+
+.overview-head>.overview-title {
+    width: 100%;
+    text-align: center;
+}
+
+.overview-head>.overview-head-select {
+    width: fit-content;
+    margin-right: 12px;
     display: flex;
     justify-content: flex-end;
-    padding-right: 15px;
 }
 
-.cash-flow_content>div .div-content {
+.overview-list>div>.overview-list-content {
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -168,15 +156,16 @@
     position: relative;
 }
 
-.div-content::-webkit-scrollbar {
+.overview-list-content::-webkit-scrollbar {
     width: 8px;
 }
 
-.div-content::-webkit-scrollbar-thumb {
+.overview-list-content::-webkit-scrollbar-thumb {
     background-color: #bbb;
     border-radius: 4px;
 }
 
+/* CONTENT LIST */
 .key-container {
     display: flex;
     flex-direction: column;
@@ -217,83 +206,121 @@
     font-style: italic;
 }
 
+/* CONTENT LIST END */
+
+/* == CONTENT HEAD END == */
 
 
-.cash-flow-body {
+
+/* === === === */
+
+
+
+/* == CONTENT BODY == */
+.content-container>.content-body {
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* HEADER CANVAS */
-
-.cash-flow-body>.header {
+.content-body>.content-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
 }
 
-.cash-flow-body>.header>div {
+.content-header>.content-header-select {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
 }
 
-.cash-flow-body>.header>div>div {
+.content-header>div>.content-header-title {
     gap: 5px;
     display: flex;
     flex-direction: column;
 }
 
-.cash-flow-body>.header>.filter-div {
-    display: flex;
-    justify-content: flex-end;
-    width: fit-content;
-}
-
-.cash-flow-body>.header>.filter-div>.div_option-else>.div-select {
-    gap: 5px;
+.content-header>.content-header-filter {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+}
+
+.content-header>.content-header-filter>.content-header-title {
     align-items: flex-end;
 }
 
-/* HEADER CANVAS END*/
-
-/* CANVAS */
-
-.canvas-line-bar {
-    height: 420px;
+.content-header-filter>.content-header-title>select {
+    width: fit-content;
 }
 
-/* CANVAS END */
+/* CANVAS */
+.content-body>.div-canvasL {
+    min-height: 420px;
+}
 
-/* CHECKBOX */
+canvas {
+    height: 100%;
+    width: 100%;
+}
 
-.checkbox-menu {
+.content-body>.content-checkbox {
     display: flex;
     flex-direction: row;
     gap: 50px;
 }
 
-.checkbox-menu>div {
+.content-checkbox>div {
     align-items: center;
     gap: 5px;
     display: flex;
     flex-direction: column;
 }
 
-/* CHECKBOX END */
+/* == CONTENT BODY END == */
+
+/* = CONTENT CONTAINER END = */
+
+
+
+/* CASH FLOW END */
+
+
+/* ATTECHMENT */
+.checkbox {
+    transform: scale(1.4);
+}
+
+.checkbox_green {
+    accent-color: rgba(26, 139, 87, 1);
+}
+
+.checkbox_red {
+    accent-color: rgba(172, 57, 43, 1);
+}
+
+.checkbox_blue {
+    accent-color: rgba(27, 111, 214, 1);
+}
+
+.p-green:hover {
+    color: rgba(26, 139, 87, 0.8);
+}
+
+.p-red:hover {
+    color: rgba(172, 57, 43, 0.8);
+}
+
+.p-blue:hover {
+    color: rgba(27, 111, 214, 0.8);
+}
 
 .padding-wide {
     padding: 3px 8px;
-}
-
-.canvas-line-bar {
-    width: 100%;
 }
 
 .checkBox-off {
@@ -301,124 +328,108 @@
     pointer-events: none;
 }
 
-/* CASH FLOW END */
+/* ATTACHMENT END */
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
-
-    .main-body>div>.div-title>p {
-        font-size: large;
+    .body-content {
+        gap: 15px;
     }
 
-    .main-body>div>.div-title {
-        padding-bottom: 10px;
+    /* PEMISAH HEAD DAN BODY CONTENT */
+    .body-content>.content-container {
+        gap: 60px;
+        padding: 5px;
     }
 
-    /* CASH FLOW */
-
-    /* = DONUT */
-    .cash-flow-head {
+    .content-container>.content-head {
         flex-direction: column;
-        gap: 25px;
+        height: auto;
+        gap: 40px;
         padding: 0px;
     }
 
-    .cash-flow_canvas {
-        width: 100%;
-        height: 100%;
+    .content-head>.div-donut {
         flex-direction: column;
-        padding: 10px;
-        gap: 20px;
+        width: 100%;
+        gap: 30px;
+        height: auto;
     }
 
-    .cash-flow_canvas>.canvas {
+    .div-donut>.div-canvasD {
         width: 50%;
-        margin: auto;
     }
 
-    .cash-flow_canvas>.list {
+    .div-donut>.donut-overview {
         width: 100%;
+    }
+
+    .content-head>.overview-list {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .overview-list>div>.overview-list-content {
         padding: 0px;
     }
 
-
-
-    .cash-flow_list {
-        width: 100%;
-        height: 100%;
+    .overview-head>.overview-head-select {
+        margin-right: 0px;
     }
 
-    .cash-flow_content {
-        flex-direction: column;
-        gap: 20px;
+    .overview-list-content::-webkit-scrollbar {
+        width: 4px;
     }
 
-    .cash-flow_content>div {
-        padding: 10px;
+    .overview-list-content::-webkit-scrollbar-thumb {
+        background-color: #bbb;
+        border-radius: 2px;
     }
 
-    .cash-flow_content>div>div {
-        padding-bottom: 15px;
-    }
-
-    .cash-flow_content>div>div>.div-title {
-        display: flex;
+    .overview-list>div>.overview-head {
         justify-content: flex-start;
     }
 
-    .cash-flow_content>div>div>.div-select {
+    .overview-head>.overview-title {
+        text-align: start;
+    }
+
+    .content-container>.content-body {
         padding: 0px;
     }
 
-    .cash-flow_content>div .div-content {
-        padding: 0px;
-    }
-
-    /* = DONUT END */
-
-    /* = LINE BAR */
-
-    /* == FILTER */
-
-    .cash-flow-body {
-        padding: 10px;
-    }
-
-    .cash-flow-body>.header {
+    .content-body>.content-header {
         flex-direction: column;
+        justify-content: inherit;
+        gap: 10px;
     }
 
-    .cash-flow-body>.header>.filter-div {
-        display: flex;
-        justify-content: initial;
-        width: 100%;
+    .content-body>.div-canvasL {
+        min-height: 280px;
     }
 
-    /* == FILTER END */
-
-    /* == CANVAS */
-
-    .canvas-line-bar {
-        height: 260px;
-        padding: 3px;
-        background-color: rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* == CANVAS END */
-
-    /* == CHECKBOX */
-    .checkbox-menu {
+    .content-body>.content-checkbox {
+        flex-direction: row;
         justify-content: space-between;
     }
 
-    .checkbox-menu>div>div {
+    .content-checkbox>div {
+        align-items: flex-start;
+        gap: 5px;
         display: flex;
         flex-direction: column;
     }
 
-    /* == CHECKBOX END */
-
-    /* - LINE BAR END */
-
-    /* CASH FLOW END */
+    .content-checkbox>div>div{
+        display: flex;
+        flex-direction: column;
+    }
 }

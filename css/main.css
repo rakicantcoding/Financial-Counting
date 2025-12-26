@@ -263,6 +263,11 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .main-body{
+        padding: 0px;
+    }
+
     .nav-title p {
         font-size: medium;
     }
