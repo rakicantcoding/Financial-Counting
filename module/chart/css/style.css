@@ -295,29 +295,66 @@ canvas {
     transform: scale(1.4);
 }
 
+/* CASH FLOW */
+
 .checkbox_green {
     accent-color: rgba(26, 139, 87, 1);
-}
-
-.checkbox_red {
-    accent-color: rgba(172, 57, 43, 1);
-}
-
-.checkbox_blue {
-    accent-color: rgba(27, 111, 214, 1);
 }
 
 .p-green:hover {
     color: rgba(26, 139, 87, 0.8);
 }
 
+.checkbox_red {
+    accent-color: rgba(172, 57, 43, 1);
+}
+
 .p-red:hover {
     color: rgba(172, 57, 43, 0.8);
+}
+
+.checkbox_blue {
+    accent-color: rgba(27, 111, 214, 1);
 }
 
 .p-blue:hover {
     color: rgba(27, 111, 214, 0.8);
 }
+
+/* LIST FLOW */
+
+.checkbox_orange {
+    accent-color: rgba(211, 84, 0, 1);
+}
+
+.p-orange:hover {
+    color: rgba(211, 84, 0, 0.8);
+}
+
+.checkbox_cyan {
+    accent-color: rgba(22, 160, 133, 1);
+}
+
+.p-cyan:hover {
+    color: rgba(22, 160, 133, 0.8);
+}
+
+.checkbox_gold {
+    accent-color: rgba(168, 143, 42, 1);
+}
+
+.p-gold:hover{
+    color: rgba(168, 143, 42, 0.8);
+}
+
+.checkbox_navy {
+    accent-color: rgba(142, 68, 173, 1);
+}
+
+.p-navy:hover {
+    color: rgba(142, 68, 173, 0.8);
+}
+
 
 .padding-wide {
     padding: 3px 8px;
@@ -428,7 +465,7 @@ canvas {
         flex-direction: column;
     }
 
-    .content-checkbox>div>div{
+    .content-checkbox>div>div {
         display: flex;
         flex-direction: column;
     }

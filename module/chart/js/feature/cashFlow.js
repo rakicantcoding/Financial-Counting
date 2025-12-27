@@ -38,7 +38,7 @@ function donut() {
     const expense = (value.expense / total) * 100;
     const balance = (value.balance / total) * 100;
 
-    const percentDom = { income: element.cashFlow_income_percent, expense: element.cashFlow_expense_percent, balance: element.cashFlow_balance_percent }
+    const percentDom = { income: element.cashFlow_percent_income, expense: element.cashFlow_percent_expense, balance: element.cashFlow_percent_balance }
 
     for (const key in percentDom) {
         const map = { income, expense, balance }
@@ -376,7 +376,7 @@ function line() {
         }
 
         if (element.cashFlow_filter.value === "custom") {
-            [element.cashFlow_input_start, element.cashFlow_input_end].forEach(e=> e.value = "")
+            [element.cashFlow_input_start, element.cashFlow_input_end].forEach(e => e.value = "")
             element.cashFlow_div_option_else.classList.remove("hide")
         }
     })
