@@ -221,8 +221,8 @@
 
                             <div>
                                 <div>
-                                    <input id="cashFlow-filter-input-start" class="input" type="text" inputmode="numeric"
-                                        placeholder="Period Start">
+                                    <input id="cashFlow-filter-input-start" class="input" type="text"
+                                        inputmode="numeric" placeholder="Period Start">
                                     <input id="cashFlow-filter-input-end" class="input" type="text" inputmode="numeric"
                                         placeholder="Period End (Empty: Last Period)">
                                 </div>
@@ -310,33 +310,37 @@
                         <!-- OVERVIEW -->
                         <div class="donut-overview">
                             <div class="donut-checkbox">
-                                <div>
+                                <div data-div__checkbox="expense" data-category="expense">
                                     <label>
-                                        <input type="checkbox" id="expense_checkBox_expense"
+                                        <input type="checkbox" data-section="expense" data-checkbox="donut"
+                                            data-category="expense" id="expense_checkBox_expense"
                                             class="checkbox checkbox_orange" value="expense" checked>
                                     </label>
-                                    <p class="p-orange">Income</p>
+                                    <p class="p-orange">Expense</p>
                                 </div>
 
-                                <div>
+                                <div data-div__checkbox="expense" data-category="invest">
                                     <label>
-                                        <input type="checkbox" id="expense_checkBox_invest"
+                                        <input type="checkbox" data-section="expense" data-checkbox="donut"
+                                            data-category="invest" id="expense_checkBox_invest"
                                             class="checkbox checkbox_cyan" value="invest" checked>
                                     </label>
                                     <p class="p-cyan">Invest</p>
                                 </div>
 
-                                <div>
+                                <div data-div__checkbox="expense" data-category="interest">
                                     <label>
-                                        <input type="checkbox" id="expense_checkBox_interest"
+                                        <input type="checkbox" data-section="expense" data-checkbox="donut"
+                                            data-category="interest" id="expense_checkBox_interest"
                                             class="checkbox checkbox_gold" value="interest" checked>
                                     </label>
                                     <p class="p-gold">Interest</p>
                                 </div>
 
-                                <div>
+                                <div data-div__checkbox="expense" data-category="saving">
                                     <label>
-                                        <input type="checkbox" id="expense_checkBox_saving"
+                                        <input type="checkbox" data-section="expense" data-checkbox="donut"
+                                            data-category="saving" id="expense_checkBox_saving"
                                             class="checkbox checkbox_lavender" value="saving" checked>
                                     </label>
                                     <p class="p-lavender">Saving</p>
@@ -344,24 +348,24 @@
                             </div>
 
                             <div class="donut-percent">
-                                <div>
+                                <div data-div__percent="expense" data-category="expense">
                                     <p>Expense:</p>
-                                    <p id="expense_percent_expense">0%</p>
+                                    <p data-percent="expense" data-category="expense">0%</p>
                                 </div>
 
-                                <div>
+                                 <div data-div__percent="expense" data-category="invest">
                                     <p>Invest:</p>
-                                    <p id="expense_percent_invest">0%</p>
+                                    <p data-percent="expense" data-category="invest">0%</p>
                                 </div>
 
-                                <div>
+                                 <div data-div__percent="expense" data-category="interest">
                                     <p>Interest:</p>
-                                    <p id="expense_percent_interest">0%</p>
+                                    <p data-percent="expense" data-category="interest">0%</p>
                                 </div>
 
-                                <div>
+                                 <div data-div__percent="expense" data-category="saving">
                                     <p>Saving:</p>
-                                    <p id="expense_percent_saving">0%</p>
+                                    <p data-percent="expense" data-category="saving">0%</p>
                                 </div>
                             </div>
                         </div>

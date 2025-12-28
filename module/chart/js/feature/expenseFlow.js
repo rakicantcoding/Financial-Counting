@@ -46,10 +46,28 @@ function donut() {
 
     const total = Object.values(value).reduce((acc, item) => acc + item, 0);
 
-    const expense = value.expense;
-    const invest = value.invest;
-    const interest = value.interest;
-    const saving = value.saving;
+    function convestPercent(value) {
+        return (value / total) * 100;
+    }
+
+    const expense = convestPercent(value.expense);
+    const invest = convestPercent(value.invest);
+    const interest = convestPercent(value.interest);
+    const saving = convestPercent(value.saving);
+
+    chart.options.plugins.tooltip.callbacks.label = function (ctx) {
+        return ctx.label + ": " + ctx.raw.toFixed(2) + "%";
+    }
+
+
+    // PERCENT DISPLAY
+    let percentDOM = document.querySelectorAll('p[data-percent="expense"]')
+    percentDOM.forEach(e => {
+        console.log(e.dataset.category)
+        e.textContent = `${convestPercent(value[e.dataset.category]).toFixed(2)}%`
+
+    })
+
 
     // DATASETS
     chart.data.datasets.push({
@@ -57,10 +75,20 @@ function donut() {
         borderColor: ["rgba(191, 84, 0, 1)", "rgba(2, 160, 133, 1)", " rgba(148, 143, 42, 1)", "rgba(122, 68, 173, 1)"],
         data: [expense, invest, interest, saving]
     })
-
     chart.update()
 
-    // CHART DONUT DONE. WIP = CHECKBOX + PERCENT;
+    for (const key in value) {
+        if (value[key] === 0) {
+            document.querySelector(`div[data-div__checkbox="expense"][data-category="${key}"]`).classList.add("off")
+            document.querySelector(`div[data-div__percent="expense"][data-category="${key}"]`).classList.add("off")
+            document.querySelector(`input[data-section="expense"][data-checkbox="donut"][data-category="${key}"]`).checked = false
+
+        }
+    }
+
+
+
+    // CHECKBOX + PERCENT DONE. NEXT WIP = LINE CHART, TYPE, CHECKBOX HIDE & FILL;
 }
 
 donut()

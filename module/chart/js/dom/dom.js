@@ -46,10 +46,6 @@ export const element = {
     expense_checkBox_interest: document.getElementById("expense_checkBox_interest"), // Checkbox
     expense_checkBox_saving: document.getElementById("expense_checkBox_saving"), // Checkbox
 
-    expense_percent_expense: document.getElementById("expense_percent_expense"), // Text percent display
-    expense_percent_invest: document.getElementById("expense_percent_invest"), // Text percent display
-    expense_percent_interest: document.getElementById("expense_percent_interest"), // Text percent display
-    expense_percent_saving: document.getElementById("expense_percent_saving"), // Text percent display
     // = DONUT CHART END
 
     // = LINE BAR CHART

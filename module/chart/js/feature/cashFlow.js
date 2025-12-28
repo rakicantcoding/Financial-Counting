@@ -34,7 +34,7 @@ function donut() {
 
     const total = Object.values(value).reduce((acc, item) => acc + item, 0);
 
-    const income = (value.income / total) * 100;
+    const income = ((value.income / total) * 100);
     const expense = (value.expense / total) * 100;
     const balance = (value.balance / total) * 100;
 
@@ -56,20 +56,8 @@ function donut() {
         ]
     }
 
-    chart.options = {
-        responsive: true,
-        plugins: {
-            tooltip: {
-                callbacks: {
-                    label: function (ctx) {
-                        return ctx.label + ": " + ctx.raw.toFixed(2) + "%";
-                    }
-                }
-            },
-            legend: {
-                display: false
-            }
-        }
+    chart.options.plugins.tooltip.callbacks.label = function (ctx) {
+        return ctx.label + ": " + ctx.raw.toFixed(2) + "%";
     }
 
     chart.update()
@@ -330,12 +318,12 @@ function line() {
         // TAMBAH CLASS OPACITY KALAU BAR
         if (element.cashFlow_select_type.value === "bar") {
             document.querySelectorAll('label[data-control="cashFlow"][data-type="fill"]').forEach(e => {
-                e.classList.add("checkBox-off")
+                e.classList.add("off")
             })
 
         } else {
             document.querySelectorAll('label[data-control="cashFlow"][data-type="fill"]').forEach(e => {
-                e.classList.remove("checkBox-off")
+                e.classList.remove("off")
             })
         }
 

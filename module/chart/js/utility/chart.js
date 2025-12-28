@@ -1,5 +1,5 @@
 export function getChart(ctx, type) {
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 768 || type === "doughnut";
 
     return new Chart(ctx, {
         type,

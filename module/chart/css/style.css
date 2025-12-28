@@ -360,13 +360,12 @@ canvas {
     padding: 3px 8px;
 }
 
-.checkBox-off {
+.off {
     opacity: 0.5;
     pointer-events: none;
 }
 
 /* ATTACHMENT END */
-
 
 
 
