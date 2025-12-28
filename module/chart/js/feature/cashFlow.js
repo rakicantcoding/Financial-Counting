@@ -236,6 +236,8 @@ function donut() {
 
     loadExpense(element.cashFlow_list_select.value)
     element.cashFlow_list_select.addEventListener("change", () => loadExpense(element.cashFlow_list_select.value))
+
+    console.log(chart.data)
 }
 
 function line() {
@@ -293,10 +295,6 @@ function line() {
     }
 
     chart.update()
-
-    console.log(chart.data)
-
-
 
     // CHECKBOX
     document.querySelectorAll(`input[data-control="cashFlow"]`).forEach(e => {
@@ -376,7 +374,7 @@ function line() {
         }
 
         if (element.cashFlow_filter.value === "custom") {
-            [element.cashFlow_input_start, element.cashFlow_input_end].forEach(e => e.value = "")
+            [element.cashFlow_filter_input_start, element.cashFlow_filter_input_end].forEach(e => e.value = "")
             element.cashFlow_div_option_else.classList.remove("hide")
         }
     })
@@ -385,20 +383,20 @@ function line() {
     // = FILTER ELSE =
 
     // INPUT START
-    element.cashFlow_input_start.addEventListener("input", () => inputElseFilter(data.summary.income, "start", element.cashFlow_input_start))
+    element.cashFlow_filter_input_start.addEventListener("input", () => inputElseFilter(data.summary.income, "start", element.cashFlow_filter_input_start))
 
     // INPUT END
-    element.cashFlow_input_end.addEventListener("input", () => inputElseFilter(data.summary.income, "end", element.cashFlow_input_end))
+    element.cashFlow_filter_input_end.addEventListener("input", () => inputElseFilter(data.summary.income, "end", element.cashFlow_filter_input_end))
 
     // RANGE TYPE
-    element.cashFlow_else_type.addEventListener("change", () => {
-        inputElseFilter(data.summary.income, "start", element.cashFlow_input_start)
-        inputElseFilter(data.summary.income, "end", element.cashFlow_input_end)
+    element.cashFlow_filter_range_type.addEventListener("change", () => {
+        inputElseFilter(data.summary.income, "start", element.cashFlow_filter_input_start)
+        inputElseFilter(data.summary.income, "end", element.cashFlow_filter_input_end)
     })
 
     // FILTER ELSE BTN
-    element.cashFlow_input_btn.addEventListener("click", () => {
-        let error = alertingElse(element.cashFlow_input_start, element.cashFlow_input_end, element.cashFlow_filter)
+    element.cashFlow_filter_btn.addEventListener("click", () => {
+        let error = alertingElse(element.cashFlow_filter_input_start, element.cashFlow_filter_input_end, element.cashFlow_filter)
         if (error) {
             return alert(error);
         }
@@ -406,15 +404,15 @@ function line() {
         chart.destroy()
         chart = getChart(ctx, element.cashFlow_select_type.value)
 
-        let input_start = Number(element.cashFlow_input_start.value);
-        let input_end = Number(element.cashFlow_input_end.value) || " ";
+        let input_start = Number(element.cashFlow_filter_input_start.value);
+        let input_end = Number(element.cashFlow_filter_input_end.value) || " ";
 
-        chart.data.labels = getLabels(data.summary.income, element.cashFlow_else_type.value, input_start, input_end)
+        chart.data.labels = getLabels(data.summary.income, element.cashFlow_filter_range_type.value, input_start, input_end)
 
         chart.data.dataset = [];
 
         for (const key in data.summary) {
-            let arrayData = getData(data.summary[key], "amount", element.cashFlow_else_type.value, input_start, input_end)
+            let arrayData = getData(data.summary[key], "amount", element.cashFlow_filter_range_type.value, input_start, input_end)
             let defData = {
                 label: key,
                 tention: 2,

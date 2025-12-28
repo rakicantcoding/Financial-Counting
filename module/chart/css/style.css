@@ -62,7 +62,7 @@
 
 
 /* DIV DONUT */
-.content-head>.div-donut {
+.content-head>.div-donut-cashflow {
     display: flex;
     flex-direction: row;
     width: 30%;
@@ -71,12 +71,12 @@
     align-items: center;
 }
 
-.div-donut>.div-canvasD {
+.div-donut-cashflow>.div-canvasD {
     width: 30%;
     display: flex;
 }
 
-.div-donut>.donut-overview {
+.div-donut-cashflow>.donut-overview {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -347,11 +347,11 @@ canvas {
     color: rgba(168, 143, 42, 0.8);
 }
 
-.checkbox_navy {
+.checkbox_lavender {
     accent-color: rgba(142, 68, 173, 1);
 }
 
-.p-navy:hover {
+.p-lavender:hover {
     color: rgba(142, 68, 173, 0.8);
 }
 
@@ -392,18 +392,18 @@ canvas {
         padding: 0px;
     }
 
-    .content-head>.div-donut {
+    .content-head>.div-donut-cashflow {
         flex-direction: column;
         width: 100%;
         gap: 30px;
         height: auto;
     }
 
-    .div-donut>.div-canvasD {
+    .div-donut-cashflow>.div-canvasD {
         width: 50%;
     }
 
-    .div-donut>.donut-overview {
+    .div-donut-cashflow>.donut-overview {
         width: 100%;
     }
 

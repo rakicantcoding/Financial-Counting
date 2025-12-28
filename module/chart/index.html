@@ -89,7 +89,7 @@
                 <!-- HEAD -->
                 <div class="content-head">
                     <!-- CHART PIE -->
-                    <div class="div-donut">
+                    <div class="div-donut-cashflow">
                         <!-- CANVAS -->
                         <div class="div-canvasD">
                             <canvas id="cashFlow-canvas-donut"></canvas>
@@ -176,7 +176,7 @@
                             </div>
 
                             <div class="overview-list-content" id="cashFlow_list_expense">
-
+                                <!-- CONTENT -->
                             </div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                         <div id="cashFlow-div_option-else" class="content-header-filter">
                             <div class="content-header-title">
                                 <p>Range Type</p>
-                                <select id="cashFlow-else_type" class="select padding-wide">
+                                <select id="cashFlow-filter-range-type" class="select padding-wide">
                                     <option value="month">Month</option>
                                     <option value="year">Year</option>
                                 </select>
@@ -221,13 +221,13 @@
 
                             <div>
                                 <div>
-                                    <input id="cashFlow-input-start" class="input" type="text" inputmode="numeric"
+                                    <input id="cashFlow-filter-input-start" class="input" type="text" inputmode="numeric"
                                         placeholder="Period Start">
-                                    <input id="cashFlow-input-end" class="input" type="text" inputmode="numeric"
+                                    <input id="cashFlow-filter-input-end" class="input" type="text" inputmode="numeric"
                                         placeholder="Period End (Empty: Last Period)">
                                 </div>
 
-                                <button id="cashFlow-input-btn" class="btn">Submit</button>
+                                <button id="cashFlow-filter-btn" class="btn">Submit</button>
                             </div>
                         </div>
 
@@ -301,7 +301,7 @@
                 <!-- HEAD -->
                 <div class="content-head">
                     <!-- CHART PIE -->
-                    <div class="div-donut">
+                    <div class="div-donut-cashflow">
                         <!-- CANVAS -->
                         <div class="div-canvasD">
                             <canvas id="expense-canvas-donut"></canvas>
@@ -337,9 +337,9 @@
                                 <div>
                                     <label>
                                         <input type="checkbox" id="expense_checkBox_saving"
-                                            class="checkbox checkbox_navy" value="saving" checked>
+                                            class="checkbox checkbox_lavender" value="saving" checked>
                                     </label>
-                                    <p class="p-navy">Saving</p>
+                                    <p class="p-lavender">Saving</p>
                                 </div>
                             </div>
 
@@ -366,47 +366,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- LIST DATA [WIP HERE]-->
-                    <div class="overview-list">
-                        <!-- INCOME -->
-                        <div>
-                            <div class="overview-head">
-                                <div class="overview-title">
-                                    <p class="p_title">Income List</p>
-                                </div>
-                            </div>
-
-                            <div class="overview-list-content" id="cashFlow_list_income">
-                                <!-- ISI LIST INCOME -->
-                            </div>
-                        </div>
-
-                        <!-- EXPENSE -->
-                        <div>
-                            <div class="overview-head">
-                                <div class="overview-title">
-                                    <p class="p_title">Expense List</p>
-                                </div>
-
-                                <div class="overview-head-select">
-                                    <select class="select padding-wide" id="cashFlow_list_select">
-                                        <option value="all">All</option>
-                                        <option value="expense">Expense</option>
-                                        <option value="invest">Invest</option>
-                                        <option value="interest">Interest</option>
-                                        <option value="saving">Saving</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="overview-list-content" id="cashFlow_list_expense">
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
+                <!-- START HERE [WIP] -->
                 <!-- CONTENT BODY -->
                 <div class="content-body">
 
@@ -416,7 +378,7 @@
                             <!-- TYPE SELECT -->
                             <div class="content-header-title">
                                 <p>Type Chart</p>
-                                <select id="cashFlow-select-type" class="select padding-wide">
+                                <select id="expense-select-type" class="select padding-wide">
                                     <option value="line">Line</option>
                                     <option value="bar">Bar</option>
                                 </select>
@@ -425,7 +387,7 @@
                             <!-- FILTER SELECT -->
                             <div class="content-header-title">
                                 <p>Time Period</p>
-                                <select id="cashFlow-filter" class="select padding-wide">
+                                <select id="expense-filter" class="select padding-wide">
                                     <option value="month">Monthly</option>
                                     <option value="year">Yearly</option>
                                     <option value="custom">Custom</option>
@@ -435,10 +397,10 @@
                         </div>
 
                         <!-- DIV FILTER PERIOD -->
-                        <div id="cashFlow-div_option-else" class="content-header-filter">
+                        <div id="expense-div_option-else" class="content-header-filter">
                             <div class="content-header-title">
                                 <p>Range Type</p>
-                                <select id="cashFlow-else_type" class="select padding-wide">
+                                <select id="expense-else_type" class="select padding-wide">
                                     <option value="month">Month</option>
                                     <option value="year">Year</option>
                                 </select>
@@ -446,13 +408,13 @@
 
                             <div>
                                 <div>
-                                    <input id="cashFlow-input-start" class="input" type="text" inputmode="numeric"
+                                    <input id="expense-filter-input-start" class="input" type="text" inputmode="numeric"
                                         placeholder="Period Start">
-                                    <input id="cashFlow-input-end" class="input" type="text" inputmode="numeric"
+                                    <input id="expense-filter-input-end" class="input" type="text" inputmode="numeric"
                                         placeholder="Period End (Empty: Last Period)">
                                 </div>
 
-                                <button id="cashFlow-input-btn" class="btn">Submit</button>
+                                <button id="expense-filter-btn" class="btn">Submit</button>
                             </div>
                         </div>
 
@@ -460,7 +422,7 @@
 
                     <!-- CANVAS -->
                     <div class="div-canvasL">
-                        <canvas id="cashFlow-canvas-line"></canvas>
+                        <canvas id="expense-canvas-line"></canvas>
                     </div>
 
                     <!-- CHECKBOX -->
@@ -469,18 +431,23 @@
                             <p>Show</p>
                             <div>
                                 <label>
-                                    <input data-control="cashFlow" data-category="income" data-type="hidden"
-                                        class="checkbox_green" type="checkbox" checked> Income
+                                    <input data-control="expense" data-category="expense" data-type="hidden"
+                                        class="checkbox_orange" type="checkbox" checked> Expense
                                 </label>
 
                                 <label>
-                                    <input data-control="cashFlow" data-category="expense" data-type="hidden"
-                                        class="checkbox_red" type="checkbox" checked> Expense
+                                    <input data-control="expense" data-category="invest" data-type="hidden"
+                                        class="checkbox_cyan" type="checkbox" checked> Invest
                                 </label>
 
                                 <label>
-                                    <input data-control="cashFlow" data-category="balance" data-type="hidden"
-                                        class="checkbox_blue" type="checkbox" checked> Balance
+                                    <input data-control="expense" data-category="interest" data-type="hidden"
+                                        class="checkbox_gold" type="checkbox" checked> Interest
+                                </label>
+
+                                <label>
+                                    <input data-control="expense" data-category="saving" data-type="hidden"
+                                        class="checkbox_lavender" type="checkbox" checked> Saving
                                 </label>
                             </div>
                         </div>
@@ -488,19 +455,24 @@
                         <div> <!-- FILL -->
                             <p>Fill</p>
                             <div>
-                                <label data-control="cashFlow" data-type="fill">
-                                    <input data-control="cashFlow" data-category="income" data-type="fill"
-                                        class="checkbox_green" type="checkbox"> Income
+                                <label data-control="expense" data-type="fill">
+                                    <input data-control="expense" data-category="expense" data-type="fill"
+                                        class="checkbox_orange" type="checkbox"> Expense
                                 </label>
 
-                                <label data-control="cashFlow" data-type="fill">
-                                    <input data-control="cashFlow" data-category="expense" data-type="fill"
-                                        class="checkbox_red" type="checkbox"> Expense
+                                <label data-control="expense" data-type="fill">
+                                    <input data-control="expense" data-category="invest" data-type="fill"
+                                        class="checkbox_cyan" type="checkbox"> Invest
                                 </label>
 
-                                <label data-control="cashFlow" data-type="fill">
-                                    <input data-control="cashFlow" data-category="balance" data-type="fill"
-                                        class="checkbox_blue" type="checkbox"> Balance
+                                <label data-control="expense" data-type="fill">
+                                    <input data-control="expense" data-category="interest" data-type="fill"
+                                        class="checkbox_gold" type="checkbox"> Interest
+                                </label>
+
+                                <label data-control="expense" data-type="fill">
+                                    <input data-control="expense" data-category="saving" data-type="fill"
+                                        class="checkbox_lavender" type="checkbox"> Saving
                                 </label>
                             </div>
                         </div>
