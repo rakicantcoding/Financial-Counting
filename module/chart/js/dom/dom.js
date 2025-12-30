@@ -26,6 +26,7 @@ export const element = {
     cashFlow_div_option_else: document.getElementById("cashFlow-div_option-else"), // Div else input
 
     cashFlow_filter_range_type: document.getElementById("cashFlow-filter-range-type"), // Range filter type
+    
     cashFlow_filter_input_start: document.getElementById("cashFlow-filter-input-start"), // Input start else
     cashFlow_filter_input_end: document.getElementById("cashFlow-filter-input-end"), // Input end else
     cashFlow_filter_btn: document.getElementById("cashFlow-filter-btn"), // Input btn else
@@ -51,11 +52,11 @@ export const element = {
     // = LINE BAR CHART
     expense_select_type: document.getElementById("expense-select-type"), // Select type Line, Bar
 
-    expense_filter: document.getElementById("cashFlow-filter"), // Select filter
+    expense_filter: document.getElementById("expense-filter"), // Select filter
 
-    expense_div_option_else: document.getElementById("cashFlow-div_option-else"), // Div else input
+    expense_div_option_else: document.getElementById("expense-div_option-else"), // Div else input
 
-    expense_else_type: document.getElementById("cashFlow-else_type"), // Period select filter
+    expense_else_type: document.getElementById("expense-else_type"), // Period select filter
     expense_filter_input_start: document.getElementById("expense-filter-input-start"),
     expense_filter_input_end: document.getElementById("expense-filter-input-end"),
     expense_filter_btn: document.getElementById("expense-filter-btn"),

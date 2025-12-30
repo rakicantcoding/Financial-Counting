@@ -98,25 +98,28 @@
                         <!-- OVERVIEW -->
                         <div class="donut-overview">
                             <div class="donut-checkbox">
-                                <div>
+                                <div data-divDonut__checkbox="cashFlow" data-category="income">
                                     <label>
-                                        <input type="checkbox" id="cashFlow_checkBox_income"
+                                        <input type="checkbox" data-section="cashFlow" data-checkbox="donut"
+                                            data-category="income" id="cashFlow_checkBox_income"
                                             class="checkbox checkbox_green" value="income" checked>
                                     </label>
                                     <p class="p-green">Income</p>
                                 </div>
 
-                                <div>
+                                <div data-divDonut__checkbox="cashFlow" data-category="expense">
                                     <label>
-                                        <input type="checkbox" id="cashFlow_checkBox_expense"
+                                        <input type="checkbox" data-section="cashFlow" data-checkbox="donut"
+                                            data-category="expense" id="cashFlow_checkBox_expense"
                                             class="checkbox checkbox_red" value="expense" checked>
                                     </label>
                                     <p class="p-red">Expense</p>
                                 </div>
 
-                                <div>
+                                <div data-divDonut__checkbox="cashFlow" data-category="balance">
                                     <label>
-                                        <input type="checkbox" id="cashFlow_checkBox_balance"
+                                        <input type="checkbox" data-section="cashFlow" data-checkbox="donut"
+                                            data-category="balance" id="cashFlow_checkBox_balance"
                                             class="checkbox checkbox_blue" value="balance" checked>
                                     </label>
                                     <p class="p-blue">Balance</p>
@@ -124,17 +127,17 @@
                             </div>
 
                             <div class="donut-percent">
-                                <div>
+                                <div data-divDonut__percent="cashFlow" data-category="income">
                                     <p>Income:</p>
                                     <p id="cashFlow_percent_income">0%</p>
                                 </div>
 
-                                <div>
+                                <div data-divDonut__percent="cashFlow" data-category="expense">
                                     <p>Expense:</p>
                                     <p id="cashFlow_percent_expense">0%</p>
                                 </div>
 
-                                <div>
+                                <div data-divDonut__percent="cashFlow" data-category="balance">
                                     <p>Balance:</p>
                                     <p id="cashFlow_percent_balance">0%</p>
                                 </div>
@@ -210,7 +213,7 @@
                         </div>
 
                         <!-- DIV FILTER PERIOD -->
-                        <div id="cashFlow-div_option-else" class="content-header-filter">
+                        <div id="cashFlow-div_option-else" class="content-header-filter hide">
                             <div class="content-header-title">
                                 <p>Range Type</p>
                                 <select id="cashFlow-filter-range-type" class="select padding-wide">
@@ -243,17 +246,17 @@
                         <div> <!-- HIDE -->
                             <p>Show</p>
                             <div>
-                                <label>
+                                <label data-label="cashFlow" data-category="income">
                                     <input data-control="cashFlow" data-category="income" data-type="hidden"
                                         class="checkbox_green" type="checkbox" checked> Income
                                 </label>
 
-                                <label>
+                                <label data-label="cashFlow" data-category="expense">
                                     <input data-control="cashFlow" data-category="expense" data-type="hidden"
                                         class="checkbox_red" type="checkbox" checked> Expense
                                 </label>
 
-                                <label>
+                                <label data-label="cashFlow" data-category="balance">
                                     <input data-control="cashFlow" data-category="balance" data-type="hidden"
                                         class="checkbox_blue" type="checkbox" checked> Balance
                                 </label>
@@ -263,17 +266,17 @@
                         <div> <!-- FILL -->
                             <p>Fill</p>
                             <div>
-                                <label data-control="cashFlow" data-type="fill">
+                                <label data-label="cashFlow" data-category="income" data-control="cashFlow" data-type="fill">
                                     <input data-control="cashFlow" data-category="income" data-type="fill"
                                         class="checkbox_green" type="checkbox"> Income
                                 </label>
 
-                                <label data-control="cashFlow" data-type="fill">
+                                <label data-label="cashFlow" data-category="expense" data-control="cashFlow" data-type="fill">
                                     <input data-control="cashFlow" data-category="expense" data-type="fill"
                                         class="checkbox_red" type="checkbox"> Expense
                                 </label>
 
-                                <label data-control="cashFlow" data-type="fill">
+                                <label data-label="cashFlow" data-category="balance" data-control="cashFlow" data-type="fill">
                                     <input data-control="cashFlow" data-category="balance" data-type="fill"
                                         class="checkbox_blue" type="checkbox"> Balance
                                 </label>
@@ -310,7 +313,7 @@
                         <!-- OVERVIEW -->
                         <div class="donut-overview">
                             <div class="donut-checkbox">
-                                <div data-div__checkbox="expense" data-category="expense">
+                                <div data-divDonut__checkbox="expense" data-category="expense">
                                     <label>
                                         <input type="checkbox" data-section="expense" data-checkbox="donut"
                                             data-category="expense" id="expense_checkBox_expense"
@@ -319,7 +322,7 @@
                                     <p class="p-orange">Expense</p>
                                 </div>
 
-                                <div data-div__checkbox="expense" data-category="invest">
+                                <div data-divDonut__checkbox="expense" data-category="invest">
                                     <label>
                                         <input type="checkbox" data-section="expense" data-checkbox="donut"
                                             data-category="invest" id="expense_checkBox_invest"
@@ -328,7 +331,7 @@
                                     <p class="p-cyan">Invest</p>
                                 </div>
 
-                                <div data-div__checkbox="expense" data-category="interest">
+                                <div data-divDonut__checkbox="expense" data-category="interest">
                                     <label>
                                         <input type="checkbox" data-section="expense" data-checkbox="donut"
                                             data-category="interest" id="expense_checkBox_interest"
@@ -337,7 +340,7 @@
                                     <p class="p-gold">Interest</p>
                                 </div>
 
-                                <div data-div__checkbox="expense" data-category="saving">
+                                <div data-divDonut__checkbox="expense" data-category="saving">
                                     <label>
                                         <input type="checkbox" data-section="expense" data-checkbox="donut"
                                             data-category="saving" id="expense_checkBox_saving"
@@ -348,22 +351,22 @@
                             </div>
 
                             <div class="donut-percent">
-                                <div data-div__percent="expense" data-category="expense">
+                                <div data-divDonut__percent="expense" data-category="expense">
                                     <p>Expense:</p>
                                     <p data-percent="expense" data-category="expense">0%</p>
                                 </div>
 
-                                 <div data-div__percent="expense" data-category="invest">
+                                <div data-divDonut__percent="expense" data-category="invest">
                                     <p>Invest:</p>
                                     <p data-percent="expense" data-category="invest">0%</p>
                                 </div>
 
-                                 <div data-div__percent="expense" data-category="interest">
+                                <div data-divDonut__percent="expense" data-category="interest">
                                     <p>Interest:</p>
                                     <p data-percent="expense" data-category="interest">0%</p>
                                 </div>
 
-                                 <div data-div__percent="expense" data-category="saving">
+                                <div data-divDonut__percent="expense" data-category="saving">
                                     <p>Saving:</p>
                                     <p data-percent="expense" data-category="saving">0%</p>
                                 </div>
@@ -404,7 +407,7 @@
                         <div id="expense-div_option-else" class="content-header-filter">
                             <div class="content-header-title">
                                 <p>Range Type</p>
-                                <select id="expense-else_type" class="select padding-wide">
+                                <select id="expense-filter-range-type" class="select padding-wide">
                                     <option value="month">Month</option>
                                     <option value="year">Year</option>
                                 </select>
@@ -434,22 +437,22 @@
                         <div> <!-- HIDE -->
                             <p>Show</p>
                             <div>
-                                <label>
+                                <label data-label="expense" data-category="expense">
                                     <input data-control="expense" data-category="expense" data-type="hidden"
                                         class="checkbox_orange" type="checkbox" checked> Expense
                                 </label>
 
-                                <label>
+                                <label data-label="expense" data-category="invest">
                                     <input data-control="expense" data-category="invest" data-type="hidden"
                                         class="checkbox_cyan" type="checkbox" checked> Invest
                                 </label>
 
-                                <label>
+                                <label data-label="expense" data-category="interest">
                                     <input data-control="expense" data-category="interest" data-type="hidden"
                                         class="checkbox_gold" type="checkbox" checked> Interest
                                 </label>
 
-                                <label>
+                                <label data-label="expense" data-category="saving">
                                     <input data-control="expense" data-category="saving" data-type="hidden"
                                         class="checkbox_lavender" type="checkbox" checked> Saving
                                 </label>
@@ -459,22 +462,22 @@
                         <div> <!-- FILL -->
                             <p>Fill</p>
                             <div>
-                                <label data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="expense" data-control="expense" data-type="fill">
                                     <input data-control="expense" data-category="expense" data-type="fill"
                                         class="checkbox_orange" type="checkbox"> Expense
                                 </label>
 
-                                <label data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="invest" data-control="expense" data-type="fill">
                                     <input data-control="expense" data-category="invest" data-type="fill"
                                         class="checkbox_cyan" type="checkbox"> Invest
                                 </label>
 
-                                <label data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="interest" data-control="expense" data-type="fill">
                                     <input data-control="expense" data-category="interest" data-type="fill"
                                         class="checkbox_gold" type="checkbox"> Interest
                                 </label>
 
-                                <label data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="saving" data-control="expense" data-type="fill">
                                     <input data-control="expense" data-category="saving" data-type="fill"
                                         class="checkbox_lavender" type="checkbox"> Saving
                                 </label>

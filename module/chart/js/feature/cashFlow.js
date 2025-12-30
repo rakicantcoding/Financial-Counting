@@ -1,6 +1,6 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
-import { getChart, getData, getLabels } from "../utility/chart.js";
+import { getChart, prettierOptions, getData, getLabels } from "../utility/chart.js";
 import { chartControl } from "../utility/toolsControl.js";
 import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
 
@@ -38,6 +38,23 @@ function donut() {
     const expense = (value.expense / total) * 100;
     const balance = (value.balance / total) * 100;
 
+    let dummyOff = {
+        income,
+        expense,
+        balance
+    }
+
+    // KALAU NILAI 0 MAKA DIBERIKAN CLASS OFF
+    for (const key in dummyOff) {
+        if (dummyOff[key] === 0) {
+            document.querySelector(`div[data-divDonut__checkbox="cashFlow"][data-category="${key}"]`).classList.add("off-permanent")
+            document.querySelector(`div[data-divDonut__percent="cashFlow"][data-category="${key}"]`).classList.add("off-permanent")
+            document.querySelector(`input[data-section="cashFlow"][data-checkbox="donut"][data-category="${key}"]`).checked = false
+        }
+    }
+
+
+
     const percentDom = { income: element.cashFlow_percent_income, expense: element.cashFlow_percent_expense, balance: element.cashFlow_percent_balance }
 
     for (const key in percentDom) {
@@ -56,9 +73,7 @@ function donut() {
         ]
     }
 
-    chart.options.plugins.tooltip.callbacks.label = function (ctx) {
-        return ctx.label + ": " + ctx.raw.toFixed(2) + "%";
-    }
+    prettierOptions("doughnut", chart)
 
     chart.update()
 
@@ -233,6 +248,9 @@ function line() {
 
     let chart = getChart(ctx, element.cashFlow_select_type.value);
 
+    let domFill = document.querySelectorAll('input[data-control="cashFlow"][data-type="fill"]')
+    let domHidden = document.querySelectorAll('input[data-control="cashFlow"][data-type="hidden"]')
+
     chart.data = {
         labels: [],
         datasets: []
@@ -271,6 +289,17 @@ function line() {
 
     // CHART.DATA.DATASETS
     for (const key in data.summary) {
+        if (data.summary[key][0].amount === 0) {
+            // KALAU NILAI 0 MAKA DIBERIKAN CLASS OFF
+            let label = document.querySelectorAll(`label[data-label="cashFlow"][data-category="${key}"]`)
+
+            label.forEach(e => {
+                e.querySelector("input").checked = false
+                e.classList.add("off-permanent")
+            })
+
+            continue
+        };
         let arrayData = getData(data.summary[key], "amount", element.cashFlow_filter.value)
         let defData = {
             label: key,
@@ -282,9 +311,14 @@ function line() {
         chart.data.datasets.push(defData)
     }
 
+    prettierOptions(element.cashFlow_select_type, chart)
+
     chart.update()
 
     // CHECKBOX
+
+
+
     document.querySelectorAll(`input[data-control="cashFlow"]`).forEach(e => {
         e.addEventListener("change", () => {
             chartControl(e.dataset.category, chart, e, e.dataset.type)
@@ -293,15 +327,12 @@ function line() {
 
 
 
-    // TYPE
+    // TYPE CHART
     element.cashFlow_select_type.addEventListener("change", () => {
         let data = chart.data
 
-
-
         data.datasets.forEach(e => {
             e.backgroundColor = mappingColor[element.cashFlow_select_type.value][e.label].backgroundColor
-            e.borderColor = mappingColor[element.cashFlow_select_type.value][e.label].borderColor
         })
 
         chart.destroy()
@@ -309,7 +340,7 @@ function line() {
         chart = getChart(ctx, element.cashFlow_select_type.value)
         chart.data = data
 
-        console.log(data)
+        prettierOptions(element.cashFlow_select_type, chart)
 
         chart.update()
 
@@ -340,12 +371,19 @@ function line() {
             element.cashFlow_div_option_else.classList.add("hide")
             chart.data.labels = getLabels(data.summary.income, element.cashFlow_filter.value)
 
-            let domFill = document.querySelectorAll('input[data-control="cashFlow"][data-type="fill"]')
-            let domHidden = document.querySelectorAll('input[data-control="cashFlow"][data-type="hidden"]')
+            let dummyColor = {}
+
+            chart.data.datasets.forEach(e => {
+                dummyColor[e.label] = {
+                    backgroundColor: e.backgroundColor,
+                    borderColor: e.borderColor
+                }
+            })
 
             chart.data.datasets = []
 
             for (const key in data.summary) {
+                if (data.summary[key][0].amount === 0) continue
                 let arrayData = getData(data.summary[key], "amount", element.cashFlow_filter.value)
                 let defData = {
                     label: key,
@@ -353,11 +391,14 @@ function line() {
                     data: arrayData,
                     fill: [...domFill].find(el => el.dataset.category === key).checked,
                     hidden: ![...domHidden].find(el => el.dataset.category === key).checked,
-                    backgroundColor: mappingColor[element.cashFlow_select_type.value][key].backgroundColor,
-                    borderColor: mappingColor[element.cashFlow_select_type.value][key].borderColor
+                    backgroundColor: dummyColor[key].backgroundColor,
+                    borderColor: dummyColor[key].borderColor
                 }
                 chart.data.datasets.push(defData)
             }
+
+            console.log(chart.data)
+
             chart.update()
         }
 
@@ -371,15 +412,15 @@ function line() {
     // = FILTER ELSE =
 
     // INPUT START
-    element.cashFlow_filter_input_start.addEventListener("input", () => inputElseFilter(data.summary.income, "start", element.cashFlow_filter_input_start))
+    element.cashFlow_filter_input_start.addEventListener("input", () => inputElseFilter(data.summary.income, element.cashFlow_filter_range_type, "start", element.cashFlow_filter_input_start))
 
     // INPUT END
-    element.cashFlow_filter_input_end.addEventListener("input", () => inputElseFilter(data.summary.income, "end", element.cashFlow_filter_input_end))
+    element.cashFlow_filter_input_end.addEventListener("input", () => inputElseFilter(data.summary.income, element.cashFlow_filter_range_type, "end", element.cashFlow_filter_input_end))
 
     // RANGE TYPE
     element.cashFlow_filter_range_type.addEventListener("change", () => {
-        inputElseFilter(data.summary.income, "start", element.cashFlow_filter_input_start)
-        inputElseFilter(data.summary.income, "end", element.cashFlow_filter_input_end)
+        inputElseFilter(data.summary.income, element.cashFlow_filter_range_type, "start", element.cashFlow_filter_input_start)
+        inputElseFilter(data.summary.income, element.cashFlow_filter_range_type, "end", element.cashFlow_filter_input_end)
     })
 
     // FILTER ELSE BTN
@@ -389,7 +430,17 @@ function line() {
             return alert(error);
         }
 
+        let dummyColor = {}
+
+        chart.data.datasets.forEach(e => {
+            dummyColor[e.label] = {
+                backgroundColor: e.backgroundColor,
+                borderColor: e.borderColor
+            }
+        })
+
         chart.destroy()
+
         chart = getChart(ctx, element.cashFlow_select_type.value)
 
         let input_start = Number(element.cashFlow_filter_input_start.value);
@@ -397,19 +448,22 @@ function line() {
 
         chart.data.labels = getLabels(data.summary.income, element.cashFlow_filter_range_type.value, input_start, input_end)
 
-        chart.data.dataset = [];
-
         for (const key in data.summary) {
+            if (data.summary[key][0].amount === 0) continue;
             let arrayData = getData(data.summary[key], "amount", element.cashFlow_filter_range_type.value, input_start, input_end)
             let defData = {
                 label: key,
                 tention: 2,
                 data: arrayData,
-                backgroundColor: mappingColor[element.cashFlow_select_type.value][key].backgroundColor,
-                borderColor: mappingColor[element.cashFlow_select_type.value][key].borderColor
+                fill: [...domFill].find(el => el.dataset.category === key).checked,
+                hidden: ![...domHidden].find(el => el.dataset.category === key).checked,
+                backgroundColor: dummyColor[key].backgroundColor,
+                borderColor: dummyColor[key].borderColor
             }
             chart.data.datasets.push(defData)
         }
+
+        prettierOptions(element.cashFlow_select_type, chart)
 
         chart.update()
     })

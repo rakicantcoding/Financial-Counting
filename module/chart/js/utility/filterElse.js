@@ -1,15 +1,13 @@
-import { element } from "../dom/dom.js";
-
-export function inputElseFilter(array, type, input) {
+export function inputElseFilter(array, periodFilter, type, input) {
     let month = array.map(e => e.month).length;
 
-    month = element.cashFlow_else_type.value !== "month" ? parseInt(month / 12) : month;
+    month = periodFilter.value !== "month" ? parseInt(month / 12) : month;
 
     if (type === "start") {
         input.value = input.value.replace(/[^0-9]/g, "");
         if (input.value === "") return;
         if (input.value < 1) return input.value = 1;
-        if (input.value >= month) return input.value = month - 1;
+        if (input.value > month) return input.value = month === 1 ? 1 : - 1;
     }
 
     if (type === "end") {

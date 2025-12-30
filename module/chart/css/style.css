@@ -365,6 +365,11 @@ canvas {
     pointer-events: none;
 }
 
+.off-permanent {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 /* ATTACHMENT END */
 
 

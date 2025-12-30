@@ -38,6 +38,22 @@ export function getChart(ctx, type) {
     });
 }
 
+export function prettierOptions(type, chart) {
+    if (type.value === "bar") {
+        chart.options.plugins.tooltip.callbacks.label = function (ctx) {
+            return ctx.label + ": " + ctx.raw.toFixed(2) + "%";
+        }
+    }
+
+    if (type.value === "line" || type.value === "bar") {
+        chart.options.scales.y.ticks.callback = (value) => `Rp ${value.toLocaleString('id-ID')}`;
+        chart.options.plugins.tooltip.callbacks.label = (ctx) => {
+            return `Rp ${Math.round(ctx.parsed.y).toLocaleString('id-ID')}`;
+        }
+    }
+}
+
+
 
 function monthToLabel(month) {
     if (month <= 12) return `${month}M`;
