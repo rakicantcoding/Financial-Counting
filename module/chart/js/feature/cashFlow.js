@@ -364,7 +364,7 @@ function line() {
 
 
 
-    // FILTER
+    // TIME PERIOD
     element.cashFlow_filter.addEventListener("change", () => {
         // MONTH / YEAR
         if (element.cashFlow_filter.value !== "custom") {

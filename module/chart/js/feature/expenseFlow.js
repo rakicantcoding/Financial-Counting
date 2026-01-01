@@ -107,7 +107,8 @@ function donut() {
         }
     }
 }
-//  NEXT = LINE CHART, TYPE, CHECKBOX HIDE & FILL;
+
+
 function line() {
     let ctx = element.expense_canvas_line;
 
@@ -117,9 +118,9 @@ function line() {
     let convert = [...new Set(Object.values(list).find(e => e.length !== 0).map(e => e.month))]
     chart.data.labels = getLabels(convert, element.expense_filter.value)
 
-    // DATA.DATASETS
-    // WIP = DATA MASIH BELUM SUPPORT YEAR DAN FILTER
+    let dummyCheckbox = [] // ARRAY UNTUK HIDE DAN FILL
 
+    // DATA.DATASETS
     let dataDummy = [];
 
     for (const key in list) {
@@ -134,7 +135,7 @@ function line() {
             continue
         };
 
-        let dummyLoop = Math.max(...list[key].map(e => e.month))
+        let dummyLoop = Math.max(...list[key].map(e => e.month)) // AMBIL JUMLAH MONTH
         for (let start = 1; start <= dummyLoop; start++) {
             let amount = list[key].filter(e => e.month === start).reduce((acc, item) => acc + item.amount, 0)
             dataDummy.push({
@@ -153,6 +154,8 @@ function line() {
             backgroundColor: colorMapping[element.expense_select_type.value][key].backgroundColor,
             borderColor: colorMapping[element.expense_select_type.value][key].borderColor
         })
+
+        dummyCheckbox.push(Array.from(document.querySelectorAll(`input[data-control="expense"][data-category="${key}"]`)))
     }
 
     prettierOptions(element.expense_select_type, chart)
@@ -203,9 +206,19 @@ function line() {
             let domFill = document.querySelectorAll('input[data-control="expense"][data-type="fill"]')
             let domHidden = document.querySelectorAll('input[data-control="expense"][data-type="hidden"]')
 
+            let dummyColor = {}
+
+            chart.data.datasets.forEach(e => {
+                dummyColor[e.label] = {
+                    backgroundColor: e.backgroundColor,
+                    borderColor: e.borderColor
+                }
+            })
+
             chart.data.datasets = []
 
             for (const key in list) {
+                if (list[key].length === 0) continue;
                 let dummy = dataDummy.filter(e => e.label === key)
                 let arrayData = getData(dummy, "amount", element.expense_filter.value)
                 let defData = {
@@ -214,14 +227,24 @@ function line() {
                     data: arrayData,
                     fill: [...domFill].find(el => el.dataset.category === key).checked,
                     hidden: ![...domHidden].find(el => el.dataset.category === key).checked,
-                    backgroundColor: colorMapping[element.expense_select_type.value][key].backgroundColor,
-                    borderColor: colorMapping[element.expense_select_type.value][key].borderColor
+                    backgroundColor: dummyColor[key].backgroundColor,
+                    borderColor: dummyColor[key].borderColor
                 }
                 chart.data.datasets.push(defData)
             }
             chart.update()
         }
     })
+
+    // CHECK BOX HIDE & FILL
+    let domCheckbox = dummyCheckbox.flat()
+    domCheckbox.forEach(e => {
+        e.addEventListener("change", () => {
+            chartControl(e.dataset.category, chart, e, e.dataset.type)
+        })
+    })
+
+    // WIP = FILTER
 }
 
 donut()
