@@ -56,7 +56,7 @@ export const element = {
 
     expense_div_option_else: document.getElementById("expense-div_option-else"), // Div else input
 
-    expense_else_type: document.getElementById("expense-else_type"), // Period select filter
+    expense_filter_range_type: document.getElementById("expense-filter-range-type"), // Range filter type
     expense_filter_input_start: document.getElementById("expense-filter-input-start"),
     expense_filter_input_end: document.getElementById("expense-filter-input-end"),
     expense_filter_btn: document.getElementById("expense-filter-btn"),

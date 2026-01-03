@@ -135,17 +135,8 @@ function line() {
             continue
         };
 
-        let dummyLoop = Math.max(...list[key].map(e => e.month)) // AMBIL JUMLAH MONTH
-        for (let start = 1; start <= dummyLoop; start++) {
-            let amount = list[key].filter(e => e.month === start).reduce((acc, item) => acc + item.amount, 0)
-            dataDummy.push({
-                label: key,
-                month: start,
-                amount
-            })
-        }
-        let dummy = dataDummy.filter(e => e.label === key)
-        let data = getData(dummy, "amount", element.expense_filter.value)
+
+        let data = getData(list[key], "amount", element.expense_filter.value)
 
         chart.data.datasets.push({
             label: key,
@@ -155,6 +146,8 @@ function line() {
             borderColor: colorMapping[element.expense_select_type.value][key].borderColor
         })
 
+
+        // MENAMBAHKAN DOM AGAR BISA MELAKUKAN EVENT CHECKBOX
         dummyCheckbox.push(Array.from(document.querySelectorAll(`input[data-control="expense"][data-category="${key}"]`)))
     }
 
@@ -234,6 +227,10 @@ function line() {
             }
             chart.update()
         }
+
+        if (element.expense_filter.value === "custom") {
+            element.expense_div_option_else.classList.remove("hide")
+        }
     })
 
     // CHECK BOX HIDE & FILL
@@ -244,7 +241,72 @@ function line() {
         })
     })
 
-    // WIP = FILTER
+    // FILTER
+    element.expense_filter_btn.addEventListener("click", () => {
+        let error = alertingElse(element.expense_filter_input_start, element.expense_filter_input_end, element.expense_filter)
+        if (error) {
+            return alert(error);
+        }
+
+        let dummyColor = {}
+
+        chart.data.datasets.forEach(e => {
+            dummyColor[e.label] = {
+                backgroundColor: e.backgroundColor,
+                borderColor: e.borderColor
+            }
+        })
+
+        chart.destroy()
+
+        let input_start = Number(element.expense_filter_input_start.value);
+        let input_end = Number(element.expense_filter_input_end.value) || " ";
+
+        chart = getChart(ctx, element.expense_select_type.value, input_start, input_end)
+
+        // AMBIL SALAH 1 [NAMA] KEY YANG ADA ISINYA
+        const dummyLabelName = Object.keys(list).find(key => Array.isArray(list[key]) && list[key].length > 0);
+
+        // AMBIL NAMA ITEM DARI INDEX PERTAMA
+        const labelOfLabel = list[dummyLabelName][0].name
+
+        let dummyLabel = list[dummyLabelName].filter(e => e.name === labelOfLabel)
+
+        chart.data.labels = getLabels(dummyLabel, element.expense_filter_range_type.value, input_start, input_end)
+
+        for (const key in list) {
+            if (list[key].length === 0) continue;
+
+            let end = input_end !== " " ? input_end : Math.max(...list[key].map(e => e.month)) // AMBIL JUMLAH MONTH
+
+            let dataDummy = [];
+
+            for (let start = 1; start <= end; start++) {
+                let amount = list[key].filter(e => e.month === start).reduce((acc, item) => acc + item.amount, 0)
+                dataDummy.push({
+                    label: key,
+                    month: start,
+                    amount
+                })
+            }
+
+            let dummy = dataDummy.filter(e => e.label === key)
+
+            let data = getData(dummy, "amount", element.expense_filter_range_type.value, input_start, end)
+
+            chart.data.datasets.push({
+                label: key,
+                tention: 2,
+                data,
+                backgroundColor: colorMapping[element.expense_select_type.value][key].backgroundColor,
+                borderColor: colorMapping[element.expense_select_type.value][key].borderColor
+            })
+        }
+
+        prettierOptions(element.cashFlow_select_type, chart)
+
+        chart.update()
+    })
 }
 
 donut()

@@ -70,60 +70,79 @@ export function getLabels(array, period, filter_start, filter_end) {
     let result = [];
 
     if (!filter_start && !filter_end) {
+        const maxMonth = Math.max(...array.map(e => e.month));
+
         if (period === "month") {
-            for (let month = 1; month <= array.length; month++) {
-                let tahun = month > 12 ? parseInt(month / 12) : 0;
-                let bulan = month > 12 ? parseFloat(month % 12) : month;
-                result.push(tahun ? `${tahun}Y ${bulan}M` : `${bulan}M`);
+            for (let start = 1; start <= maxMonth; start++) {
+                let dummyData = monthToLabel(start);
+                result.push(dummyData);
             }
         }
 
         if (period === "year") {
-            let duration = parseInt(array.length / 12);
-            let sisa = array % 12 !== 0 ? array.length : "";
+            const maxYear = Math.floor(maxMonth / 12);
 
-            for (let year = 1; year <= duration; year++) {
-                result.push(`${year}Y`)
+            for (let start = 1; start <= maxYear; start++) {
+                let year = start * 12;
+                let dummyData = monthToLabel(year);
+                result.push(dummyData);
             }
 
-            if (sisa) {
-                result.push(`${duration}Y ${sisa % 12}M`)
+            if (maxMonth % 12 !== 0) {
+                if (maxYear <= 5) {
+                    const monthStart = (maxYear * 12) + 1;
+                    for (let start = monthStart; start <= maxMonth; start++) {
+                        let dummyData = monthToLabel(start);
+                        result.push(dummyData)
+                    }
+                }
+
+                else {
+                    let dummyData = monthToLabel(maxMonth);
+                    result.push(dummyData)
+                }
             }
         }
     }
 
     if (filter_start && filter_end) {
-        let dummy = []
-
+        const maxMonth = filter_end !== " " ? filter_end : Math.max(...array.map(e => e.month))
         if (period === "month") {
-            filter_end = filter_end !== " " ? filter_end : array.length
-            dummy = array.map(e => e.month).filter(e => e >= filter_start && e <= filter_end)
+            const startMonth = filter_start;
+            for (let start = startMonth; start <= maxMonth; start++) {
+                let dummyData = monthToLabel(start)
+                result.push(dummyData)
+            }
         }
 
         if (period === "year") {
-            let sisa;
-            if (filter_end === " ") {
-                sisa = filter_end.length % 12;
-            }
-            let year = filter_end !== " " ? filter_end : parseInt(array.length / 12);
+            const startYear = filter_start;
+            const maxYear = filter_end !== " " ? filter_end : Math.floor(Math.max(...array.map(e => e.month)) / 12);
 
-            for (let length = filter_start; length <= year; length++) {
-                dummy.push(array.find(e => e.month === length * 12).month)
-            }
-
-            if (sisa) {
-                dummy.push(array.at(-1).month)
+            for (let start = startYear; start <= maxYear; start++) {
+                let year = start * 12;
+                let dummyData = monthToLabel(year);
+                result.push(dummyData);
             }
 
+            if (maxMonth % 12 !== 0) {
+                let dummyData;
+                if (maxYear <= 5) {
+                    const monthStart = (startYear * 12) + 1;
+                    for (let start = monthStart; start <= maxMonth; start++) {
+                        dummyData = monthToLabel(start);
+                        result.push(dummyData)
+                    }
+                }
+
+                else {
+                    dummyData = monthToLabel(maxMonth)
+                    result.push(dummyData)
+                }
+            }
         }
-
-
-
-
-        dummy.forEach(e => {
-            result.push(monthToLabel(e))
-        });
     }
+
     return result
 }
 
@@ -135,19 +154,47 @@ export function getData(array, key, period, filter_start, filter_end) {
     // MONTH-YEAR
     if (!filter_start && !filter_end) {
         if (period === "month") {
-            result = array.map(e => e[key])
+            let isi = [];
+
+            const maxMonth = Math.max(...array.map(e => e.month));
+
+            for (let start = 1; start <= maxMonth; start++) {
+                let dummyData = array.filter(e => e.month === start).reduce((acc, item) => acc + item[key], 0);
+                isi.push(dummyData)
+            }
+
+            result = isi
         }
 
         if (period === "year") {
-            result = [];
-            let year = parseInt(array.length / 12);
-            let sisa = array.length % 12;
+            let isi = [];
 
-            for (let y = 1; y <= year; y++) {
-                result.push(array.find(e => e.month === y * 12)[key])
+            const maxMonth = Math.max(...array.map(e => e.month));
+            const maxYear = Math.floor(maxMonth / 12);
+
+            for (let start = 1; start <= maxYear; start++) {
+                let year = start * 12;
+                let dummyData = array.filter(e => e.month === year).reduce((acc, item) => acc + item[key], 0)
+                isi.push(dummyData)
             }
 
-            if (sisa) result.push(array.at(-1)[key])
+            if (maxMonth % 12 !== 0) {
+                const startSisa = (maxYear * 12) + 1;
+
+                if (maxYear <= 5) {
+                    for (let start = startSisa; start <= maxMonth; start++) {
+                        let dummyData = array.filter(e => e.month === start).reduce((acc, item) => acc + item[key], 0)
+                        isi.push(dummyData)
+                    }
+                }
+
+                else {
+                    let dummyData = array.filter(e => e.month === maxMonth).reduce((acc, item) => acc + item[key], 0);
+                    isi.push(dummyData)
+                }
+
+            }
+            result = isi;
         }
     }
 
@@ -163,20 +210,25 @@ export function getData(array, key, period, filter_start, filter_end) {
         }
 
         if (period === "year") {
-            filter_end = filter_end !== " " ? filter_end * 12 : array.length
-
-            let year = parseInt(filter_end / 12)
-            let sisa = filter_end % 12 !== 0;
-
             let isi = [];
 
-            for (let y = filter_start; y <= year; y++) {
-                let convert = y * 12
-                isi.push(array.find(e => e.month === convert)[key])
+            const maxMonth = Math.max(...array.map(e => e.month))
+            const maxYear = Math.floor(maxMonth / 12);
+
+            for (let start = filter_start; start <= maxYear; start++) {
+                let year = start * 12;
+                let dummyData = array.filter(e => e.month === year).reduce((acc, item) => acc + item[key], 0);
+                isi.push(dummyData)
             }
 
-            if (sisa) {
-                isi.push(array.at(-1)[key])
+            if (maxMonth % 12 !== 0) {
+
+                const startSisa = (maxYear * 12) + 1;
+
+                for (let start = startSisa; start <= maxMonth; start++) {
+                    let dummyData = array.filter(e => e.month === start).reduce((acc, item) => acc + item[key], 0)
+                    isi.push(dummyData)
+                }
             }
             result = isi
         }
