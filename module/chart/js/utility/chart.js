@@ -200,11 +200,14 @@ export function getData(array, key, period, filter_start, filter_end) {
 
     // FILTERING
     if (filter_start && filter_end) {
-
         if (period === "month") {
-            let end = filter_end !== " " ? filter_end : array.length;
+            let isi = [];
+            const maxMonth = filter_end !== " " ? filter_end : array.length;
 
-            let isi = array.filter(e => e.month >= filter_start && e.month <= end).map(e => e[key])
+            for (let start = filter_start; start <= maxMonth; start++) {
+                let dummyData = array.filter(e=> e.month === start).reduce((acc, item)=> acc + item[key], 0)
+                isi.push(dummyData)
+            }
 
             result = isi
         }

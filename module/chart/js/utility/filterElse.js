@@ -1,5 +1,5 @@
 export function inputElseFilter(array, periodFilter, type, input) {
-    let month = array.map(e => e.month).length;
+    let month = Math.max(...array.map(e => e.month));
 
     month = periodFilter.value !== "month" ? parseInt(month / 12) : month;
 
@@ -7,7 +7,7 @@ export function inputElseFilter(array, periodFilter, type, input) {
         input.value = input.value.replace(/[^0-9]/g, "");
         if (input.value === "") return;
         if (input.value < 1) return input.value = 1;
-        if (input.value > month) return input.value = month === 1 ? 1 : - 1;
+        if (input.value > month) return input.value = month === 1 ? 1 : month - 1;
     }
 
     if (type === "end") {

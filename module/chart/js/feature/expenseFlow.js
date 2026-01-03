@@ -115,13 +115,13 @@ function line() {
     let chart = getChart(ctx, element.expense_select_type.value)
 
     // DATA.LABELS
-    let convert = [...new Set(Object.values(list).find(e => e.length !== 0).map(e => e.month))]
-    chart.data.labels = getLabels(convert, element.expense_filter.value)
+    const dummyArrayLabel = list[Object.keys(list).find(l => list[l].length > 1)]
+
+    let dummyLabel = getLabels(dummyArrayLabel, element.expense_filter.value)
+
+    chart.data.labels = dummyLabel
 
     let dummyCheckbox = [] // ARRAY UNTUK HIDE DAN FILL
-
-    // DATA.DATASETS
-    let dataDummy = [];
 
     for (const key in list) {
         if (list[key].length === 0) {
@@ -135,7 +135,6 @@ function line() {
             continue
         };
 
-
         let data = getData(list[key], "amount", element.expense_filter.value)
 
         chart.data.datasets.push({
@@ -145,7 +144,6 @@ function line() {
             backgroundColor: colorMapping[element.expense_select_type.value][key].backgroundColor,
             borderColor: colorMapping[element.expense_select_type.value][key].borderColor
         })
-
 
         // MENAMBAHKAN DOM AGAR BISA MELAKUKAN EVENT CHECKBOX
         dummyCheckbox.push(Array.from(document.querySelectorAll(`input[data-control="expense"][data-category="${key}"]`)))
@@ -194,7 +192,7 @@ function line() {
     element.expense_filter.addEventListener("change", () => {
         if (element.expense_filter.value !== "custom") {
             element.expense_div_option_else.classList.add("hide")
-            chart.data.labels = getLabels(convert, element.expense_filter.value)
+            chart.data.labels = getLabels(dummyArrayLabel, element.expense_filter.value)
 
             let domFill = document.querySelectorAll('input[data-control="expense"][data-type="fill"]')
             let domHidden = document.querySelectorAll('input[data-control="expense"][data-type="hidden"]')
@@ -212,12 +210,12 @@ function line() {
 
             for (const key in list) {
                 if (list[key].length === 0) continue;
-                let dummy = dataDummy.filter(e => e.label === key)
-                let arrayData = getData(dummy, "amount", element.expense_filter.value)
+                let data = getData(list[key], "amount", element.expense_filter.value)
+
                 let defData = {
                     label: key,
                     tention: 2,
-                    data: arrayData,
+                    data,
                     fill: [...domFill].find(el => el.dataset.category === key).checked,
                     hidden: ![...domHidden].find(el => el.dataset.category === key).checked,
                     backgroundColor: dummyColor[key].backgroundColor,
@@ -229,6 +227,7 @@ function line() {
         }
 
         if (element.expense_filter.value === "custom") {
+            [element.expense_filter_input_start, element.expense_filter_input_end].forEach(e => e.value = "")
             element.expense_div_option_else.classList.remove("hide")
         }
     })
@@ -240,6 +239,21 @@ function line() {
             chartControl(e.dataset.category, chart, e, e.dataset.type)
         })
     })
+
+    // = FILTER ELSE =
+
+    // INPUT START
+    element.expense_filter_input_start.addEventListener("input", () => inputElseFilter(dummyArrayLabel, element.expense_filter_range_type, "start", element.expense_filter_input_start))
+
+    // INPUT END
+    element.expense_filter_input_end.addEventListener("input", () => inputElseFilter(dummyArrayLabel, element.expense_filter_range_type, "end", element.expense_filter_input_end))
+
+    // RANGE TYPE
+    element.expense_filter_range_type.addEventListener("change", () => {
+        inputElseFilter(dummyArrayLabel, element.expense_filter_range_type, "start", element.expense_filter_input_start)
+        inputElseFilter(dummyArrayLabel, element.expense_filter_range_type, "end", element.expense_filter_input_end)
+    })
+
 
     // FILTER
     element.expense_filter_btn.addEventListener("click", () => {
@@ -264,35 +278,12 @@ function line() {
 
         chart = getChart(ctx, element.expense_select_type.value, input_start, input_end)
 
-        // AMBIL SALAH 1 [NAMA] KEY YANG ADA ISINYA
-        const dummyLabelName = Object.keys(list).find(key => Array.isArray(list[key]) && list[key].length > 0);
-
-        // AMBIL NAMA ITEM DARI INDEX PERTAMA
-        const labelOfLabel = list[dummyLabelName][0].name
-
-        let dummyLabel = list[dummyLabelName].filter(e => e.name === labelOfLabel)
-
-        chart.data.labels = getLabels(dummyLabel, element.expense_filter_range_type.value, input_start, input_end)
+        chart.data.labels = getLabels(dummyArrayLabel, element.expense_filter_range_type.value, input_start, input_end)
 
         for (const key in list) {
             if (list[key].length === 0) continue;
 
-            let end = input_end !== " " ? input_end : Math.max(...list[key].map(e => e.month)) // AMBIL JUMLAH MONTH
-
-            let dataDummy = [];
-
-            for (let start = 1; start <= end; start++) {
-                let amount = list[key].filter(e => e.month === start).reduce((acc, item) => acc + item.amount, 0)
-                dataDummy.push({
-                    label: key,
-                    month: start,
-                    amount
-                })
-            }
-
-            let dummy = dataDummy.filter(e => e.label === key)
-
-            let data = getData(dummy, "amount", element.expense_filter_range_type.value, input_start, end)
+            let data = getData(list[key], "amount", element.expense_filter_range_type.value, input_start, input_end)
 
             chart.data.datasets.push({
                 label: key,
