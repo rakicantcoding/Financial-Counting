@@ -109,28 +109,6 @@ function donut() {
             document.querySelector(`input[data-section="expense"][data-checkbox="donut"][data-category="${key}"]`).checked = false
         }
     }
-
-
-    // OVERVIEW LIST
-    function overview() {
-        const option = element.expense_list_select.value;
-
-        if (list[option].length === 0) {
-            let div_alert = document.createElement("div");
-            div_alert.textContent = `Empty`;
-            div_alert.classList.add("list-note");
-            let p = document.createElement("p");
-            div_alert.append(p)
-            element.expense_list_expense.append(div_alert);
-            return;
-        }
-
-        let key_list = domListing(option, element.expense_list_expense);
-        let key_item = document.createElement("div")
-        key_item.classList.add("key-item");
-
-
-    }
 }
 
 
