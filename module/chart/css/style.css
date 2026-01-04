@@ -62,7 +62,7 @@
 
 
 /* DIV DONUT */
-.content-head>.div-donut-cashflow {
+.content-head>.div-donut {
     display: flex;
     flex-direction: row;
     width: 30%;
@@ -71,12 +71,12 @@
     align-items: center;
 }
 
-.div-donut-cashflow>.div-canvasD {
+.div-donut>.div-canvasD {
     width: 30%;
     display: flex;
 }
 
-.div-donut-cashflow>.donut-overview {
+.div-donut>.donut-overview {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -396,18 +396,18 @@ canvas {
         padding: 0px;
     }
 
-    .content-head>.div-donut-cashflow {
+    .content-head>.div-donut {
         flex-direction: column;
         width: 100%;
         gap: 30px;
         height: auto;
     }
 
-    .div-donut-cashflow>.div-canvasD {
+    .div-donut>.div-canvasD {
         width: 50%;
     }
 
-    .div-donut-cashflow>.donut-overview {
+    .div-donut>.donut-overview {
         width: 100%;
     }
 

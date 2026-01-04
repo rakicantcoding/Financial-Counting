@@ -39,13 +39,13 @@ export function getChart(ctx, type) {
 }
 
 export function prettierOptions(type, chart) {
-    if (type.value === "bar") {
+    if (type === "doughnut") {
         chart.options.plugins.tooltip.callbacks.label = function (ctx) {
-            return ctx.label + ": " + ctx.raw.toFixed(2) + "%";
+            return " " + ctx.raw.toFixed(2) + "%";
         }
     }
 
-    if (type.value === "line" || type.value === "bar") {
+    if (type === "line" || type === "bar") {
         chart.options.scales.y.ticks.callback = (value) => `Rp ${value.toLocaleString('id-ID')}`;
         chart.options.plugins.tooltip.callbacks.label = (ctx) => {
             return `Rp ${Math.round(ctx.parsed.y).toLocaleString('id-ID')}`;

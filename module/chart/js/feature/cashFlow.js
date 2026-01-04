@@ -1,6 +1,7 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
 import { getChart, prettierOptions, getData, getLabels } from "../utility/chart.js";
+import { domListing } from "../utility/overviewList.js";
 import { chartControl } from "../utility/toolsControl.js";
 import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
 
@@ -26,10 +27,12 @@ function donut() {
         }
     }
 
+    const lastMonth = Math.max(...summary[Object.keys(summary).find(k => summary[k].length !== 0)].map(e => e.month))
+
     const value = {
-        income: summary.income[0].amount,
-        expense: summary.expense[0].amount,
-        balance: summary.balance[0].amount
+        income: summary.income.find(e=> e.month === lastMonth).amount,
+        expense: summary.expense.find(e=> e.month === lastMonth).amount,
+        balance: summary.balance.find(e=> e.month === lastMonth).amount
     }
 
     const total = Object.values(value).reduce((acc, item) => acc + item, 0);
@@ -91,23 +94,10 @@ function donut() {
     })
 
 
-    // LIST
-    function domListing(category, motherElement) {
-        let key_container = document.createElement("div");
-        key_container.classList.add("key-container");
-        motherElement.append(key_container);
 
-        let key_p = document.createElement("p");
-        key_p.textContent = `Category: ${category}`;
-
-        let key_list = document.createElement("div");
-        key_list.classList.add("key-list");
-        key_container.append(key_p, key_list);
-        return key_list
-    }
 
     // --- INCOME ---
-    (() => {
+    function overviewIncome() {
         let list = data.list.income;
         if (list.length > 0) {
             element.cashFlow_list_income.innerHTML = "";
@@ -132,8 +122,9 @@ function donut() {
             div_alert.classList.add("list-note");
             element.cashFlow_list_income.append(div_alert);
         }
+    }
 
-    })()
+    overviewIncome()
 
     // --- EXPENSE ---
     function loadExpense(option) {
@@ -184,7 +175,9 @@ function donut() {
                 p_alert.classList.add("list-note");
                 element.cashFlow_list_expense.append(p_alert);
             }
-        } else {
+        }
+
+        else {
             if (Object.values(data.list.expense).flat().length > 1) {
                 element.cashFlow_list_expense.innerHTML = "";
                 for (const option in data.list.expense) {
@@ -239,8 +232,6 @@ function donut() {
 
     loadExpense(element.cashFlow_list_select.value)
     element.cashFlow_list_select.addEventListener("change", () => loadExpense(element.cashFlow_list_select.value))
-
-    console.log(chart.data)
 }
 
 function line() {
@@ -311,7 +302,7 @@ function line() {
         chart.data.datasets.push(defData)
     }
 
-    prettierOptions(element.cashFlow_select_type, chart)
+    prettierOptions(element.cashFlow_select_type.value, chart)
 
     chart.update()
 
@@ -340,7 +331,7 @@ function line() {
         chart = getChart(ctx, element.cashFlow_select_type.value)
         chart.data = data
 
-        prettierOptions(element.cashFlow_select_type, chart)
+        prettierOptions(element.cashFlow_select_type.value, chart)
 
         chart.update()
 
@@ -463,7 +454,7 @@ function line() {
             chart.data.datasets.push(defData)
         }
 
-        prettierOptions(element.cashFlow_select_type, chart)
+        prettierOptions(element.cashFlow_select_type.value, chart)
 
         chart.update()
     })

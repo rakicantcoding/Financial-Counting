@@ -89,7 +89,7 @@
                 <!-- HEAD -->
                 <div class="content-head">
                     <!-- CHART PIE -->
-                    <div class="div-donut-cashflow">
+                    <div class="div-donut">
                         <!-- CANVAS -->
                         <div class="div-canvasD">
                             <canvas id="cashFlow-canvas-donut"></canvas>
@@ -266,17 +266,20 @@
                         <div> <!-- FILL -->
                             <p>Fill</p>
                             <div>
-                                <label data-label="cashFlow" data-category="income" data-control="cashFlow" data-type="fill">
+                                <label data-label="cashFlow" data-category="income" data-control="cashFlow"
+                                    data-type="fill">
                                     <input data-control="cashFlow" data-category="income" data-type="fill"
                                         class="checkbox_green" type="checkbox"> Income
                                 </label>
 
-                                <label data-label="cashFlow" data-category="expense" data-control="cashFlow" data-type="fill">
+                                <label data-label="cashFlow" data-category="expense" data-control="cashFlow"
+                                    data-type="fill">
                                     <input data-control="cashFlow" data-category="expense" data-type="fill"
                                         class="checkbox_red" type="checkbox"> Expense
                                 </label>
 
-                                <label data-label="cashFlow" data-category="balance" data-control="cashFlow" data-type="fill">
+                                <label data-label="cashFlow" data-category="balance" data-control="cashFlow"
+                                    data-type="fill">
                                     <input data-control="cashFlow" data-category="balance" data-type="fill"
                                         class="checkbox_blue" type="checkbox"> Balance
                                 </label>
@@ -304,7 +307,7 @@
                 <!-- HEAD -->
                 <div class="content-head">
                     <!-- CHART PIE -->
-                    <div class="div-donut-cashflow">
+                    <div class="div-donut">
                         <!-- CANVAS -->
                         <div class="div-canvasD">
                             <canvas id="expense-canvas-donut"></canvas>
@@ -370,6 +373,32 @@
                                     <p>Saving:</p>
                                     <p data-percent="expense" data-category="saving">0%</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LIST DATA -->
+                    <div class="overview-list">
+                        <!-- EXPENSE -->
+                        <div>
+                            <div class="overview-head">
+                                <div class="overview-title">
+                                    <p class="p_title">Expense List</p>
+                                </div>
+
+                                <div class="overview-head-select">
+                                    <select class="select padding-wide" id="expense_list_select">
+                                        <option value="all">All</option>
+                                        <option value="expense">Expense</option>
+                                        <option value="invest">Invest</option>
+                                        <option value="interest">Interest</option>
+                                        <option value="saving">Saving</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="overview-list-content" id="expense_list_expense">
+                                <!-- CONTENT -->
                             </div>
                         </div>
                     </div>
@@ -462,22 +491,26 @@
                         <div> <!-- FILL -->
                             <p>Fill</p>
                             <div>
-                                <label data-label="expense" data-category="expense" data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="expense" data-control="expense"
+                                    data-type="fill">
                                     <input data-control="expense" data-category="expense" data-type="fill"
                                         class="checkbox_orange" type="checkbox"> Expense
                                 </label>
 
-                                <label data-label="expense" data-category="invest" data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="invest" data-control="expense"
+                                    data-type="fill">
                                     <input data-control="expense" data-category="invest" data-type="fill"
                                         class="checkbox_cyan" type="checkbox"> Invest
                                 </label>
 
-                                <label data-label="expense" data-category="interest" data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="interest" data-control="expense"
+                                    data-type="fill">
                                     <input data-control="expense" data-category="interest" data-type="fill"
                                         class="checkbox_gold" type="checkbox"> Interest
                                 </label>
 
-                                <label data-label="expense" data-category="saving" data-control="expense" data-type="fill">
+                                <label data-label="expense" data-category="saving" data-control="expense"
+                                    data-type="fill">
                                     <input data-control="expense" data-category="saving" data-type="fill"
                                         class="checkbox_lavender" type="checkbox"> Saving
                                 </label>

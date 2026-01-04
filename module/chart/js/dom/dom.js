@@ -47,6 +47,9 @@ export const element = {
     expense_checkBox_interest: document.getElementById("expense_checkBox_interest"), // Checkbox
     expense_checkBox_saving: document.getElementById("expense_checkBox_saving"), // Checkbox
 
+    expense_list_expense: document.getElementById("expense_list_expense"), 
+
+    expense_list_select: document.getElementById("expense_list_select"),
     // = DONUT CHART END
 
     // = LINE BAR CHART

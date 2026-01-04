@@ -1,6 +1,7 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
 import { getChart, prettierOptions, getData, getLabels } from "../utility/chart.js";
+import { domListing } from "../utility/overviewList.js";
 import { chartControl } from "../utility/toolsControl.js";
 import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
 
@@ -48,6 +49,8 @@ function donut() {
 
     let chart = getChart(ctx, "doughnut");
 
+    const lastMonth = Math.max(...list[Object.keys(list).find(k => list[k].length !== 0)].map(e => e.month))
+
     const value = {};
 
     for (const key in list) {
@@ -57,7 +60,7 @@ function donut() {
             continue
         };
 
-        value[key] = list[key][0].amount
+        value[key] = list[key].filter(e => e.month === lastMonth).reduce((acc, item) => acc + item.amount, 0)
     }
 
     const total = Object.values(value).reduce((acc, item) => acc + item, 0);
@@ -106,6 +109,28 @@ function donut() {
             document.querySelector(`input[data-section="expense"][data-checkbox="donut"][data-category="${key}"]`).checked = false
         }
     }
+
+
+    // OVERVIEW LIST
+    function overview() {
+        const option = element.expense_list_select.value;
+
+        if (list[option].length === 0) {
+            let div_alert = document.createElement("div");
+            div_alert.textContent = `Empty`;
+            div_alert.classList.add("list-note");
+            let p = document.createElement("p");
+            div_alert.append(p)
+            element.expense_list_expense.append(div_alert);
+            return;
+        }
+
+        let key_list = domListing(option, element.expense_list_expense);
+        let key_item = document.createElement("div")
+        key_item.classList.add("key-item");
+
+
+    }
 }
 
 
@@ -149,7 +174,7 @@ function line() {
         dummyCheckbox.push(Array.from(document.querySelectorAll(`input[data-control="expense"][data-category="${key}"]`)))
     }
 
-    prettierOptions(element.expense_select_type, chart)
+    prettierOptions(element.expense_select_type.value, chart)
 
     chart.update()
 
@@ -167,7 +192,7 @@ function line() {
         chart = getChart(ctx, element.expense_select_type.value)
         chart.data = data
 
-        prettierOptions(element.expense_select_type, chart)
+        prettierOptions(element.expense_select_type.value, chart)
 
         chart.update()
 
@@ -254,7 +279,6 @@ function line() {
         inputElseFilter(dummyArrayLabel, element.expense_filter_range_type, "end", element.expense_filter_input_end)
     })
 
-
     // FILTER
     element.expense_filter_btn.addEventListener("click", () => {
         let error = alertingElse(element.expense_filter_input_start, element.expense_filter_input_end, element.expense_filter)
@@ -294,7 +318,7 @@ function line() {
             })
         }
 
-        prettierOptions(element.cashFlow_select_type, chart)
+        prettierOptions(element.cashFlow_select_type.value, chart)
 
         chart.update()
     })
