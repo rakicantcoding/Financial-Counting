@@ -26,7 +26,7 @@ export const element = {
     cashFlow_div_option_else: document.getElementById("cashFlow-div_option-else"), // Div else input
 
     cashFlow_filter_range_type: document.getElementById("cashFlow-filter-range-type"), // Range filter type
-    
+
     cashFlow_filter_input_start: document.getElementById("cashFlow-filter-input-start"), // Input start else
     cashFlow_filter_input_end: document.getElementById("cashFlow-filter-input-end"), // Input end else
     cashFlow_filter_btn: document.getElementById("cashFlow-filter-btn"), // Input btn else
@@ -38,7 +38,6 @@ export const element = {
 
 
     // EXPENSE FLOW
-
     // = DONUT CHART
     expense_canvas_donut: document.getElementById("expense-canvas-donut"), // Canvas Donut 
 
@@ -46,10 +45,6 @@ export const element = {
     expense_checkBox_invest: document.getElementById("expense_checkBox_invest"), // Checkbox
     expense_checkBox_interest: document.getElementById("expense_checkBox_interest"), // Checkbox
     expense_checkBox_saving: document.getElementById("expense_checkBox_saving"), // Checkbox
-
-    expense_list_expense: document.getElementById("expense_list_expense"), 
-
-    expense_list_select: document.getElementById("expense_list_select"),
     // = DONUT CHART END
 
     // = LINE BAR CHART
@@ -65,5 +60,26 @@ export const element = {
     expense_filter_btn: document.getElementById("expense-filter-btn"),
 
     expense_canvas_line: document.getElementById("expense-canvas-line"),
+    // = LINE BAR CHART END
     // EXPENSE FLOW END
+
+    // LIST FLOW
+    // = LINE BAR CHART
+    list_select_type: document.getElementById("list-select-type"), // Select type Line, Bar
+
+    list_filter: document.getElementById("list-filter"), // Select filter
+
+    list_div_option_else: document.getElementById("list-div_option-else"), // Div else input
+
+    list_filter_range_type: document.getElementById("list-filter-range-type"), // Range filter type
+    list_filter_input_start: document.getElementById("list-filter-input-start"),
+    list_filter_input_end: document.getElementById("list-filter-input-end"),
+    list_filter_btn: document.getElementById("list-filter-btn"),
+
+    list_canvas_line: document.getElementById("list-canvas-line"),
+
+    list_category: document.getElementById("list-category"),
+    list_name: document.getElementById("list-name")
+    // = LINE BAR CHART END
+    // LIST FLOW END
 }

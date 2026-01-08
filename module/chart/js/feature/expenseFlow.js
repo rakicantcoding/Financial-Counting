@@ -1,7 +1,6 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
 import { getChart, prettierOptions, getData, getLabels } from "../utility/chart.js";
-import { domListing } from "../utility/overviewList.js";
 import { chartControl } from "../utility/toolsControl.js";
 import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
 
@@ -278,7 +277,7 @@ function line() {
         let input_start = Number(element.expense_filter_input_start.value);
         let input_end = Number(element.expense_filter_input_end.value) || " ";
 
-        chart = getChart(ctx, element.expense_select_type.value, input_start, input_end)
+        chart = getChart(ctx, element.expense_select_type.value)
 
         chart.data.labels = getLabels(dummyArrayLabel, element.expense_filter_range_type.value, input_start, input_end)
 
@@ -296,7 +295,7 @@ function line() {
             })
         }
 
-        prettierOptions(element.cashFlow_select_type.value, chart)
+        prettierOptions(element.expense_select_type.value, chart)
 
         chart.update()
     })
