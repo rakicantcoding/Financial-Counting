@@ -107,7 +107,6 @@ function nameChoosen() {
     chart.data.labels = label
 
     mapping[category.value].forEach(e => {
-        console.log(e)
         let data = getData(dummyData, e, element.list_filter.value)
 
         let hide = document.querySelector(`input[data-control="list"][data-type="hidden"][data-category="${e}"]`).checked

@@ -5,6 +5,10 @@
     gap: 60px;
 }
 
+.main-body>div {
+    background-color: rgb(30, 30, 30);
+}
+
 /* MAIN BODY END */
 
 
@@ -12,7 +16,6 @@
 .body-content {
     display: flex;
     flex-direction: column;
-    background-color: rgb(30, 30, 30);
 }
 
 .body-content>div {
@@ -27,7 +30,6 @@
 /* = CONTENT-TITLE = */
 .content-title {
     display: flex;
-
     align-items: center;
     padding: 5px 0px;
 }
@@ -144,12 +146,12 @@
     justify-content: flex-end;
 }
 
-.overview-list>div>.overview-list-content {
+.overview-list-content {
     padding: 5px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    height: 100%;
+    min-height: 100px;
     max-height: 200px;
     overflow-y: auto;
     border-radius: 4px;
@@ -187,6 +189,12 @@
 .key-item {
     padding: 10px;
     background-color: rgba(18, 18, 18, 0.5);
+}
+
+.key-item > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .p_title {
@@ -317,6 +325,62 @@ canvas {
 /* CASH FLOW END */
 
 
+
+/* LOG FLOW */
+.main-body>.log {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 10px;
+}
+
+.log>.log-header {
+    display: flex;
+    justify-content: center;
+}
+
+.log>.log-body {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.log-body>div {
+    padding: 5px;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.log-body__content>.log-title {
+    text-align: center;
+}
+
+.log-body__content>.log-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.log-content__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 30px;
+}
+
+.cashFlow-log_select {
+    justify-content: flex-end !important;
+}
+
+
+
+/* LOG FLOW END */
+
+
+
 /* ATTECHMENT */
 .checkbox {
     transform: scale(1.4);
@@ -405,7 +469,13 @@ canvas {
 }
 
 
+.color-green {
+    color: rgb(1, 178, 1);
+}
 
+.color-green:hover {
+    color: green;
+}
 
 
 
@@ -531,6 +601,10 @@ canvas {
     }
 
     .content-checkbox>div>div {
+        flex-direction: column;
+    }
+
+    .log>.log-body {
         flex-direction: column;
     }
 }

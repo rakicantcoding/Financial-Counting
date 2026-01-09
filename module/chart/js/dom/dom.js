@@ -79,7 +79,19 @@ export const element = {
     list_canvas_line: document.getElementById("list-canvas-line"),
 
     list_category: document.getElementById("list-category"),
-    list_name: document.getElementById("list-name")
+    list_name: document.getElementById("list-name"),
     // = LINE BAR CHART END
     // LIST FLOW END
+
+
+    // LOG FLOW
+    cashFlow_log_select: document.getElementById("cashFlow_log-select"), // SELECT CASH FLOW
+
+    expense_log_input: document.getElementById("expense_log-input"), // INPUT EXPENSE
+    expense_log_selec: document.getElementById("expense_log-selec"), // SELECT EXPENSE
+
+    cashFlow_log_body: document.getElementById("cashFlow_log-body"), // CASH FLOW LOG BODY
+
+    expense_log_body: document.getElementById("expense_log-body") // EXPENSE LOG BODY
+    // LOG FLOW END
 }

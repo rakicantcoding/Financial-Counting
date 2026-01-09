@@ -504,7 +504,6 @@
         <!-- EXPENSE FLOW END -->
 
         <!-- LIST FLOW [BODY-CONTENT] -->
-
         <div class="body-content">
             <!-- TITLE -->
             <div class="content-title">
@@ -576,12 +575,12 @@
                         <div class="select-bottom">
                             <div>
                                 <p>Category</p>
-                                <select id="list-category" class="select"></select>
+                                <select id="list-category" class="select padding-wide"></select>
                             </div>
 
                             <div>
                                 <p>Name Item</p>
-                                <select id="list-name" class="select">
+                                <select id="list-name" class="select padding-wide">
                                 </select>
                             </div>
                         </div>
@@ -650,57 +649,72 @@
             </div>
 
         </div>
-
         <!-- LIST FLOW -->
 
         <!-- LOG WIP -->
         <div class="log">
 
             <!-- HEADER -->
-            <div class="log-header">
-                <div class="log-header__title">
-                    <p>Log Flow</p>
-                </div>
+            <div class="log-header content-title">
+                <p>Log Flow</p>
             </div>
 
             <!-- BODY -->
             <div class="log-body">
 
-                <!-- LEFT : CASH FLOW -->
-                <section class="log-section log-section--summary">
+                <div class="log-body__content">
 
-                    <div class="log-section__header">
-                        <p class="log-section__title">Cash Flow Log</p>
+                    <div class="log-title">
+                        <p>Cash Flow Log</p>
                     </div>
 
-                    <div class="log-section__body">
-                        <div class="cashflow-list">
-                            <!-- ISI DATA -->
-                        </div>
-                    </div>
+                    <div class="log-content">
 
-                </section>
-
-                <!-- RIGHT : LIST LOG -->
-                <section class="log-section log-section--list">
-
-                    <div class="log-section__header">
-                        <p class="log-section__title">List Log</p>
-                    </div>
-
-                    <div class="log-section__body">
-
-                        <div class="log-filter">
-                            <select class="log-filter__select"></select>
+                        <div class="log-content__header cashFlow-log_select">
+                            <select id="cashFlow_log-select" class="select padding-wide">
+                                <option value="all">All</option>
+                                <option value="income">Income</option>
+                                <option value="expense">Expense</option>
+                                <option value="balance">Balance</option>
+                            </select>
                         </div>
 
-                        <div class="log-list">
-                            <!-- ISI DATA -->
+                        <div id="cashFlow_log-body" class="overview-list-content">
+
                         </div>
 
                     </div>
 
-                </section>
+                </div>
+
+
+
+                <div class="log-body__content">
+
+                    <div class="log-title">
+                        <p>Expense Log</p>
+                    </div>
+
+                    <div class="log-content">
+
+                        <div class="log-content__header">
+                            <input id="expense_log-input" placeholder="Search Name..." class="input">
+                            <select id="expense_log-select" class="select padding-wide">
+                                <option value="all">All</option>
+                                <option value="expense">Expense</option>
+                                <option value="invest">Invest</option>
+                                <option value="interest">Interest</option>
+                                <option value="saving">Saving</option>
+                            </select>
+                        </div>
+
+                        <div id="expense_log-body" class="overview-list-content">
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
