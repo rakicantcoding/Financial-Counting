@@ -55,9 +55,176 @@ function cashFlow(value) {
     }
 }
 
-function expense() {
+function expense(value) {
+    element.expense_log_body.innerHTML = "";
     let list = data.expense
+
+    let input = element.expense_log_input.value;
+
+    let dummyData;
+
+    if (value === "all") dummyData = list;
+    else { dummyData = { [value]: list[value] } }
+
+    const mapping = {
+        expense: ["amount"],
+        invest: ["amount", "takeProfit", "portofolio"],
+        interest: ["amount", "interest", "portofolio"],
+        saving: ["amount", "portofolio"]
+    }
+
+    function capitalizeFirst(text) {
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+
+
+    if (!element.expense_log_input.value.trim()) {
+        for (const key in dummyData) {
+            if (dummyData[key].length === 0 && value !== "all") {
+                let div_alert = document.createElement("div");
+                div_alert.textContent = `Empty`;
+                div_alert.classList.add("list-note");
+                element.expense_log_body.append(div_alert);
+                continue;
+            };
+
+            if (dummyData[key].length === 0) continue;
+
+            let key_list = domListing(key, element.expense_log_body)
+
+            dummyData[key].forEach(e => {
+                let key_item = document.createElement("div")
+                key_item.classList.add("key-item");
+                key_list.append(key_item);
+
+                let p_month = document.createElement("p");
+                p_month.textContent = `Month ${e.month}`;
+
+                let p_name = document.createElement("p");
+                p_name.textContent = `Name: ${e.name}`;
+
+                key_item.append(p_month, p_name)
+
+                mapping[key].forEach(el => {
+                    let p = document.createElement("p");
+                    p.textContent = `${capitalizeFirst(el)}: Rp. ${Math.floor(e[el]).toLocaleString("id-ID")}`;
+                    key_item.append(p)
+                })
+            })
+        }
+    }
+
+    else {
+        let dummyUrai = Object.values(dummyData).flat()
+        let newDummyData = dummyUrai.filter(name =>
+            name.name.toLowerCase().startsWith(element.expense_log_input.value)
+        );
+
+        
+
+        let dummyCategory = [...new Set(newDummyData.map(e => e.category))]
+
+        let mappingDummy = {}
+
+        dummyCategory.forEach(e => {
+            mappingDummy[e] = newDummyData.filter(el => el.category === e)
+        })
+
+        if (Object.values(mappingDummy).length === 0) {
+            let div_alert = document.createElement("div");
+            div_alert.textContent = `Empty`;
+            div_alert.classList.add("list-note");
+            element.expense_log_body.append(div_alert);
+        }
+
+        for (const key in mappingDummy) {
+            if (mappingDummy[key].length === 0 && value !== "all") {
+                let div_alert = document.createElement("div");
+                div_alert.textContent = `Empty`;
+                div_alert.classList.add("list-note");
+                element.expense_log_body.append(div_alert);
+                continue;
+            };
+
+            if (mappingDummy[key].length === 0) continue;
+
+            let key_list = domListing(key, element.expense_log_body)
+
+            mappingDummy[key].forEach(e => {
+                let key_item = document.createElement("div");
+                key_item.classList.add("key-item");
+                key_list.append(key_item);
+
+                let p_month = document.createElement("p");
+                p_month.textContent = `Month ${e.month}`;
+
+                let p_name = document.createElement("p");
+                p_name.textContent = `Name: ${e.name}`;
+
+                key_item.append(p_month, p_name)
+
+                mapping[key].forEach(el => {
+                    let p = document.createElement("p");
+                    p.textContent = `${capitalizeFirst(el)}: Rp. ${Math.floor(e[el]).toLocaleString("id-ID")}`;
+                    key_item.append(p)
+                })
+            })
+        }
+    }
 }
 
 cashFlow(element.cashFlow_log_select.value)
 element.cashFlow_log_select.addEventListener("change", () => cashFlow(element.cashFlow_log_select.value))
+
+expense(element.expense_log_select.value)
+element.expense_log_select.addEventListener("change", () => expense(element.expense_log_select.value))
+
+let debounceTimer;
+
+element.expense_log_input.addEventListener("input", () => {
+    clearTimeout(debounceTimer);
+
+    const keyword = element.expense_log_input.value.toLowerCase().trim();
+    element.expense_log_suggestion.innerHTML = "";
+
+    /* =========================
+       1. LOGIKA SUGGESTION
+    ========================== */
+    if (keyword) {
+        element.expense_log_suggestion.classList.remove("hide")
+        const source =
+            element.expense_log_select.value !== "all"
+                ? data.expense[element.expense_log_select.value]
+                : data.expense;
+
+        const flatData = Object.values(source).flat();
+        const uniqueNames = [...new Set(flatData.map(e => e.name))];
+
+        const matches = uniqueNames.filter(name =>
+            name.toLowerCase().startsWith(keyword)
+        );
+
+        matches.slice(0, 5).forEach(name => {
+            const li = document.createElement("li");
+            li.textContent = name;
+
+            li.addEventListener("click", () => {
+                element.expense_log_input.value = name;
+                element.expense_log_suggestion.innerHTML = "";
+                expense(element.expense_log_select.value);
+            });
+
+            element.expense_log_suggestion.append(li);
+        });
+    } else {
+        element.expense_log_suggestion.classList.add("hide")
+    }
+
+    /* =========================
+       2. EKSEKUSI UTAMA (SELALU)
+    ========================== */
+    debounceTimer = setTimeout(() => {
+        expense(element.expense_log_select.value);
+    }, 300);
+});

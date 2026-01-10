@@ -88,7 +88,9 @@ export const element = {
     cashFlow_log_select: document.getElementById("cashFlow_log-select"), // SELECT CASH FLOW
 
     expense_log_input: document.getElementById("expense_log-input"), // INPUT EXPENSE
-    expense_log_selec: document.getElementById("expense_log-selec"), // SELECT EXPENSE
+    expense_log_suggestion: document.getElementById("expense_log-suggestion"), // SUGGESTIONS
+
+    expense_log_select: document.getElementById("expense_log-select"), // SELECT EXPENSE
 
     cashFlow_log_body: document.getElementById("cashFlow_log-body"), // CASH FLOW LOG BODY
 

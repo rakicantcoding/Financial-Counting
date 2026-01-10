@@ -698,8 +698,11 @@
                     <div class="log-content">
 
                         <div class="log-content__header">
-                            <input id="expense_log-input" placeholder="Search Name..." class="input">
-                            <select id="expense_log-select" class="select padding-wide">
+                            <div>
+                                <input id="expense_log-input" placeholder="Search Name..." class="input">
+
+                            </div>
+                            <select id="expense_log-select" class="select padding-wide cashFlow-log_select">
                                 <option value="all">All</option>
                                 <option value="expense">Expense</option>
                                 <option value="invest">Invest</option>
@@ -707,6 +710,10 @@
                                 <option value="saving">Saving</option>
                             </select>
                         </div>
+
+                        <ul id="expense_log-suggestion" class="log-suggestion hide">
+                            <!-- SUGGESTION -->
+                        </ul>
 
                         <div id="expense_log-body" class="overview-list-content">
 
