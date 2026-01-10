@@ -59,8 +59,6 @@ function expense(value) {
     element.expense_log_body.innerHTML = "";
     let list = data.expense
 
-    let input = element.expense_log_input.value;
-
     let dummyData;
 
     if (value === "all") dummyData = list;
@@ -109,7 +107,21 @@ function expense(value) {
                 mapping[key].forEach(el => {
                     let p = document.createElement("p");
                     p.textContent = `${capitalizeFirst(el)}: Rp. ${Math.floor(e[el]).toLocaleString("id-ID")}`;
-                    key_item.append(p)
+
+                    let div_amount = document.createElement("div")
+                    div_amount.append(p)
+
+                    key_item.append(div_amount)
+                    if (e.month !== 1) {
+                        let before = dummyData[key].find(m => m.month === e.month - 1 && m.name === e.name);
+                        let plus = e.amount - before.amount;
+
+                        let plus_amount = document.createElement("p");
+                        plus_amount.classList.add("color-green")
+                        plus_amount.textContent = `+ Rp. ${Math.floor(plus).toLocaleString("id-ID")}`;
+
+                        div_amount.append(plus_amount)
+                    }
                 })
             })
         }
@@ -121,7 +133,7 @@ function expense(value) {
             name.name.toLowerCase().startsWith(element.expense_log_input.value)
         );
 
-        
+
 
         let dummyCategory = [...new Set(newDummyData.map(e => e.category))]
 
@@ -167,7 +179,21 @@ function expense(value) {
                 mapping[key].forEach(el => {
                     let p = document.createElement("p");
                     p.textContent = `${capitalizeFirst(el)}: Rp. ${Math.floor(e[el]).toLocaleString("id-ID")}`;
-                    key_item.append(p)
+
+                    let div_amount = document.createElement("div")
+                    div_amount.append(p)
+
+                    key_item.append(div_amount)
+                    if (e.month !== 1) {
+                        let before = dummyData[key].find(m => m.month === e.month - 1 && m.name === e.name);
+                        let plus = e.amount - before.amount;
+
+                        let plus_amount = document.createElement("p");
+                        plus_amount.classList.add("color-green")
+                        plus_amount.textContent = `+ Rp. ${Math.floor(plus).toLocaleString("id-ID")}`;
+
+                        div_amount.append(plus_amount)
+                    }
                 })
             })
         }
