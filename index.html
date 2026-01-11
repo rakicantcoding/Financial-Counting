@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="/nav_style/nav.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
+    <link href="./css/home.css" rel="stylesheet" />
     <title>Home</title>
 </head>
 
@@ -21,7 +22,7 @@
             </div>
 
             <div class="nav-title">
-                <p>Calculate - Chart</p>
+                <p>Home</p>
             </div>
         </div>
 
@@ -29,41 +30,30 @@
 
             <div class="sidebar-header">
 
-                <div>
-                    <a href="/index.html">
-                        <div class="item">
-                            <p>Home</p>
-                        </div>
-                    </a>
-                </div>
+                <a href="/index.html">
+                    <div class="item on">
+                        <p>Home</p>
+                    </div>
+                </a>
 
             </div>
 
             <div class="sidebar-item">
                 <a href="/module/counting/index.html">
-                    <div class="item on">
+                    <div class="item">
                         <p>Counting</p>
                     </div>
                 </a>
 
-                <a href="/module/calculate/main_calculate/index.html">
+                <a href="/module/calculate/index.html">
                     <div class="item">
                         <p>Calculate</p>
                     </div>
                 </a>
 
-                <a href="/module/calculate/chart/chart.html">
+                <a href="/module/chart/index.html">
                     <div class="item">
                         <p>Chart</p>
-                    </div>
-                </a>
-
-            </div>
-
-            <div class="sidebar-footer">
-                <a href="/contact/contact.html">
-                    <div class="item">
-                        <p>Contact Me</p>
                     </div>
                 </a>
 
@@ -73,7 +63,111 @@
         <div class="cover"></div>
     </div>
 
-    <script src="/nav_js/nav.js"></script>
+    <div class="main-body">
+
+        <div class="header-content">
+            <div class="background-inside">
+                <div>
+                    <a href="module/counting/index.html">
+                        <div>
+                            <p>Counting</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="background-inside">
+                <div>
+                    <a href="module/calculate/index.html">
+                        <div>
+                            <p>Calculate</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="background-inside">
+                <div>
+                    <a href="module/chart/index.html">
+                        <div>
+                            <p>Chart</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-content">
+
+            <div class="body-cotent__wrapper left">
+                <div class="content-item">
+                    <a href="module/counting/index.html">
+                        <div>
+                            <p>Counting</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="content-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quia temporibus autem rerum mollitia
+                    laborum, facere vitae nobis aperiam in cum praesentium inventore quod vero odit, enim impedit quis
+                    dolores.
+                </div>
+            </div>
+
+            <div class="body-cotent__wrapper right">
+
+
+                <div class="content-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, repellat impedit! Praesentium
+                    harum veritatis eveniet delectus, aspernatur velit, at molestiae corrupti ipsa officia optio
+                    provident ullam tenetur amet omnis. Aspernatur.
+                </div>
+
+                <div class="content-item">
+                    <a href="module/calculate/index.html">
+                        <div>
+                            <p>Calculate</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="body-cotent__wrapper left">
+                <div class="content-item">
+                    <a href="module/chart/index.html">
+                        <div>
+                            <p>Chart</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="content-text">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum quod corrupti dicta esse sit a vel
+                    repellat accusantium! Ex, voluptatum tempora eos repellendus facilis recusandae molestiae itaque
+                    sint alias tenetur?
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-content">
+
+            <div>
+                <!-- EMAIL -->
+            </div>
+
+            <div>
+                <!-- GITHUB -->
+            </div>
+
+        </div>
+
+        <!-- NOTE! KAMU BELUM BIKIN ALERT UNTUK HALAMAN CHART JIKA DATA SIMULATE BELUM DIBUAT -->
+
+    </div>
+
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
