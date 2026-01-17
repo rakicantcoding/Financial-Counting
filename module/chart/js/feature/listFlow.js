@@ -1,6 +1,6 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
-import { getChart, prettierOptions, getData, getLabels } from "../utility/chart.js";
+import { getChart, prettierOptions, getData, getLabels, resize } from "../utility/chart.js";
 import { chartControl } from "../utility/toolsControl.js";
 import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
 
@@ -161,8 +161,6 @@ function nameChoosen() {
         mapping[category.value].forEach(e => {
             let data = getData(dummyData, e, element.list_filter_range_type.value, input_start, input_end)
 
-            console.log(data)
-
             let hide = document.querySelector(`input[data-control="list"][data-type="hidden"][data-category="${e}"]`).checked
             let fill = document.querySelector(`input[data-control="list"][data-type="fill"][data-category="${e}"]`).checked
 
@@ -180,14 +178,12 @@ function nameChoosen() {
             chart.data.datasets.push(isi)
         })
 
-        console.log(chart.data)
-
         prettierOptions(element.list_select_type.value, chart)
 
         chart.update()
     })
 
-    
+
 }
 
 
@@ -245,8 +241,6 @@ element.list_filter.addEventListener("change", () => {
                 dummyColor[e.label].borderColor = colorMapping[element.list_select_type.value][e.label].borderColor
             }
         })
-
-        console.log(chart.data)
 
         chart.data.datasets = []
 
@@ -317,3 +311,6 @@ name.addEventListener("change", () => {
 })
 
 
+window.addEventListener('resize', function () {
+    resize(chart);
+});

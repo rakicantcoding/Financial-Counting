@@ -1,6 +1,6 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
-import { getChart, prettierOptions, getData, getLabels } from "../utility/chart.js";
+import { getChart, prettierOptions, getData, getLabels, resize } from "../utility/chart.js";
 import { chartControl } from "../utility/toolsControl.js";
 import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
 
@@ -299,6 +299,10 @@ function line() {
 
         chart.update()
     })
+
+    window.addEventListener('resize', function () {
+        resize(chart);
+    });
 }
 
 donut()

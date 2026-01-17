@@ -1,9 +1,11 @@
-import"./feature/cashFlow.js";
-import"./feature/expenseFlow.js";
-import"./feature/listFlow.js";
-import"./feature/logFlow.js";
+let data = JSON.parse(localStorage.getItem("result"));
 
-
-let data = JSON.parse(localStorage.getItem("result"))
-
-console.log(data)
+if (!data) {
+    alert('Need input data in "Calculate" before using page "Chart"');
+    window.location.href = "/module/calculate/index.html";
+} else {
+    import("./feature/cashFlow.js");
+    import("./feature/expenseFlow.js");
+    import("./feature/listFlow.js");
+    import("./feature/logFlow.js");
+}

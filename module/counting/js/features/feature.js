@@ -201,7 +201,6 @@ function del(name, category, type) {
 
 document.querySelectorAll(".div-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-        console.log("click")
     })
 })
 

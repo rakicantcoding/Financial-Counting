@@ -1,6 +1,6 @@
 import { data } from "../utility/storage.js";
 import { element } from "../dom/dom.js";
-import { getChart, prettierOptions, getData, getLabels } from "../utility/chart.js";
+import { getChart, prettierOptions, getData, getLabels, resize } from "../utility/chart.js";
 import { domListing } from "../utility/overviewList.js";
 import { chartControl } from "../utility/toolsControl.js";
 import { inputElseFilter, alertingElse } from "../utility/filterElse.js";
@@ -22,7 +22,7 @@ function donut() {
             borderColor: "rgba(192, 57, 43, 1)",
         },
         balance: {
-            backgroundColor: "rgba(47, 111, 214, 0.3))",
+            backgroundColor: "rgba(47, 111, 214, 0.3)",
             borderColor: "rgba(47, 111, 214, 1)"
         }
     }
@@ -30,9 +30,9 @@ function donut() {
     const lastMonth = Math.max(...summary[Object.keys(summary).find(k => summary[k].length !== 0)].map(e => e.month))
 
     const value = {
-        income: summary.income.find(e=> e.month === lastMonth).amount,
-        expense: summary.expense.find(e=> e.month === lastMonth).amount,
-        balance: summary.balance.find(e=> e.month === lastMonth).amount
+        income: summary.income.find(e => e.month === lastMonth).amount,
+        expense: summary.expense.find(e => e.month === lastMonth).amount,
+        balance: summary.balance.find(e => e.month === lastMonth).amount
     }
 
     const total = Object.values(value).reduce((acc, item) => acc + item, 0);
@@ -388,8 +388,6 @@ function line() {
                 chart.data.datasets.push(defData)
             }
 
-            console.log(chart.data)
-
             chart.update()
         }
 
@@ -458,6 +456,10 @@ function line() {
 
         chart.update()
     })
+
+    window.addEventListener('resize', function () {
+        resize(chart);
+    });
 }
 
 donut()

@@ -205,7 +205,7 @@ export function getData(array, key, period, filter_start, filter_end) {
             const maxMonth = Math.max(...array.map(e => e.month));
 
             for (let start = filter_start; start <= maxMonth; start++) {
-                let dummyData = array.filter(e=> e.month === start).reduce((acc, item)=> acc + item[key], 0)
+                let dummyData = array.filter(e => e.month === start).reduce((acc, item) => acc + item[key], 0)
                 isi.push(dummyData)
             }
 
@@ -237,4 +237,15 @@ export function getData(array, key, period, filter_start, filter_end) {
         }
     }
     return result
+}
+
+
+export function resize(chart) {
+    const isMobile = window.innerWidth <= 768
+
+    chart.options.scales.x.display = !isMobile;
+    chart.options.scales.y.display = !isMobile;
+
+    chart.update();
+    return
 }

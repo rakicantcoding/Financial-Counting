@@ -114,7 +114,7 @@ function expense(value) {
                     key_item.append(div_amount)
                     if (e.month !== 1) {
                         let before = dummyData[key].find(m => m.month === e.month - 1 && m.name === e.name);
-                        let plus = e.amount - before.amount;
+                        let plus = e[el] - before[el];
 
                         let plus_amount = document.createElement("p");
                         plus_amount.classList.add("color-green")
@@ -132,8 +132,6 @@ function expense(value) {
         let newDummyData = dummyUrai.filter(name =>
             name.name.toLowerCase().startsWith(element.expense_log_input.value)
         );
-
-
 
         let dummyCategory = [...new Set(newDummyData.map(e => e.category))]
 
@@ -186,7 +184,7 @@ function expense(value) {
                     key_item.append(div_amount)
                     if (e.month !== 1) {
                         let before = dummyData[key].find(m => m.month === e.month - 1 && m.name === e.name);
-                        let plus = e.amount - before.amount;
+                        let plus = e[el] - before[el];
 
                         let plus_amount = document.createElement("p");
                         plus_amount.classList.add("color-green")
