@@ -2,7 +2,7 @@ let data = JSON.parse(localStorage.getItem("result"));
 
 if (!data) {
     alert('Need input data in "Calculate" before using page "Chart" aaa');
-    window.location.href = "../../../module/calculate/index.html";
+    window.location.href = "/finance-app/module/calculate/index.html";
 } else {
     import("./feature/cashFlow.js");
     import("./feature/expenseFlow.js");
