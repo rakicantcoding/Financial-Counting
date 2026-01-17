@@ -120,6 +120,7 @@ export function saveData() {
     if (!data.result) return alert(`Need input month`);
 
     localStorage.setItem("result", JSON.stringify(data.result));
+    window.location.href = "../chart/index.html";
 }
 // SAVE DATA END
 
