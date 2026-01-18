@@ -130,7 +130,7 @@ function expense(value) {
     else {
         let dummyUrai = Object.values(dummyData).flat()
         let newDummyData = dummyUrai.filter(name =>
-            name.name.toLowerCase().startsWith(element.expense_log_input.value)
+            name.name.toLowerCase().startsWith(element.expense_log_input.value.toLowerCase().trim())
         );
 
         let dummyCategory = [...new Set(newDummyData.map(e => e.category))]
@@ -209,12 +209,10 @@ let debounceTimer;
 element.expense_log_input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
 
-    const keyword = element.expense_log_input.value.toLowerCase().trim();
+    const keyword = element.expense_log_input.value.toLowerCase()
+        .trim()
     element.expense_log_suggestion.innerHTML = "";
 
-    /* =========================
-       1. LOGIKA SUGGESTION
-    ========================== */
     if (keyword) {
         element.expense_log_suggestion.classList.remove("hide")
         const source =
@@ -229,7 +227,15 @@ element.expense_log_input.addEventListener("input", () => {
             name.toLowerCase().startsWith(keyword)
         );
 
-        matches.slice(0, 5).forEach(name => {
+        const sliced = matches.slice(0, 5)
+
+        if (sliced.find(e => e === keyword)) {
+            debounceTimer = setTimeout(() => {
+                return element.expense_log_suggestion.innerHTML = ""
+            }, 1000);
+        }
+
+        sliced.forEach(name => {
             const li = document.createElement("li");
             li.textContent = name;
 
@@ -241,14 +247,12 @@ element.expense_log_input.addEventListener("input", () => {
 
             element.expense_log_suggestion.append(li);
         });
+
     } else {
         element.expense_log_suggestion.classList.add("hide")
     }
 
-    /* =========================
-       2. EKSEKUSI UTAMA (SELALU)
-    ========================== */
     debounceTimer = setTimeout(() => {
         expense(element.expense_log_select.value);
-    }, 300);
+    }, 500);
 });
