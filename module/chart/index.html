@@ -191,7 +191,7 @@
                             <!-- FILTER SELECT -->
                             <div class="content-header-title">
                                 <p>Time Period</p>
-                                <select id="cashFlow-filter" class="select padding-wide">
+                                <select id="cashFlow-filter" class="select padding-wide" data-select="timePeriod">
                                     <option value="month">Monthly</option>
                                     <option value="year">Yearly</option>
                                     <option value="custom">Custom</option>
@@ -360,7 +360,7 @@
                             <!-- FILTER SELECT -->
                             <div class="content-header-title">
                                 <p>Time Period</p>
-                                <select id="profit-filter" class="select padding-wide">
+                                <select id="profit-filter" class="select padding-wide" data-select="timePeriod">
                                     <option value="month">Monthly</option>
                                     <option value="year">Yearly</option>
                                     <option value="custom">Custom</option>
@@ -398,19 +398,19 @@
                         <canvas id="profit-canvas-line"></canvas>
                     </div>
                     <!-- BOTTOM -->
-                    <div class="content-bottom">
+                    <div class="content-bottom" data-contentBottom="profit">
                         <!-- CHECKBOX -->
-                        <div class="content-checkbox" data-contentCheckbox="profit">
+                        <div class="content-checkbox">
                             <div> <!-- HIDE -->
                                 <p>Show</p>
                                 <div>
 
-                                    <label data-label="profit" data-category="invest">
+                                    <label data-label="profit" data-category="invest" data-type="hidden">
                                         <input data-control="profit" data-category="invest" data-type="hidden"
                                             class="checkbox_cyan" type="checkbox" checked> Invest
                                     </label>
 
-                                    <label data-label="profit" data-category="interest">
+                                    <label data-label="profit" data-category="interest"  data-type="hidden">
                                         <input data-control="profit" data-category="interest" data-type="hidden"
                                             class="checkbox_gold" type="checkbox" checked> Interest
                                     </label>
@@ -545,7 +545,7 @@
                             <!-- FILTER SELECT -->
                             <div class="content-header-title">
                                 <p>Time Period</p>
-                                <select id="expense-filter" class="select padding-wide">
+                                <select id="expense-filter" class="select padding-wide" data-select="timePeriod">
                                     <option value="month">Monthly</option>
                                     <option value="year">Yearly</option>
                                     <option value="custom">Custom</option>
@@ -677,7 +677,7 @@
                             <!-- FILTER SELECT -->
                             <div class="content-header-title">
                                 <p>Time Period</p>
-                                <select id="list-filter" class="select padding-wide">
+                                <select id="list-filter" class="select padding-wide" data-select="timePeriod">
                                     <option value="month">Monthly</option>
                                     <option value="year">Yearly</option>
                                     <option value="custom">Custom</option>

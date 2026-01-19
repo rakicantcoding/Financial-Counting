@@ -125,7 +125,7 @@ export function getLabels(array, period, filter_start, filter_end) {
                 result.push(dummyData);
             }
 
-            if (maxMonth % 12 !== 0) {
+            if ((maxYear * 12) % 12 !== 0) {
                 let dummyData;
                 if (maxYear <= 5) {
                     const monthStart = (startYear * 12) + 1;
