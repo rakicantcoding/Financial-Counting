@@ -232,6 +232,8 @@ function donut() {
 
     loadExpense(element.cashFlow_list_select.value)
     element.cashFlow_list_select.addEventListener("change", () => loadExpense(element.cashFlow_list_select.value))
+
+    console.log(chart.data)
 }
 
 function line() {

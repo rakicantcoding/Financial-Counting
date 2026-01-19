@@ -214,6 +214,17 @@
     font-style: italic;
 }
 
+.line-note {
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
 /* CONTENT LIST END */
 
 /* == CONTENT HEAD END == */
@@ -268,7 +279,7 @@
 
 /* CANVAS */
 .content-body>.div-canvasL {
-    min-height: 420px;
+    height: 420px;
 }
 
 canvas {
@@ -630,7 +641,7 @@ canvas {
     }
 
     .content-body>.div-canvasL {
-        min-height: 280px;
+        height: 280px;
         border: 1px solid rgba(255, 255, 255, 0.05);
     }
 

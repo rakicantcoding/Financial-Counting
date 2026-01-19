@@ -6,6 +6,7 @@ if (!data) {
 } else {
     import("./feature/cashFlow.js");
     import("./feature/expenseFlow.js");
+    import("./feature/profitFlow.js");
     import("./feature/listFlow.js");
     import("./feature/logFlow.js");
 }

@@ -36,6 +36,24 @@ export const element = {
     // CASH FLOW END
 
 
+    // PROFIT FLOW
+    profit_canvas_donut: document.getElementById("profit-canvas-donut"), // Canvas Donut
+
+    profit_select_type: document.getElementById("profit-select-type"), // Select type Line, Bar
+
+    profit_filter: document.getElementById("profit-filter"), // Select filter
+
+    profit_div_option_else: document.getElementById("profit-div_option-else"), // Div else input
+
+    profit_filter_range_type: document.getElementById("profit-filter-range-type"), // Range filter type
+
+    profit_filter_input_start: document.getElementById("profit-filter-input-start"), // Input start else
+    profit_filter_input_end: document.getElementById("profit-filter-input-end"), // Input end else
+    profit_filter_btn: document.getElementById("profit-filter-btn"), // Input btn else
+
+    profit_canvas_line: document.getElementById("profit-canvas-line"), // Canvas line, bar
+    // PROFIT FLOW END
+
 
     // EXPENSE FLOW
     // = DONUT CHART

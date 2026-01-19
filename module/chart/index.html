@@ -285,6 +285,164 @@
         </div>
         <!-- CASH FLOW END -->
 
+        <!-- PROFIT FLOW [BODY-CONTENT] -->
+        <div class="body-content">
+            <!-- TITLE -->
+            <div class="content-title">
+                <p>Profit Flow</p>
+            </div>
+
+            <!-- CONTAINER -->
+            <div class="content-container">
+
+                <!-- HEAD -->
+                <div class="content-head" data-head="profit">
+                    <!-- CHART PIE -->
+                    <div class="div-donut">
+                        <!-- CANVAS -->
+                        <div class="div-canvasD">
+                            <canvas id="profit-canvas-donut"></canvas>
+                        </div>
+
+                        <!-- OVERVIEW -->
+                        <div class="donut-overview">
+                            <div class="donut-checkbox">
+
+                                <div data-divDonut__checkbox="profit" data-category="invest">
+                                    <label>
+                                        <input type="checkbox" data-section="profit" data-checkbox="donut"
+                                            data-category="invest"
+                                            class="checkbox checkbox_cyan" value="invest" checked>
+                                    </label>
+                                    <p class="p-cyan">Invest</p>
+                                </div>
+
+                                <div data-divDonut__checkbox="profit" data-category="interest">
+                                    <label>
+                                        <input type="checkbox" data-section="profit" data-checkbox="donut"
+                                            data-category="interest"
+                                            class="checkbox checkbox_gold" value="interest" checked>
+                                    </label>
+                                    <p class="p-gold">Interest</p>
+                                </div>
+                            </div>
+
+                            <div class="donut-percent">
+                                <div data-divDonut__percent="profit" data-category="invest">
+                                    <p>Invest:</p>
+                                    <p data-percent="profit" data-category="invest">0%</p>
+                                </div>
+
+                                <div data-divDonut__percent="profit" data-category="interest">
+                                    <p>Interest:</p>
+                                    <p data-percent="profit" data-category="interest">0%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT BODY -->
+                <div class="content-body">
+
+                    <div class="content-header" data-headerContentBody="profit">
+                        <!-- SELECT TYPE & SELECT PERIOD -->
+                        <div class="content-header-select">
+                            <!-- TYPE SELECT -->
+                            <div class="content-header-title">
+                                <p>Type Chart</p>
+                                <select id="profit-select-type" class="select padding-wide">
+                                    <option value="line">Line</option>
+                                    <option value="bar">Bar</option>
+                                </select>
+                            </div>
+
+                            <!-- FILTER SELECT -->
+                            <div class="content-header-title">
+                                <p>Time Period</p>
+                                <select id="profit-filter" class="select padding-wide">
+                                    <option value="month">Monthly</option>
+                                    <option value="year">Yearly</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <!-- DIV FILTER PERIOD -->
+                        <div id="profit-div_option-else" class="content-header-filter hide">
+                            <div class="content-header-title">
+                                <p>Range Type</p>
+                                <select id="profit-filter-range-type" class="select padding-wide">
+                                    <option value="month">Month</option>
+                                    <option value="year">Year</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <div>
+                                    <input id="profit-filter-input-start" class="input" type="text" inputmode="numeric"
+                                        placeholder="Period Start">
+                                    <input id="profit-filter-input-end" class="input" type="text" inputmode="numeric"
+                                        placeholder="Period End (Empty: Last Period)">
+                                </div>
+
+                                <button id="profit-filter-btn" class="btn">Submit</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CANVAS -->
+                    <div class="div-canvasL" data-chartL="profit">
+                        <canvas id="profit-canvas-line"></canvas>
+                    </div>
+                    <!-- BOTTOM -->
+                    <div class="content-bottom">
+                        <!-- CHECKBOX -->
+                        <div class="content-checkbox" data-contentCheckbox="profit">
+                            <div> <!-- HIDE -->
+                                <p>Show</p>
+                                <div>
+
+                                    <label data-label="profit" data-category="invest">
+                                        <input data-control="profit" data-category="invest" data-type="hidden"
+                                            class="checkbox_cyan" type="checkbox" checked> Invest
+                                    </label>
+
+                                    <label data-label="profit" data-category="interest">
+                                        <input data-control="profit" data-category="interest" data-type="hidden"
+                                            class="checkbox_gold" type="checkbox" checked> Interest
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div> <!-- FILL -->
+                                <p>Fill</p>
+                                <div>
+                                    <label data-label="profit" data-category="invest" data-control="profit"
+                                        data-type="fill">
+                                        <input data-control="profit" data-category="invest" data-type="fill"
+                                            class="checkbox_cyan" type="checkbox"> Invest
+                                    </label>
+
+                                    <label data-label="profit" data-category="interest" data-control="profit"
+                                        data-type="fill">
+                                        <input data-control="profit" data-category="interest" data-type="fill"
+                                            class="checkbox_gold" type="checkbox"> Interest
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- EXPENSE FLOW END -->
+
         <!-- EXPENSE FLOW [BODY-CONTENT] -->
         <div class="body-content">
             <!-- TITLE -->
