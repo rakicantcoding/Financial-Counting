@@ -23,6 +23,20 @@ element.expense_btn.addEventListener("click", () => {
     add("expense");
 })
 
+
+// KALAU INTEREST GANTI KE /YEAR MAKA PLACEHOLDER IKUT GANTI
+element.expense_select_interest.addEventListener("change", () => {
+    if (element.expense_select_interest.value === "monthly") element.expense_interest.placeholder = `Interest/Month [%]`;
+    else element.expense_interest.placeholder = `Interest/Year [%]`;
+
+})
+
+// KALAU MONTH GANTI KE YEAR MAKA PLACEHOLDER IKUT GANTI
+element.month_select.addEventListener(`change`, () => {
+    if (element.month_select.value === "month") element.month_input.placeholder = `Month`;
+    else element.month_input.placeholder = `Year`;
+})
+
 // INPUT END
 
 

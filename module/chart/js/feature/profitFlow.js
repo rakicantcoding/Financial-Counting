@@ -55,7 +55,27 @@ function donut() {
     let list = {}
 
     if (data.expense.invest.length !== 0) list.invest = data.expense.invest;
+    else {
+        let checkBox = document.querySelector(`div[data-divDonut__checkbox="profit"][data-category="invest"]`)
+        let input = checkBox.querySelector(`input`)
+        input.checked = false
+        checkBox.classList.add("off-permanent")
+
+        let percent = document.querySelector(`div[data-divDonut__percent="profit"][data-category="invest"]`)
+        percent.classList.add("off-permanent")
+    }
+
     if (data.expense.interest.length !== 0) list.interest = data.expense.interest;
+    else {
+        let checkBox = document.querySelector(`div[data-divDonut__checkbox="profit"][data-category="interest"]`)
+        let input = checkBox.querySelector(`input`)
+        input.checked = false
+        checkBox.classList.add("off-permanent")
+
+        let percent = document.querySelector(`div[data-divDonut__percent="profit"][data-category="interest"]`)
+        percent.classList.add("off-permanent")
+    }
+
 
     if (Object.values(list).length === 0) {
         return

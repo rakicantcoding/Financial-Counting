@@ -40,11 +40,13 @@ function cashFlow(value) {
                 let before = dummyData[key].find(m => m.month === e.month - 1);
                 let plus = e.amount - before.amount;
 
-                let plus_amount = document.createElement("p");
-                plus_amount.classList.add("color-green")
-                plus_amount.textContent = `+ Rp. ${Math.floor(plus).toLocaleString("id-ID")}`;
+                if (plus !== 0) {
+                    let plus_amount = document.createElement("p");
+                    plus_amount.classList.add("color-green")
+                    plus_amount.textContent = `+ Rp. ${Math.floor(plus).toLocaleString("id-ID")}`;
 
-                div_amount.append(plus_amount)
+                    div_amount.append(plus_amount)
+                }
             }
 
             p_amount.textContent = `Amount: Rp. ${Math.floor(e.amount).toLocaleString("id-ID")}`;
@@ -116,11 +118,13 @@ function expense(value) {
                         let before = dummyData[key].find(m => m.month === e.month - 1 && m.name === e.name);
                         let plus = e[el] - before[el];
 
-                        let plus_amount = document.createElement("p");
-                        plus_amount.classList.add("color-green")
-                        plus_amount.textContent = `+ Rp. ${Math.floor(plus).toLocaleString("id-ID")}`;
+                        if (plus !== 0) {
+                            let plus_amount = document.createElement("p");
+                            plus_amount.classList.add("color-green")
+                            plus_amount.textContent = `+ Rp. ${Math.floor(plus).toLocaleString("id-ID")}`;
 
-                        div_amount.append(plus_amount)
+                            div_amount.append(plus_amount)
+                        }
                     }
                 })
             })
