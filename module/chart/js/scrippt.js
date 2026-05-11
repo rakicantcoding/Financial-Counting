@@ -1,7 +1,7 @@
 let data = JSON.parse(localStorage.getItem("result"));
 
 if (!data) {
-    alert('Need input data in "Calculate" before using page "Chart" aaa');
+    alert('Need input data in "Calculate" before using page "Chart"');
     window.location.href = "../calculate/index.html";
 } else {
     let dummyName = Object.keys(data.summary).find(e => data.summary[e].length !== 0)
